@@ -1,0 +1,31 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+    - "!Municipais/*"
+    
+website:
+  title: "Relatórios de Indicadores 2023"
+#  navbar:
+#    left:
+#      - href: index.qmd
+#        text: Brasil
+#      - href: municipais.qmd
+#        text: Municipais
+  sidebar:
+#    - title: "Municipais"
+      contents:
+        - href: index.qmd
+          text: Brasil
+        - auto: Municipais
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+
