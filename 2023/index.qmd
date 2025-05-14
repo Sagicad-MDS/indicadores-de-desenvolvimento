@@ -2,6 +2,7 @@
 lang: pt   
 
 title: "Indicadores de Desenvolvimento 2023"
+subtitle: "Nacional e por regiões"
 number-sections: true
 execute:
   echo: false
@@ -19,7 +20,7 @@ crossref:
 #format:
 #  html:
 #    embed-resources: true
-editor: visual
+#editor: visual
 ---
 
 ```{r setup, include=FALSE}
