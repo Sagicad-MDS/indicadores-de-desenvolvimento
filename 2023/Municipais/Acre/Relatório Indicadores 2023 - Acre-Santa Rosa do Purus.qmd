@@ -32,26 +32,18 @@ params:
 # municipio: 110005 # CRAS EF nível 3, Serviços nível 1
 # municipio: 110007 # CRAS EF nível 4
 # municipio: 110012 # CRAS Serviços nível 1 município Grande
-  pacotes_carregados: TRUE
 ---
 
-```{r pacotes, include=FALSE, cache=params$pacotes_carregados}
-lista.de.pacotes = c("tinytex","tidyr", "purrr", "dplyr",
-                     "lubridate","janitor","readxl","readr","readODS","stringr",
-                     "repmis","scales",
-                     "ggrepel","renv","knitr","quarto") # escreva a lista de pacotes
-
-novos.pacotes <- lista.de.pacotes[!(lista.de.pacotes %in%
-                                      installed.packages()[,"Package"])]
-
-if(length(novos.pacotes) > 0) {install.packages(novos.pacotes, repos = "http://cran.us.r-project.org")}
-lapply(lista.de.pacotes, require, character.only=T)
-rm(lista.de.pacotes,novos.pacotes)
-gc()
-```
-
 ```{r}
-source("../_carregamento.R")
+library("dplyr")
+library("janitor")
+library("readxl")
+library("readr")
+library("readODS")
+library("ggrepel")
+library("knitr")
+
+source("../../_carregamento.R")
 ```
 
 ```{r setup-municipio}
