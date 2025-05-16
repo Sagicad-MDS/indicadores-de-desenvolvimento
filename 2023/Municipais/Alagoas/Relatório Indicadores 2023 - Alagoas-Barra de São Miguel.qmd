@@ -43,7 +43,7 @@ library("readODS")
 library("ggrepel")
 library("knitr")
 
-source("../../_carregamento.R")
+source("../_carregamento.R")
 ```
 
 ```{r setup-municipio}
