@@ -2,566 +2,814 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/index.html</loc>
-    <lastmod>2025-05-17T04:55:41.411Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Urucará.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Tonantins.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Tapauá.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-São Sebastião do Uatumã.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-São Gabriel da Cachoeira.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Santo Antônio do Içá.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Rio Preto da Eva.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Pauini.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Novo Aripuanã.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Nova Olinda do Norte.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Maués.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Manicoré.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Manaquiri.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Lábrea.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Juruá.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Itapiranga.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Itacoatiara.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Ipixuna.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Guajará.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Envira.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Codajás.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Careiro.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Carauari.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Caapiranga.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Boca do Acre.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Beruri.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Barreirinha.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Autazes.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Apuí.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Anamã.html</loc>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Alvarães.html</loc>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Tartarugalzinho.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Santana.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Porto Grande.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Oiapoque.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Macapá.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Itaubal.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Cutias.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Amapá.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Viçosa.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Traipu.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Taquarana.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São Sebastião.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São Miguel dos Campos.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São José da Tapera.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São Brás.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Satuba.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Santana do Ipanema.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Roteiro.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Quebrangulo.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Poço das Trincheiras.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Porto Real do Colégio.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Piranhas.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Pilar.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Penedo.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Passo de Camaragibe.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Pariconha.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Palestina.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Olivença.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Olho d&#39;Água das Flores.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Novo Lino.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Monteirópolis.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Messias.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Mata Grande.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Marechal Deodoro.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Maragogi.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Major Isidoro.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Limoeiro de Anadia.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Junqueiro.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Joaquim Gomes.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Jaramataia.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Jacuípe.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Inhapi.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Igaci.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Girau do Ponciano.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Feliz Deserto.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Estrela de Alagoas.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Delmiro Gouveia.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Coruripe.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Colônia Leopoldina.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Chã Preta.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Capela.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Campo Grande.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Campestre.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Cacimbinhas.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Boca da Mata.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Belo Monte.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Barra de São Miguel.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Atalaia.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Anadia.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Tarauacá.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Sena Madureira.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Rodrigues Alves.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Porto Walter.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Plácido de Castro.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Marechal Thaumaturgo.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Jordão.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Epitaciolândia.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.415Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Capixaba.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.415Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Brasiléia.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.414Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Acrelândia.html</loc>
-    <lastmod>2025-05-17T04:55:41.391Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.413Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Assis Brasil.html</loc>
-    <lastmod>2025-05-17T04:55:41.391Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.414Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Bujari.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.414Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Cruzeiro do Sul.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.415Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Feijó.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.415Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Manoel Urbano.html</loc>
-    <lastmod>2025-05-17T04:55:41.392Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Mâncio Lima.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Porto Acre.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.416Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Rio Branco.html</loc>
-    <lastmod>2025-05-17T04:55:41.393Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Santa Rosa do Purus.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Senador Guiomard.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.417Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Acre/Relatório Indicadores 2023 - Acre-Xapuri.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Arapiraca.html</loc>
-    <lastmod>2025-05-17T04:55:41.394Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Barra de Santo Antônio.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.418Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Batalha.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Belém.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Branquinha.html</loc>
-    <lastmod>2025-05-17T04:55:41.395Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.419Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Cajueiro.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Campo Alegre.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Canapi.html</loc>
-    <lastmod>2025-05-17T04:55:41.396Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.420Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Carneiros.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Coité do Nóia.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Coqueiro Seco.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Craíbas.html</loc>
-    <lastmod>2025-05-17T04:55:41.397Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.421Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Dois Riachos.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Feira Grande.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Flexeiras.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.422Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Ibateguara.html</loc>
-    <lastmod>2025-05-17T04:55:41.398Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Igreja Nova.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Jacaré dos Homens.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Japaratinga.html</loc>
-    <lastmod>2025-05-17T04:55:41.399Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.423Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Jequiá da Praia.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Jundiá.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Lagoa da Canoa.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.424Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Maceió.html</loc>
-    <lastmod>2025-05-17T04:55:41.400Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Mar Vermelho.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Maravilha.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.425Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Maribondo.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Matriz de Camaragibe.html</loc>
-    <lastmod>2025-05-17T04:55:41.401Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Minador do Negrão.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Murici.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.426Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Olho d&#39;Água Grande.html</loc>
-    <lastmod>2025-05-17T04:55:41.402Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Olho d&#39;Água do Casado.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Ouro Branco.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.427Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Palmeira dos Índios.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Paripueira.html</loc>
-    <lastmod>2025-05-17T04:55:41.403Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Paulo Jacinto.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Piaçabuçu.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.428Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Pindoba.html</loc>
-    <lastmod>2025-05-17T04:55:41.404Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Porto Calvo.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Porto de Pedras.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.429Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Pão de Açúcar.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Rio Largo.html</loc>
-    <lastmod>2025-05-17T04:55:41.405Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Santa Luzia do Norte.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Santana do Mundaú.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Senador Rui Palmeira.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São José da Laje.html</loc>
-    <lastmod>2025-05-17T04:55:41.406Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São Luís do Quitunde.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.431Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-São Miguel dos Milagres.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Tanque d&#39;Arca.html</loc>
-    <lastmod>2025-05-17T04:55:41.407Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Teotônio Vilela.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-União dos Palmares.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.432Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Alagoas/Relatório Indicadores 2023 - Alagoas-Água Branca.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Calçoene.html</loc>
-    <lastmod>2025-05-17T04:55:41.408Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Ferreira Gomes.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.433Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Laranjal do Jari.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Mazagão.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Pedra Branca do Amapari.html</loc>
-    <lastmod>2025-05-17T04:55:41.409Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Pracuúba.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.434Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Serra do Navio.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
   </url>
   <url>
     <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amapá/Relatório Indicadores 2023 - Amapá-Vitória do Jari.html</loc>
-    <lastmod>2025-05-17T04:55:41.410Z</lastmod>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Amaturá.html</loc>
+    <lastmod>2025-05-17T12:15:48.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Anori.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Atalaia do Norte.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Barcelos.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Benjamin Constant.html</loc>
+    <lastmod>2025-05-17T12:15:48.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Boa Vista do Ramos.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Borba.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Canutama.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Careiro da Várzea.html</loc>
+    <lastmod>2025-05-17T12:15:48.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Coari.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Eirunepé.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Fonte Boa.html</loc>
+    <lastmod>2025-05-17T12:15:48.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Humaitá.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Iranduba.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Itamarati.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Japurá.html</loc>
+    <lastmod>2025-05-17T12:15:48.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Jutaí.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Manacapuru.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Manaus.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Maraã.html</loc>
+    <lastmod>2025-05-17T12:15:48.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Nhamundá.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Novo Airão.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Parintins.html</loc>
+    <lastmod>2025-05-17T12:15:48.441Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Presidente Figueiredo.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Santa Isabel do Rio Negro.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Silves.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-São Paulo de Olivença.html</loc>
+    <lastmod>2025-05-17T12:15:48.442Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Tabatinga.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Tefé.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Uarini.html</loc>
+    <lastmod>2025-05-17T12:15:48.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Sagicad-MDS.github.io/indicadores-de-desenvolvimento/Municipais/Amazonas/Relatório Indicadores 2023 - Amazonas-Urucurituba.html</loc>
+    <lastmod>2025-05-17T12:15:48.444Z</lastmod>
   </url>
 </urlset>
