@@ -170,7 +170,7 @@ f_selecao_grupo_media = function(df, q_selecao, selecao, q_media, grupo, eixo_x)
 
 ```
 
-# ID CRAS: Indice de Desenvolvimento do CRAS
+# ID CRAS: Índice de Desenvolvimento do CRAS
 
 O ID CRAS é um indicador composto por três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
 
@@ -405,7 +405,7 @@ cat("Para alcançar o **nível 3** na dimensão ", dimensao, ", o ", equipamento
 ```{asis, echo=(n_unidades>0 && menor_nivel<3 && maior_nivel>1)}
 
 * Possuir **recepção**; e
-* Possuir **acessibiliadade, ao menos parcial**.
+* Possuir **acessibilidade, ao menos parcial**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==3), results='asis'}
@@ -418,7 +418,7 @@ cat("O ", equipamento, " de **nível 3**, ", capacidade, ", na dimensão ", dime
 * Possui **recepção**; e
 * Possui no mínimo **2 salas de atendimento**; e
 * Possui pelo menos **1 banheiro**; e
-* Possui **acessibiliadade, ao menos parcial**.
+* Possui **acessibilidade, ao menos parcial**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel<4 && maior_nivel>2), results='asis'}
@@ -443,7 +443,7 @@ cat("O ", equipamento, " de **nível 4**, ", capacidade, ", na dimensão ", dime
 * Possui **recepção**; e
 * Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 * Possui no mínimo **2 banheiros**; e
-* Possui **acessibiliadade, ao menos parcial**; e
+* Possui **acessibilidade, ao menos parcial**; e
 * Possui **pelo menos 1 computador conectado à internet**.
 ```
 
@@ -555,7 +555,7 @@ cat("Para alcançar o **nível 3** na dimensão ", dimensao, ", o ", equipamento
 
 * Possuir **recepção**; e
 * Possuir **pelo menos 1 das salas de atendimento com capacidade para 15 ou mais pessoas**; e
-* Possuir **acessibiliadade, ao menos parcial**.
+* Possuir **acessibilidade, ao menos parcial**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==3), results='asis'}
@@ -568,7 +568,7 @@ cat("O ", equipamento, " de **nível 3**, ", capacidade, ", na dimensão ", dime
 * Possui **recepção**; e
 * Possui no mínimo **3 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 * Possui pelo menos **1 banheiro**; e
-* Possui **acessibiliadade, ao menos parcial**.
+* Possui **acessibilidade, ao menos parcial**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel<4 && maior_nivel>2), results='asis'}
@@ -1262,7 +1262,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 ```
 
-# ID CREAS: Indice de Desenvolvimento do CREAS
+# ID CREAS: Índice de Desenvolvimento do CREAS
 
 O ID CREAS é um indicador composto por três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
 
@@ -1982,7 +1982,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 ```
 
-# ID Conselho: Indice de Desenvolvimento dos Conselhos de Assistência Social
+# ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social
 
 O ID Conselho é indicador desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele possui três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
 
