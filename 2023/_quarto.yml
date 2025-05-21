@@ -28,6 +28,8 @@ format:
       - brand
     css: styles.css
     toc: true
+    template-partials:
+      - title-block.html
 
 execute:
   echo: false
@@ -37,13 +39,5 @@ execute:
   freeze: auto
 
 lang: pt   
-number-sections: true
 fig-cap-location: top
 
-crossref:
-  fig-title: Gráfico     # (default is "Figure")
-  tbl-title: Tabela     # (default is "Table")
-  title-delim: "."      # (default is ":")
-  fig-prefix: Gráfico   # (default is "Figure")
-  tbl-prefix: Tabela    # (default is "Table")
-#  ref-hyperlink: false # (default is true)
