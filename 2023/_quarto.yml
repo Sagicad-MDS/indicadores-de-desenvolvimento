@@ -5,7 +5,7 @@ project:
     - "!Municipais/*"
     
 website:
-  title: "Relatórios de Indicadores 2023"
+  title: "Indicadores Censo SUAS"
 #  navbar:
 #    left:
 #      - href: index.qmd
@@ -16,6 +16,8 @@ website:
 #    - title: "Municipais"
       contents:
         - href: index.qmd
+          text: Apresentação
+        - href: nacional.qmd
           text: Brasil
         - auto: Municipais
 
@@ -28,4 +30,20 @@ format:
     toc: true
 
 execute:
+  echo: false
+  message: false
+  warning: false
+  cache: false
   freeze: auto
+
+lang: pt   
+number-sections: true
+fig-cap-location: top
+
+crossref:
+  fig-title: Gráfico     # (default is "Figure")
+  tbl-title: Tabela     # (default is "Table")
+  title-delim: "."      # (default is ":")
+  fig-prefix: Gráfico   # (default is "Figure")
+  tbl-prefix: Tabela    # (default is "Table")
+#  ref-hyperlink: false # (default is true)
