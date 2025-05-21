@@ -1,16 +1,11 @@
 ---
-lang: pt   
-
 title: Capixaba
 author: "SAGICAD e SNAS / MDS"
 
 number-sections: true
-execute:
-  echo: false
-  message: false
-  warning: false
-  cache: false
+
 fig-cap-location: top
+
 crossref:
   fig-title: Gráfico     # (default is "Figure")
   tbl-title: Tabela     # (default is "Table")
@@ -18,11 +13,11 @@ crossref:
   fig-prefix: Gráfico   # (default is "Figure")
   tbl-prefix: Tabela    # (default is "Table")
 #  ref-hyperlink: false # (default is true)
-format:
-  html:
+
+#format:
+#  html:
 #    embed-resources: true
-    template-partials:
-      - ../title-block.html
+
 params:
   municipio: 120017
 # municipio: 355030 # São Paulo
@@ -32,6 +27,7 @@ params:
 # municipio: 110005 # CRAS EF nível 3, Serviços nível 1
 # municipio: 110007 # CRAS EF nível 4
 # municipio: 110012 # CRAS Serviços nível 1 município Grande
+# municipio: 521925 # Sem nota de Conselho em 2023
 ---
 
 ```{r}
@@ -132,7 +128,7 @@ porte <- sprintf("em município de porte %s", as.character(factor_porte))
 ```
 
 ---
-subtitle: "Relatório de Indicadores 2023 do município de `r nome_municipio`, `r uf_municipio`"
+subtitle: "Relatório de Indicadores Censo SUAS 2023 do município de `r nome_municipio`, `r uf_municipio`"
 ---
 
 ```{r funcoes}
@@ -172,11 +168,11 @@ f_selecao_grupo_media = function(df, q_selecao, selecao, q_media, grupo, eixo_x)
 
 # ID CRAS: Índice de Desenvolvimento do CRAS
 
-O ID CRAS é um indicador composto por três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
+O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-ID-CRAS mostra a evolução das médias do ID CRAS ao longo dos anos no município de `r nome_municipio`, `r uf_municipio`.
 
-```{r fig-ID-CRAS, fig.cap = sprintf(" Evolução das médias do ID CRAS, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
+```{r fig-ID-CRAS, fig.cap = sprintf("Evolução das médias do ID CRAS, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
 
 grafico <- f_selecao_grupo_media(idcras_2014, IBGE, municipio, `IDCRAS 2014sintético`, "ID CRAS", "2014") %>%
   bind_rows(f_selecao_grupo_media(idcras_2014, IBGE, municipio, `Dimensão Estrutura Física`, "Estrutura Física", "2014")) %>%
@@ -1264,7 +1260,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 # ID CREAS: Índice de Desenvolvimento do CREAS
 
-O ID CREAS é um indicador composto por três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
+O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-CREAS-tabela}
 
@@ -1340,7 +1336,7 @@ cat(nome_municipio, " não tem ", equipamento, ".", sep="")
 cat("O @fig-ID-CREAS mostra a evolução das médias do ID CREAS ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-CREAS, fig.cap = sprintf(" Evolução das médias do ID CREAS, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do ID CREAS, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 
 grafico <- tabela %>% 
   ggplot(aes(x = Eixo_X, y = m, group = Grupo)) +
@@ -1984,7 +1980,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 # ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social
 
-O ID Conselho é indicador desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele possui três dimensões. Cada dimensão possui uma nota na qual quanto mais próxima de 5, melhor o índice e, do contrário, insatisfatório.
+O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-conselho-tabela}
 
@@ -2061,7 +2057,7 @@ cat(nome_municipio, " não tem ", equipamento, ".", sep="")
 cat("O @fig-ID-conselho mostra a evolução das médias do ID Conselho ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-conselho, fig.cap = sprintf(" Evolução das médias do ID Conselho, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-conselho, fig.cap = sprintf("Evolução das médias do ID Conselho, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 
 grafico <- tabela %>%
   ggplot(aes(x = Eixo_X, y = m, group = Grupo)) +
@@ -2083,7 +2079,8 @@ grafico
 
 ```{r}
 unidades_municipio <- idconselho_2023 %>%
-                       filter(IBGE == municipio)
+                       filter(IBGE == municipio) %>%
+                       filter(!is.na(IDConselho))
 
 n_unidades_municipio <- nrow(unidades_municipio)
 n_unidades <- n_unidades_municipio
