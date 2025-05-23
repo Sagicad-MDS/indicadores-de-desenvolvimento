@@ -33,5 +33,6 @@ jobs:
         with:
           target: gh-pages
           path: "2023"
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
