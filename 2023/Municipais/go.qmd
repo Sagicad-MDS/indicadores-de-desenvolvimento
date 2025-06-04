@@ -1,0 +1,10 @@
+---
+title: "Goiás"
+subtitle: "Relatórios municipais do Estado de Goiás"
+author: "SAGICAD e SNAS / MDS"
+---
+
+Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento dos equipamentos do SUAS. Esta seção da publicação contém relatórios sobre os indicadores para os municípios do Estado de Goiás.
+
+Selecione o Município desejado no índice, ou digite o nome do Município no campo de busca (ícone de lupa).
+
