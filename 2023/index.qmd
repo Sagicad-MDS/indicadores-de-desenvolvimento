@@ -4,9 +4,7 @@ subtitle: "Indicadores sintéticos de desenvolvimento"
 author: "SAGICAD e SNAS / MDS"
 ---
 
-# Apresentação
-
 Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento dos equipamentos do SUAS. Esta publicação contém um relatório com resultados nacionais e por regiões, e também relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
 
-Para visualizar o relatório de um município selecione o município no índice ou digite o nome do município no campo de busca (ícone de lupa).
+Para visualizar o relatório de um Município selecione o Estado na opção "Municipais" do menu e então o Município desejado, ou digite o nome do Município no campo de busca (ícone de lupa).
 
