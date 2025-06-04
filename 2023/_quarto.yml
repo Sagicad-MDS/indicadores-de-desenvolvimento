@@ -2,24 +2,229 @@ project:
   type: website
   render: 
     - "*.qmd"
-    - "!Municipais/*"
+    - "!Municipais/Relatório*"
     
 website:
   title: "Indicadores Censo SUAS"
-#  navbar:
-#    left:
-#      - href: index.qmd
-#        text: Brasil
-#      - href: municipais.qmd
-#        text: Municipais
+  navbar:
+    left:
+      - href: index.qmd
+        text: Apresentação
+      - href: nacional.qmd
+        text: "Relatório Nacional"
+      - text: "Relatórios Municipais"
+        menu:
+          - text: "Acre"
+            href: Municipais/ac.qmd
+          - text: "Alagoas"
+            href: Municipais/al.qmd
+          - text: "Amapá"
+            href: Municipais/ap.qmd
+          - text: "Amazonas"
+            href: Municipais/am.qmd
+          - text: "Bahia"
+            href: Municipais/ba.qmd
+          - text: "Ceará"
+            href: Municipais/ce.qmd
+          - text: "Distrito Federal"
+            href: Municipais/Distrito_Federal/Relatório_Indicadores_Censo_SUAS_2023-Distrito_Federal-Brasília.qmd
+          - text: "Espírito Santo"
+            href: Municipais/es.qmd
+          - text: "Goiás"
+            href: Municipais/go.qmd
+          - text: "Maranhão"
+            href: Municipais/ma.qmd
+          - text: "Mato Grosso"
+            href: Municipais/mt.qmd
+          - text: "Mato Grosso do Sul"
+            href: Municipais/ms.qmd
+          - text: "Minas Gerais"
+            href: Municipais/mg.qmd
+          - text: "Pará"
+            href: Municipais/pa.qmd
+          - text: "Paraíba"
+            href: Municipais/pb.qmd
+          - text: "Paraná"
+            href: Municipais/pr.qmd
+          - text: "Pernambuco"
+            href: Municipais/pe.qmd
+          - text: "Piauí"
+            href: Municipais/pi.qmd
+          - text: "Rio de Janeiro"
+            href: Municipais/rj.qmd
+          - text: "Rio Grande do Norte"
+            href: Municipais/rn.qmd
+          - text: "Rio Grande do Sul"
+            href: Municipais/rs.qmd
+          - text: "Rondônia"
+            href: Municipais/ro.qmd
+          - text: "Roraima"
+            href: Municipais/rr.qmd
+          - text: "Santa Catarina"
+            href: Municipais/sc.qmd
+          - text: "São Paulo"
+            href: Municipais/sp.qmd
+          - text: "Sergipe"
+            href: Municipais/se.qmd
+          - text: "Tocantins"
+            href: Municipais/to.qmd
   sidebar:
-#    - title: "Municipais"
+    - title: "Acre"
       contents:
-        - href: index.qmd
-          text: Apresentação
-        - href: nacional.qmd
-          text: Brasil
-        - auto: Municipais
+        - href: Municipais/ac.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Acre/*.qmd
+    - title: "Alagoas"
+      contents:
+        - href: Municipais/al.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Alagoas/*.qmd
+    - title: "Amapá"
+      contents:
+        - href: Municipais/ap.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Amapá/*.qmd
+    - title: "Amazonas"
+      contents:
+        - href: Municipais/am.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Amazonas/*.qmd
+    - title: "Bahia"
+      contents:
+        - href: Municipais/ba.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Bahia/*.qmd
+    - title: "Ceará"
+      contents:
+        - href: Municipais/ce.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Ceará/*.qmd
+    - title: "Espírito Santo"
+      contents:
+        - href: Municipais/es.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Espírito_Santo/*.qmd
+    - title: "Goiás"
+      contents:
+        - href: Municipais/go.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Goiás/*.qmd
+    - title: "Maranhão"
+      contents:
+        - href: Municipais/ma.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Maranhão/*.qmd
+    - title: "Mato Grosso"
+      contents:
+        - href: Municipais/mt.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Mato_Grosso/*.qmd
+    - title: "Mato Grosso do Sul"
+      contents:
+        - href: Municipais/ms.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Mato_Grosso_do_Sul/*.qmd
+    - title: "Minas Gerais"
+      contents:
+        - href: Municipais/mg.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Minas_Gerais/*.qmd
+    - title: "Pará"
+      contents:
+        - href: Municipais/pa.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Pará/*.qmd
+    - title: "Paraíba"
+      contents:
+        - href: Municipais/pb.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Paraíba/*.qmd
+    - title: "Paraná"
+      contents:
+        - href: Municipais/pr.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Paraná/*.qmd
+    - title: "Pernambuco"
+      contents:
+        - href: Municipais/pe.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Pernambuco/*.qmd
+    - title: "Piauí"
+      contents:
+        - href: Municipais/pi.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Piauí/*.qmd
+    - title: "Rio de Janeiro"
+      contents:
+        - href: Municipais/rj.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Rio_de_Janeiro/*.qmd
+    - title: "Rio Grande do Norte"
+      contents:
+        - href: Municipais/rn.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Rio_Grande_do_Norte/*.qmd
+    - title: "Rio Grande do Sul"
+      contents:
+        - href: Municipais/rs.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Rio_Grande_do_Sul/*.qmd
+    - title: "Rondônia"
+      contents:
+        - href: Municipais/ro.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Rondônia/*.qmd
+    - title: "Roraima"
+      contents:
+        - href: Municipais/rr.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Roraima/*.qmd
+    - title: "Santa Catarina"
+      contents:
+        - href: Municipais/sc.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Santa_Catarina/*.qmd
+    - title: "São Paulo"
+      contents:
+        - href: Municipais/sp.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/São_Paulo/*.qmd
+    - title: "Sergipe"
+      contents:
+        - href: Municipais/se.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Sergipe/*.qmd
+    - title: "Tocantins"
+      contents:
+        - href: Municipais/to.qmd
+        - section: "Municípios"
+          contents:
+            - auto: Municipais/Tocantins/*.qmd
 
 format:
   html:
@@ -36,7 +241,7 @@ execute:
   message: false
   warning: false
   cache: false
-  freeze: auto
+  freeze: false
 
 lang: pt   
 fig-cap-location: top
