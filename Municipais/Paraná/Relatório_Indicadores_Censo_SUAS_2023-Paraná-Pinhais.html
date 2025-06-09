@@ -1,0 +1,3428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SAGICAD e SNAS / MDS">
+
+<title>Pinhais – Indicadores Censo SUAS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-41c4cbf99d731b1d98c22bc29d8fdf51.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Indicadores Censo SUAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Apresentação</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../nacional.html"> 
+<span class="menu-text">Relatório Nacional</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-relatórios-municipais" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Relatórios Municipais</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-relatórios-municipais">    
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ac.html">
+ <span class="dropdown-text">Acre</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/al.html">
+ <span class="dropdown-text">Alagoas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ap.html">
+ <span class="dropdown-text">Amapá</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/am.html">
+ <span class="dropdown-text">Amazonas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ba.html">
+ <span class="dropdown-text">Bahia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ce.html">
+ <span class="dropdown-text">Ceará</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/Distrito_Federal/Relatório_Indicadores_Censo_SUAS_2023-Distrito_Federal-Brasília.html">
+ <span class="dropdown-text">Distrito Federal</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/es.html">
+ <span class="dropdown-text">Espírito Santo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/go.html">
+ <span class="dropdown-text">Goiás</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ma.html">
+ <span class="dropdown-text">Maranhão</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/mt.html">
+ <span class="dropdown-text">Mato Grosso</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ms.html">
+ <span class="dropdown-text">Mato Grosso do Sul</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/mg.html">
+ <span class="dropdown-text">Minas Gerais</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pa.html">
+ <span class="dropdown-text">Pará</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pb.html">
+ <span class="dropdown-text">Paraíba</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pr.html">
+ <span class="dropdown-text">Paraná</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pe.html">
+ <span class="dropdown-text">Pernambuco</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pi.html">
+ <span class="dropdown-text">Piauí</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rj.html">
+ <span class="dropdown-text">Rio de Janeiro</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rn.html">
+ <span class="dropdown-text">Rio Grande do Norte</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rs.html">
+ <span class="dropdown-text">Rio Grande do Sul</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ro.html">
+ <span class="dropdown-text">Rondônia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rr.html">
+ <span class="dropdown-text">Roraima</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/sc.html">
+ <span class="dropdown-text">Santa Catarina</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/sp.html">
+ <span class="dropdown-text">São Paulo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/se.html">
+ <span class="dropdown-text">Sergipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/to.html">
+ <span class="dropdown-text">Tocantins</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Abatiá.html">Municípios</a></li><li class="breadcrumb-item"><a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais.html">Pinhais</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/pr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paraná</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Municípios</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Abatiá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abatiá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Adrianópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adrianópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Agudos_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agudos do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Almirante_Tamandaré.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Almirante Tamandaré</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Altamira_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Altamira do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Alto_Paraíso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alto Paraíso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Alto_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alto Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Alto_Piquiri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alto Piquiri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Altônia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Altônia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Alvorada_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alvorada do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Amaporã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amaporã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ampére.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ampére</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Anahy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anahy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Andirá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Andirá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ângulo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ângulo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Antonina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Antonina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Antônio_Olinto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Antônio Olinto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Apucarana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apucarana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Arapongas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arapongas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Arapoti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arapoti</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Arapuã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arapuã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Araruna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Araruna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Araucária.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Araucária</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ariranha_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ariranha do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Assaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Assis_Chateaubriand.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assis Chateaubriand</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Astorga.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Astorga</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Atalaia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Atalaia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Balsa_Nova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Balsa Nova</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bandeirantes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bandeirantes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Barbosa_Ferraz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barbosa Ferraz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Barra_do_Jacaré.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barra do Jacaré</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Barracão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barracão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bela_Vista_da_Caroba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bela Vista da Caroba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bela_Vista_do_Paraíso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bela Vista do Paraíso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bituruna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bituruna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Boa_Esperança.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boa Esperança</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Boa_Esperança_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boa Esperança do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Boa_Ventura_de_São_Roque.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boa Ventura de São Roque</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Boa_Vista_da_Aparecida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boa Vista da Aparecida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bocaiúva_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bocaiúva do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bom_Jesus_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bom Jesus do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bom_Sucesso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bom Sucesso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Bom_Sucesso_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bom Sucesso do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Borrazópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Borrazópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Braganey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Braganey</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Brasilândia_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brasilândia do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cafeara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cafeara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cafelândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cafelândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cafezal_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cafezal do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Califórnia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Califórnia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cambará.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cambará</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cambé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cambé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cambira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cambira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campina_da_Lagoa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campina da Lagoa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campina_do_Simão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campina do Simão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campina_Grande_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campina Grande do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campo_Bonito.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Bonito</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campo_do_Tenente.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo do Tenente</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campo_Largo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Largo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campo_Magro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Magro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Campo_Mourão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Mourão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cândido_de_Abreu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cândido de Abreu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Candói.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Candói</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cantagalo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cantagalo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Capanema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capanema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Capitão_Leônidas_Marques.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capitão Leônidas Marques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Carambeí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Carambeí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Carlópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Carlópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cascavel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cascavel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Castro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Castro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Catanduvas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Catanduvas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Centenário_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Centenário do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cerro_Azul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cerro Azul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Céu_Azul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Céu Azul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Chopinzinho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chopinzinho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cianorte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cianorte</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cidade_Gaúcha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cidade Gaúcha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Clevelândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clevelândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Colombo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colombo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Colorado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colorado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Congonhinhas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Congonhinhas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Conselheiro_Mairinck.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conselheiro Mairinck</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Contenda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contenda</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Corbélia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Corbélia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cornélio_Procópio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cornélio Procópio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Coronel_Domingos_Soares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coronel Domingos Soares</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Coronel_Vivida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coronel Vivida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Corumbataí_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Corumbataí do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cruz_Machado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cruz Machado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cruzeiro_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cruzeiro do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cruzeiro_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cruzeiro do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cruzeiro_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cruzeiro do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Cruzmaltina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cruzmaltina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Curitiba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curitiba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Curiúva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curiúva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Diamante_do_Norte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diamante do Norte</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Diamante_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diamante do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Diamante_DOeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diamante D’Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Dois_Vizinhos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dois Vizinhos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Douradina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Douradina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Doutor_Camargo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doutor Camargo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Doutor_Ulysses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doutor Ulysses</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Enéas_Marques.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enéas Marques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Engenheiro_Beltrão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Engenheiro Beltrão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Entre_Rios_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Entre Rios do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Esperança_Nova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Esperança Nova</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Espigão_Alto_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Espigão Alto do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Farol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Farol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Faxinal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Faxinal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Fazenda_Rio_Grande.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fazenda Rio Grande</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Fênix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fênix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Fernandes_Pinheiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fernandes Pinheiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Figueira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Figueira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Flor_da_Serra_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flor da Serra do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Floraí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Floraí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Floresta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Floresta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Florestópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Florestópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Flórida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flórida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Formosa_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Formosa do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Foz_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Foz do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Foz_do_Jordão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Foz do Jordão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Francisco_Alves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francisco Alves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Francisco_Beltrão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francisco Beltrão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-General_Carneiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Carneiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Godoy_Moreira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Godoy Moreira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Goioerê.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Goioerê</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Goioxim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Goioxim</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Grandes_Rios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Grandes Rios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaíra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaíra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guairaçá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guairaçá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guamiranga.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guamiranga</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guapirama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guapirama</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaporema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaporema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaraci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaraci</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaraniaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaraniaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guarapuava.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guarapuava</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaraqueçaba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaraqueçaba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Guaratuba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaratuba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Honório_Serpa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Honório Serpa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ibaiti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ibaiti</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ibema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ibema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ibiporã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ibiporã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Icaraíma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Icaraíma</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Iguaraçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iguaraçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Iguatu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iguatu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Imbaú.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Imbaú</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Imbituva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Imbituva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Inácio_Martins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inácio Martins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Inajá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inajá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Indianópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Indianópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ipiranga.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ipiranga</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Iporã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iporã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Iracema_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iracema do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Irati.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Irati</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Iretama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iretama</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itaguajé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itaguajé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itaipulândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itaipulândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itambaracá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itambaracá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itambé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itambé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itapejara_dOeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itapejara d’Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itaperuçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itaperuçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Itaúna_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itaúna do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ivaiporã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ivaiporã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ivaté.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ivaté</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ivatuba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ivatuba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jaboti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jaboti</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jacarezinho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jacarezinho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jaguapitã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jaguapitã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jaguariaíva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jaguariaíva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jandaia_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jandaia do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Janiópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Janiópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Japira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Japira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Japurá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Japurá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jardim_Alegre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jardim Alegre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jardim_Olinda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jardim Olinda</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jataizinho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jataizinho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jesuítas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jesuítas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Joaquim_Távora.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joaquim Távora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jundiaí_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jundiaí do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Juranda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Juranda</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Jussara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jussara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Kaloré.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kaloré</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lapa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lapa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Laranjal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laranjal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Laranjeiras_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Laranjeiras do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Leópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lidianópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lidianópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lindoeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lindoeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Loanda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loanda</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lobato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lobato</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Londrina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Londrina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Luiziana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Luiziana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lunardelli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lunardelli</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Lupionópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lupionópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mallet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mallet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mamborê.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mamborê</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mandaguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mandaguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mandaguari.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mandaguari</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mandirituba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mandirituba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Manfrinópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manfrinópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mangueirinha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mangueirinha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Manoel_Ribas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manoel Ribas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marechal_Cândido_Rondon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marechal Cândido Rondon</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Maria_Helena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maria Helena</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marialva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marialva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marilândia_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marilândia do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marilena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marilena</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mariluz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mariluz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Maringá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maringá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mariópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mariópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Maripá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maripá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marmeleiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marmeleiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marquinho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marquinho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Marumbi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marumbi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Matelândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matelândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Matinhos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matinhos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mato_Rico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mato Rico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mauá_da_Serra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mauá da Serra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Medianeira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Medianeira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mercedes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mercedes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Mirador.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mirador</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Miraselva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Miraselva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Missal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Moreira_Sales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Moreira Sales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Morretes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Morretes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Munhoz_de_Melo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Munhoz de Melo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nossa_Senhora_das_Graças.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nossa Senhora das Graças</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Aliança_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Aliança do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_América_da_Colina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova América da Colina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Aurora.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Cantu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Cantu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Esperança.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Esperança</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Esperança_do_Sudoeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Esperança do Sudoeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Fátima.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Fátima</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Laranjeiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Laranjeiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Londrina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Londrina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Olímpia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Olímpia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Prata_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Prata do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Santa_Bárbara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Santa Bárbara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Santa_Rosa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Santa Rosa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Nova_Tebas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Tebas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Novo_Itacolomi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Novo Itacolomi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ortigueira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ortigueira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ourizona.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ourizona</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ouro_Verde_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ouro Verde do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paiçandu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paiçandu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Palmas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palmas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Palmeira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palmeira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Palmital.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palmital</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Palotina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palotina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paraíso_do_Norte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paraíso do Norte</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paranacity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paranacity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paranaguá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paranaguá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paranapoema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paranapoema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paranavaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paranavaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pato_Bragado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pato Bragado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pato_Branco.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pato Branco</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paula_Freitas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paula Freitas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Paulo_Frontin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paulo Frontin</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Peabiru.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peabiru</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Perobal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Perobal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pérola.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pérola</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pérola_dOeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pérola d’Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Piên.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piên</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Pinhais</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhal_de_São_Bento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pinhal de São Bento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhalão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pinhalão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pinhão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Piraí_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piraí do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Piraquara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piraquara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pitanga.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pitanga</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pitangueiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pitangueiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Planaltina_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planaltina do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Planalto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planalto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ponta_Grossa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ponta Grossa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pontal_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pontal do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Porecatu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porecatu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Porto_Amazonas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto Amazonas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Porto_Barreiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto Barreiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Porto_Rico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto Rico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Porto_Vitória.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto Vitória</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Prado_Ferreira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prado Ferreira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pranchita.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pranchita</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Presidente_Castelo_Branco.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presidente Castelo Branco</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Primeiro_de_Maio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primeiro de Maio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Prudentópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prudentópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quarto_Centenário.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Centenário</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quatiguá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quatiguá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quatro_Barras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quatro Barras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quatro_Pontes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quatro Pontes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quedas_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quedas do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Querência_do_Norte.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Querência do Norte</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quinta_do_Sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quinta do Sol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Quitandinha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quitandinha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ramilândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ramilândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rancho_Alegre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rancho Alegre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rancho_Alegre_DOeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rancho Alegre D’Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Realeza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Realeza</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rebouças.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rebouças</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Renascença.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Renascença</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Reserva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reserva</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Reserva_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reserva do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ribeirão_Claro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ribeirão Claro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ribeirão_do_Pinhal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ribeirão do Pinhal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Azul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Azul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Bom.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Bom</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Bonito_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Bonito do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Branco_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Branco do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Branco_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Branco do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rio_Negro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Negro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rolândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rolândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Roncador.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Roncador</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rondon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rondon</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Rosário_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rosário do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sabáudia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sabáudia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Salgado_Filho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Salgado Filho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Salto_do_Itararé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Salto do Itararé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Salto_do_Lontra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Salto do Lontra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Amélia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Amélia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Cecília_do_Pavão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Cecília do Pavão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Cruz_de_Monte_Castelo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Cruz de Monte Castelo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Fé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Fé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Helena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Helena</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Inês.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Inês</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Isabel_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Isabel do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Izabel_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Izabel do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Lúcia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Lúcia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Maria_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Maria do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Mariana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Mariana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Mônica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Mônica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Tereza_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Tereza do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santa_Terezinha_de_Itaipu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Terezinha de Itaipu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santana_do_Itararé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santana do Itararé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santo_Antônio_da_Platina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio da Platina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santo_Antônio_do_Caiuá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio do Caiuá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santo_Antônio_do_Paraíso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio do Paraíso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santo_Antônio_do_Sudoeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio do Sudoeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Santo_Inácio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Inácio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Carlos_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Carlos do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Jerônimo_da_Serra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Jerônimo da Serra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_João.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_João_do_Caiuá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João do Caiuá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_João_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_João_do_Triunfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João do Triunfo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Jorge_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Jorge do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Jorge_do_Patrocínio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Jorge do Patrocínio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Jorge_dOeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Jorge d’Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_José_da_Boa_Vista.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José da Boa Vista</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_José_das_Palmeiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José das Palmeiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_José_dos_Pinhais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José dos Pinhais</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Manoel_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Manoel do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Mateus_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Mateus do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Miguel_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Miguel do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Pedro_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Pedro do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Pedro_do_Ivaí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Pedro do Ivaí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Pedro_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Pedro do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Sebastião_da_Amoreira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Sebastião da Amoreira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-São_Tomé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Tomé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sapopema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sapopema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sarandi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sarandi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Saudade_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saudade do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sengés.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sengés</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Serranópolis_do_Iguaçu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Serranópolis do Iguaçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sertaneja.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sertaneja</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sertanópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sertanópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Siqueira_Campos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Siqueira Campos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Sulina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sulina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tamarana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tamarana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tamboara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tamboara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tapejara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tapejara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tapira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tapira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Teixeira_Soares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teixeira Soares</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Telêmaco_Borba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Telêmaco Borba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Terra_Boa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terra Boa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Terra_Rica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terra Rica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Terra_Roxa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terra Roxa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tibagi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tibagi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tijucas_do_Sul.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tijucas do Sul</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Toledo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Toledo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tomazina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tomazina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Três_Barras_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Três Barras do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tunas_do_Paraná.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tunas do Paraná</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tuneiras_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tuneiras do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Tupãssi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tupãssi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Turvo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Turvo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ubiratã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ubiratã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Umuarama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Umuarama</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-União_da_Vitória.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">União da Vitória</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Uniflor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uniflor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Uraí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uraí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Ventania.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ventania</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Vera_Cruz_do_Oeste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vera Cruz do Oeste</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Verê.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Verê</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Virmond.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virmond</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Vitorino.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vitorino</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Wenceslau_Braz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wenceslau Braz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Xambrê.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Xambrê</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#id-cras-índice-de-desenvolvimento-do-cras" id="toc-id-cras-índice-de-desenvolvimento-do-cras" class="nav-link active" data-scroll-target="#id-cras-índice-de-desenvolvimento-do-cras"><span class="header-section-number">1</span> ID CRAS: Índice de Desenvolvimento do CRAS</a>
+  <ul class="collapse">
+  <li><a href="#id-cras-dimensão-estrutura-física" id="toc-id-cras-dimensão-estrutura-física" class="nav-link" data-scroll-target="#id-cras-dimensão-estrutura-física"><span class="header-section-number">1.1</span> ID CRAS: Dimensão Estrutura Física</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias"><span class="header-section-number">1.1.1</span> CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias"><span class="header-section-number">1.1.2</span> CRAS com capacidade de referenciamento para até 5.000 famílias</a></li>
+  <li><a href="#id-cras-dimensão-recursos-humanos" id="toc-id-cras-dimensão-recursos-humanos" class="nav-link" data-scroll-target="#id-cras-dimensão-recursos-humanos"><span class="header-section-number">1.2</span> ID CRAS: Dimensão Recursos Humanos</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-2.500-famílias"><span class="header-section-number">1.2.1</span> CRAS com capacidade de referenciamento para até 2.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-3.500-famílias"><span class="header-section-number">1.2.2</span> CRAS com capacidade de referenciamento para até 3.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" id="toc-cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1"><span class="header-section-number">1.2.3</span> CRAS com capacidade de referenciamento para até 5.000 famílias</a></li>
+  <li><a href="#id-cras-dimensão-serviços-benefícios" id="toc-id-cras-dimensão-serviços-benefícios" class="nav-link" data-scroll-target="#id-cras-dimensão-serviços-benefícios"><span class="header-section-number">1.3</span> ID CRAS: Dimensão Serviços &amp; Benefícios</a></li>
+  </ul></li>
+  <li><a href="#id-creas-índice-de-desenvolvimento-do-creas" id="toc-id-creas-índice-de-desenvolvimento-do-creas" class="nav-link" data-scroll-target="#id-creas-índice-de-desenvolvimento-do-creas"><span class="header-section-number">2</span> ID CREAS: Índice de Desenvolvimento do CREAS</a>
+  <ul class="collapse">
+  <li><a href="#id-creas-dimensão-estrutura-física" id="toc-id-creas-dimensão-estrutura-física" class="nav-link" data-scroll-target="#id-creas-dimensão-estrutura-física"><span class="header-section-number">2.1</span> ID CREAS: Dimensão Estrutura Física</a></li>
+  <li><a href="#id-creas-dimensão-recursos-humanos" id="toc-id-creas-dimensão-recursos-humanos" class="nav-link" data-scroll-target="#id-creas-dimensão-recursos-humanos"><span class="header-section-number">2.2</span> ID CREAS: Dimensão Recursos Humanos</a></li>
+  <li><a href="#id-creas-dimensão-serviços-benefícios" id="toc-id-creas-dimensão-serviços-benefícios" class="nav-link" data-scroll-target="#id-creas-dimensão-serviços-benefícios"><span class="header-section-number">2.3</span> ID CREAS: Dimensão Serviços &amp; Benefícios</a></li>
+  </ul></li>
+  <li><a href="#id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" id="toc-id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" class="nav-link" data-scroll-target="#id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social"><span class="header-section-number">3</span> ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social</a>
+  <ul class="collapse">
+  <li><a href="#id-conselho-dimensão-estrutura-administrativa" id="toc-id-conselho-dimensão-estrutura-administrativa" class="nav-link" data-scroll-target="#id-conselho-dimensão-estrutura-administrativa"><span class="header-section-number">3.1</span> ID Conselho: Dimensão Estrutura Administrativa</a></li>
+  <li><a href="#id-conselho-dimensão-dinâmica-de-funcionamento" id="toc-id-conselho-dimensão-dinâmica-de-funcionamento" class="nav-link" data-scroll-target="#id-conselho-dimensão-dinâmica-de-funcionamento"><span class="header-section-number">3.2</span> ID Conselho: Dimensão Dinâmica de Funcionamento</a></li>
+  <li><a href="#id-conselho-dimensão-composição-do-conselho" id="toc-id-conselho-dimensão-composição-do-conselho" class="nav-link" data-scroll-target="#id-conselho-dimensão-composição-do-conselho"><span class="header-section-number">3.3</span> ID Conselho: Dimensão Composição do Conselho</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Abatiá.html">Municípios</a></li><li class="breadcrumb-item"><a href="../../Municipais/Paraná/Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais.html">Pinhais</a></li></ol></nav><h1 class="title display-7">Pinhais</h1></header>
+
+<header id="title-block-header">
+
+<p class="subtitle lead">Relatório de Indicadores Censo SUAS 2023 do município de Pinhais, Paraná</p>
+<p class="author">SAGICAD e SNAS / MDS</p>
+
+</header>
+
+
+<section id="id-cras-índice-de-desenvolvimento-do-cras" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> ID CRAS: Índice de Desenvolvimento do CRAS</h1>
+<p>O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços &amp; Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.</p>
+<p>O <a href="#fig-ID-CRAS" class="quarto-xref">Gráfico&nbsp;1</a> mostra a evolução das médias do ID CRAS ao longo dos anos no município de Pinhais, Paraná.</p>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-CRAS" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-CRAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;1. Evolução das médias do ID CRAS, 2014 a 2023: Pinhais, Paraná
+</figcaption>
+<div aria-describedby="fig-ID-CRAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais_files/figure-html/fig-ID-CRAS-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-CRAS-nivel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-CRAS-nivel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;2. Quantidade de CRAS em cada nível de ID, 2023: Pinhais, Paraná
+</figcaption>
+<div aria-describedby="fig-ID-CRAS-nivel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais_files/figure-html/fig-ID-CRAS-nivel-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-cras-por-capacidade" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cras-por-capacidade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1. Quantidade de CRAS em 2023 no município de Pinhais por capacidade de referenciamento.
+</figcaption>
+<div aria-describedby="tbl-cras-por-capacidade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<caption>Quantidade de CRAS em 2023 no município de Pinhais por capacidade de referenciamento.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Capacidade de até:</th>
+<th style="text-align: right;">Quantidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2.500 famílias referenciadas</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.500 famílias referenciadas</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5.000 famílias referenciadas</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>As seções a seguir apresentam os resultados do município de Pinhais em cada uma das dimensões do ID CRAS, bem como os requisitos para se alcançar os níveis superiores.</p>
+<section id="id-cras-dimensão-estrutura-física" class="level2 cell" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="id-cras-dimensão-estrutura-física"><span class="header-section-number">1.1</span> ID CRAS: Dimensão Estrutura Física</h2>
+</section>
+<section id="cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" class="level3 cell" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias"><span class="header-section-number">1.1.1</span> CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias</h3>
+</section>
+<p>Na dimensão Estrutura Física, o nível de ID do CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias no município de Pinhais é 2.</p>
+<p>O CRAS de <strong>nível 2</strong>, com capacidade de referenciamento para até 2.500 ou 3.500 famílias, na dimensão Estrutura Física:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo <strong>2 salas de atendimento</strong>; e</li>
+<li>Possui pelo menos <strong>1 banheiro</strong>.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 3</strong> na dimensão Estrutura Física, o CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias precisa, além dos requisitos do nível 2:</p>
+<div class="cell">
+<ul>
+<li>Possuir <strong>recepção</strong>; e</li>
+<li>Possuir <strong>acessibilidade, ao menos parcial</strong>.</li>
+</ul>
+</div>
+<section id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" class="level3 cell" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias"><span class="header-section-number">1.1.2</span> CRAS com capacidade de referenciamento para até 5.000 famílias</h3>
+</section>
+<p>Na dimensão Estrutura Física, o nível de ID dos CRAS com capacidade de referenciamento para até 5.000 famílias no município de Pinhais varia de 3 a 5.</p>
+<p>O CRAS de <strong>nível 3</strong>, com capacidade de referenciamento para até 5.000 famílias, na dimensão Estrutura Física:</p>
+<div class="cell">
+<ul>
+<li>Possui <strong>recepção</strong>; e</li>
+<li>Possui no mínimo <strong>3 salas de atendimento</strong>, sendo <strong>pelo menos 1 com capacidade para 15 ou mais pessoas</strong>; e</li>
+<li>Possui pelo menos <strong>1 banheiro</strong>; e</li>
+<li>Possui <strong>acessibilidade, ao menos parcial</strong>.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 4</strong> na dimensão Estrutura Física, o CRAS com capacidade de referenciamento para até 5.000 famílias precisa, além dos resquisitos do nível 3:</p>
+<div class="cell">
+<ul>
+<li>Possuir no mínimo <strong>4 salas de atendimento</strong> (sendo <strong>pelo menos 1 com capacidade para 15 ou mais pessoas</strong>); e</li>
+<li>Possuir no mínimo <strong>2 banheiros</strong>; e</li>
+<li>Possuir <strong>pelo menos 2 computadores conectados à internet</strong>.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 5</strong> na dimensão Estrutura Física, o CRAS com capacidade de referenciamento para até 5.000 famílias precisa, além dos requisitos do nível 4:</p>
+<div class="cell">
+<ul>
+<li>Possuir no mínimo <strong>1 sala administrativa</strong>; e</li>
+<li>Possuir <strong>acessibilidade</strong>; e</li>
+<li>Possuir conjunto de equipamentos que inclua, no mínimo: <strong>3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado</strong>.</li>
+</ul>
+</div>
+<section id="id-cras-dimensão-recursos-humanos" class="level2 cell" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="id-cras-dimensão-recursos-humanos"><span class="header-section-number">1.2</span> ID CRAS: Dimensão Recursos Humanos</h2>
+</section>
+<section id="cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" class="level3 cell" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-2.500-famílias"><span class="header-section-number">1.2.1</span> CRAS com capacidade de referenciamento para até 2.500 famílias</h3>
+</section>
+<p>Pinhais não tem CRAS com capacidade de referenciamento para até 2.500 famílias.</p>
+<section id="cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" class="level3 cell" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-3.500-famílias"><span class="header-section-number">1.2.2</span> CRAS com capacidade de referenciamento para até 3.500 famílias</h3>
+</section>
+<p>Na dimensão Recursos Humanos, o nível de ID do CRAS com capacidade de referenciamento para até 3.500 famílias no município de Pinhais é 5.</p>
+<p>O CRAS de <strong>nível 5</strong>, com capacidade de referenciamento para até 3.500 famílias, na dimensão Recursos Humanos:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo <strong>7</strong> (11, se EV) <strong>profissionais</strong>, sendo pelo menos <strong>4</strong> (6, se EV) com <strong>nível superior</strong>; e</li>
+<li>Possui no mínimo <strong>2 Assistentes Sociais</strong> (3, se EV) e <strong>1 Psicólogo</strong>; e</li>
+<li>Possui no mínimo <strong>1</strong> profissional de nível superior com <strong>vínculo estatutário ou empregado público celetista</strong>; e</li>
+<li>Possui <strong>coordenador</strong> com nível superior.</li>
+</ul>
+</div>
+<section id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" class="level3 cell" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1"><span class="header-section-number">1.2.3</span> CRAS com capacidade de referenciamento para até 5.000 famílias</h3>
+</section>
+<p>Na dimensão Recursos Humanos, o nível de ID dos CRAS com capacidade de referenciamento para até 5.000 famílias no município de Pinhais é 5.</p>
+<p>O CRAS de <strong>nível 5</strong>, com capacidade de referenciamento para até 5.000 famílias, na dimensão Recursos Humanos:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo <strong>9</strong> (13, se EV) <strong>profissionais</strong>, sendo pelo menos <strong>5</strong> (7, se EV) com <strong>nível superior</strong>; e</li>
+<li>Possui no mínimo <strong>2 Assistentes Sociais</strong> (3, se EV) e <strong>1 Psicólogo</strong>; e</li>
+<li>Possui no mínimo <strong>2</strong> profissionais de nível superior com <strong>vínculo estatutário ou empregado público celetista</strong>; e</li>
+<li>Possui <strong>coordenador</strong> com nível superior.</li>
+</ul>
+</div>
+<section id="id-cras-dimensão-serviços-benefícios" class="level2 cell" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="id-cras-dimensão-serviços-benefícios"><span class="header-section-number">1.3</span> ID CRAS: Dimensão Serviços &amp; Benefícios</h2>
+</section>
+<p>Na dimensão Serviços &amp; Benefícios, o nível de ID dos CRAS no município de Pinhais é 5.</p>
+<p>O CRAS de <strong>nível 5</strong> na dimensão Serviços &amp; Benefícios em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Tem <strong>quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica</strong> (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e</li>
+<li><strong>Executa o PAIF</strong> realizando no mínimo as seguintes atividades: <strong>acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados</strong>; e</li>
+<li>Possui profissionais de Serviço Social e de Psicologia; e</li>
+<li>Possui oferta de Serviço de Convivência, <strong>para no mínimo três ciclos de vida</strong> (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e</li>
+<li><strong>Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico</strong>, sem utilizar para isso os profissionais de nível superior do PAIF; e</li>
+<li>Possui <strong>forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde</strong> no território; e</li>
+<li><strong>Funciona</strong> no mínimo <strong>5 dias</strong> por semana e <strong>40 horas</strong> semanais.</li>
+</ul>
+</div>
+</section>
+<section id="id-creas-índice-de-desenvolvimento-do-creas" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> ID CREAS: Índice de Desenvolvimento do CREAS</h1>
+<p>O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços &amp; Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.</p>
+<p>O <a href="#fig-ID-CREAS" class="quarto-xref">Gráfico&nbsp;3</a> mostra a evolução das médias do ID CREAS ao longo dos anos no município de Pinhais, Paraná.</p>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-CREAS" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-CREAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;3. Evolução das médias do ID CREAS, 2014 a 2023: Pinhais, Paraná
+</figcaption>
+<div aria-describedby="fig-ID-CREAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais_files/figure-html/fig-ID-CREAS-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<p>As seções a seguir apresentam os resultados do município de Pinhais em cada uma das dimensões do ID CREAS, bem como os requisitos para se alcançar os níveis superiores.</p>
+<section id="id-creas-dimensão-estrutura-física" class="level2 cell" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="id-creas-dimensão-estrutura-física"><span class="header-section-number">2.1</span> ID CREAS: Dimensão Estrutura Física</h2>
+</section>
+<p>Na dimensão Estrutura Física, o nível de ID do CREAS no município de Pinhais é 2.</p>
+<p>O CREAS de <strong>nível 2</strong> na dimensão Estrutura Física em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo 3 salas (atendimento e/ou administrativa); e</li>
+<li>Possui no mínimo 1 banheiro.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 3</strong> na dimensão Estrutura Física, o CREAS em município de porte Grande precisa, além dos requisitos do nível 2:</p>
+<div class="cell">
+<ul>
+<li>Possuir recepção; e</li>
+<li>Possuir acessibilidade, ao menos parcial.</li>
+</ul>
+</div>
+<section id="id-creas-dimensão-recursos-humanos" class="level2 cell" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="id-creas-dimensão-recursos-humanos"><span class="header-section-number">2.2</span> ID CREAS: Dimensão Recursos Humanos</h2>
+</section>
+<p>Na dimensão Recursos Humanos, o nível de ID do CREAS no município de Pinhais é 3.</p>
+<p>O CREAS de <strong>nível 3</strong> na dimensão Recursos Humanos em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Possui Coordenador com nível superior; e</li>
+<li>Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 5 deles de nível superior; e</li>
+<li>Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 4</strong> na dimensão Recursos Humanos, o CREAS em município de porte Grande precisa, além dos requisitos do nível 3:</p>
+<div class="cell">
+<ul>
+<li>Possuir no mínimo 1 Advogado; e</li>
+<li>Ter no mínimo 6 trabalhadores de nível superior.</li>
+</ul>
+</div>
+<section id="id-creas-dimensão-serviços-benefícios" class="level2 cell" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="id-creas-dimensão-serviços-benefícios"><span class="header-section-number">2.3</span> ID CREAS: Dimensão Serviços &amp; Benefícios</h2>
+</section>
+<p>Na dimensão Serviços &amp; Benefícios, o nível de ID do CREAS no município de Pinhais é 5.</p>
+<p>O CREAS de <strong>nível 5</strong> na dimensão Serviços &amp; Benefícios em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e</li>
+<li>Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e</li>
+<li>Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e</li>
+<li>Possui Assistente Social e Psicólogo; e</li>
+<li>Funciona no mínimo 5 dias por semana e 40 horas semanais; e</li>
+<li>Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e</li>
+<li>Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e</li>
+<li>Oferta o Serviço de Abordagem ou tem o Serviço referenciado.</li>
+</ul>
+</div>
+</section>
+<section id="id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social</h1>
+<p>O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.</p>
+<p>O <a href="#fig-ID-conselho" class="quarto-xref">Gráfico&nbsp;4</a> mostra a evolução das médias do ID Conselho ao longo dos anos no município de Pinhais, Paraná.</p>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-conselho" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-conselho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;4. Evolução das médias do ID Conselho, 2014 a 2023: Pinhais, Paraná
+</figcaption>
+<div aria-describedby="fig-ID-conselho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Paraná-Pinhais_files/figure-html/fig-ID-conselho-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<p>As seções a seguir apresentam os resultados do município de Pinhais em cada uma das dimensões do ID Conselho, bem como os requisitos para se alcançar os níveis superiores.</p>
+<section id="id-conselho-dimensão-estrutura-administrativa" class="level2 cell" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="id-conselho-dimensão-estrutura-administrativa"><span class="header-section-number">3.1</span> ID Conselho: Dimensão Estrutura Administrativa</h2>
+</section>
+<p>Na dimensão Estrutura Administrativa, o nível de ID do Conselho no município de Pinhais é 3.</p>
+<p>O Conselho de <strong>nível 3</strong> na dimensão Estrutura Administrativa em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e</li>
+<li>Possui Secretaria Executiva; e</li>
+<li>Possui um ou mais computadores conectados à internet; e</li>
+<li>Possui telefone de uso exclusivo ou compartilhado; e</li>
+<li>Possui uma ou mais salas de uso exclusivo ou compartilhado.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 4</strong> na dimensão Estrutura Administrativa, o Conselho em município de porte Grande precisa, além dos requisitos do nível 3:</p>
+<div class="cell">
+<ul>
+<li>Possuir uma ou mais salas de uso exclusivo.</li>
+</ul>
+</div>
+<section id="id-conselho-dimensão-dinâmica-de-funcionamento" class="level2 cell" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="id-conselho-dimensão-dinâmica-de-funcionamento"><span class="header-section-number">3.2</span> ID Conselho: Dimensão Dinâmica de Funcionamento</h2>
+</section>
+<p>Na dimensão Dinâmica de Funcionamento, o nível de ID do Conselho no município de Pinhais é 4.</p>
+<p>O Conselho de <strong>nível 4</strong> na dimensão Dinâmica de Funcionamento em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Realizou 8 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e</li>
+<li>Possui Regimento Interno; e</li>
+<li>Deliberou sobre o orçamento do executivo; e</li>
+<li>Deliberou sobre o Plano de Assistência Social; e</li>
+<li>É instância de Controle Social do Bolsa Família; e</li>
+<li>Acompanha o cumprimento de deliberações da Conferência Municipal.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 5</strong> na dimensão Dinâmica de Funcionamento, o Conselho em município de porte Grande precisa, além dos requisitos do nível 4:</p>
+<div class="cell">
+<ul>
+<li>Realizar 10 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e</li>
+<li>Fiscalizar os serviços, programas e projetos da rede pública e privada (ou fiscalizar somente a rede pública quando não existe rede privada); e</li>
+<li>Realizar reuniões/ações de mobilização ou descentralizadas ou ampliadas.</li>
+</ul>
+</div>
+<section id="id-conselho-dimensão-composição-do-conselho" class="level2 cell" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="id-conselho-dimensão-composição-do-conselho"><span class="header-section-number">3.3</span> ID Conselho: Dimensão Composição do Conselho</h2>
+</section>
+<p>Na dimensão Composição do Conselho, o nível de ID do Conselho no município de Pinhais é 5.</p>
+<p>O Conselho de <strong>nível 5</strong> na dimensão Composição do Conselho em município de porte Grande:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo 10 conselheiros titulares; e</li>
+<li>Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e</li>
+<li>Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e</li>
+<li>Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e</li>
+<li>Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e</li>
+<li>Possui Presidente e Vice-Presidente eleitos em plenária; e</li>
+<li>Permite que o Conselheiro possa ser reconduzido uma única vez; e</li>
+<li>Possui representação governamental da área de assistência, saúde e educação.</li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

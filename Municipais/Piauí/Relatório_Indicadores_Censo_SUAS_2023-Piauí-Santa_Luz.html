@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SAGICAD e SNAS / MDS">
+
+<title>Santa Luz – Indicadores Censo SUAS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-41c4cbf99d731b1d98c22bc29d8fdf51.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Indicadores Censo SUAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Apresentação</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../nacional.html"> 
+<span class="menu-text">Relatório Nacional</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-relatórios-municipais" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Relatórios Municipais</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-relatórios-municipais">    
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ac.html">
+ <span class="dropdown-text">Acre</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/al.html">
+ <span class="dropdown-text">Alagoas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ap.html">
+ <span class="dropdown-text">Amapá</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/am.html">
+ <span class="dropdown-text">Amazonas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ba.html">
+ <span class="dropdown-text">Bahia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ce.html">
+ <span class="dropdown-text">Ceará</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/Distrito_Federal/Relatório_Indicadores_Censo_SUAS_2023-Distrito_Federal-Brasília.html">
+ <span class="dropdown-text">Distrito Federal</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/es.html">
+ <span class="dropdown-text">Espírito Santo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/go.html">
+ <span class="dropdown-text">Goiás</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ma.html">
+ <span class="dropdown-text">Maranhão</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/mt.html">
+ <span class="dropdown-text">Mato Grosso</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ms.html">
+ <span class="dropdown-text">Mato Grosso do Sul</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/mg.html">
+ <span class="dropdown-text">Minas Gerais</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pa.html">
+ <span class="dropdown-text">Pará</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pb.html">
+ <span class="dropdown-text">Paraíba</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pr.html">
+ <span class="dropdown-text">Paraná</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pe.html">
+ <span class="dropdown-text">Pernambuco</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/pi.html">
+ <span class="dropdown-text">Piauí</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rj.html">
+ <span class="dropdown-text">Rio de Janeiro</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rn.html">
+ <span class="dropdown-text">Rio Grande do Norte</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rs.html">
+ <span class="dropdown-text">Rio Grande do Sul</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/ro.html">
+ <span class="dropdown-text">Rondônia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/rr.html">
+ <span class="dropdown-text">Roraima</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/sc.html">
+ <span class="dropdown-text">Santa Catarina</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/sp.html">
+ <span class="dropdown-text">São Paulo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/se.html">
+ <span class="dropdown-text">Sergipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Municipais/to.html">
+ <span class="dropdown-text">Tocantins</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Acauã.html">Municípios</a></li><li class="breadcrumb-item"><a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Luz.html">Santa Luz</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/pi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piauí</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Municípios</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Acauã.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acauã</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Agricolândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agricolândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Água_Branca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Água Branca</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Alagoinha_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alagoinha do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Alegrete_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alegrete do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Alto_Longá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alto Longá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Altos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Altos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Alvorada_do_Gurguéia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alvorada do Gurguéia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Amarante.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amarante</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Angical_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Angical do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Anísio_de_Abreu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anísio de Abreu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Antônio_Almeida.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Antônio Almeida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Aroazes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aroazes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Aroeiras_do_Itaim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aroeiras do Itaim</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Arraial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Arraial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Assunção_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assunção do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Avelino_Lopes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Avelino Lopes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Baixa_Grande_do_Ribeiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Baixa Grande do Ribeiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Barra_DAlcântara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barra D’Alcântara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Barras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Barreiras_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barreiras do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Barro_Duro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Barro Duro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Batalha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Batalha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bela_Vista_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bela Vista do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Belém_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Belém do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Beneditinos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beneditinos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bertolínia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bertolínia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Betânia_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Betânia do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Boa_Hora.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boa Hora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bocaina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bocaina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bom_Jesus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bom Jesus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bom_Princípio_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bom Princípio do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Bonfim_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bonfim do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Boqueirão_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boqueirão do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Brasileira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brasileira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Brejo_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brejo do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Buriti_dos_Lopes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Buriti dos Lopes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Buriti_dos_Montes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Buriti dos Montes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cabeceiras_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cabeceiras do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cajazeiras_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cajazeiras do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cajueiro_da_Praia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cajueiro da Praia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Caldeirão_Grande_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caldeirão Grande do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Campinas_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campinas do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Campo_Alegre_do_Fidalgo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Alegre do Fidalgo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Campo_Grande_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Grande do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Campo_Largo_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Largo do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Campo_Maior.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Campo Maior</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Canavieira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Canavieira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Canto_do_Buriti.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Canto do Buriti</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Capitão_de_Campos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capitão de Campos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Capitão_Gervásio_Oliveira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capitão Gervásio Oliveira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Caracol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caracol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Caraúbas_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caraúbas do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Caridade_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caridade do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Castelo_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Castelo do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Caxingó.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caxingó</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cocal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cocal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cocal_de_Telha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cocal de Telha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cocal_dos_Alves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cocal dos Alves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Coivaras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coivaras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Colônia_do_Gurguéia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colônia do Gurguéia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Colônia_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Colônia do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Conceição_do_Canindé.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceição do Canindé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Coronel_José_Dias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coronel José Dias</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Corrente.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Corrente</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cristalândia_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cristalândia do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Cristino_Castro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cristino Castro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Curimatá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curimatá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Currais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Currais</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Curral_Novo_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curral Novo do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Curralinhos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curralinhos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Demerval_Lobão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Demerval Lobão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Dirceu_Arcoverde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirceu Arcoverde</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Dom_Expedito_Lopes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dom Expedito Lopes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Dom_Inocêncio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dom Inocêncio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Domingos_Mourão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Domingos Mourão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Elesbão_Veloso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Elesbão Veloso</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Eliseu_Martins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eliseu Martins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Esperantina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Esperantina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Fartura_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fartura do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Flores_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flores do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Floresta_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Floresta do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Floriano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Floriano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Francinópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francinópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Francisco_Ayres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francisco Ayres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Francisco_Macedo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francisco Macedo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Francisco_Santos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Francisco Santos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Fronteiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fronteiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Geminiano.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geminiano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Gilbués.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gilbués</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Guadalupe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guadalupe</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Guaribas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guaribas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Hugo_Napoleão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hugo Napoleão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Ilha_Grande.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ilha Grande</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Inhuma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inhuma</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Ipiranga_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ipiranga do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Isaías_Coelho.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Isaías Coelho</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Itainópolis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itainópolis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Itaueira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Itaueira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jacobina_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jacobina do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jaicós.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jaicós</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jardim_do_Mulato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jardim do Mulato</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jatobá_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jatobá do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jerumenha.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jerumenha</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-João_Costa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">João Costa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Joaquim_Pires.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joaquim Pires</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Joca_Marques.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joca Marques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-José_de_Freitas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">José de Freitas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Juazeiro_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Juazeiro do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Júlio_Borges.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Júlio Borges</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Jurema.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jurema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoa_Alegre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoa Alegre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoa_de_São_Francisco.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoa de São Francisco</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoa_do_Barro_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoa do Barro do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoa_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoa do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoa_do_Sítio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoa do Sítio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Lagoinha_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lagoinha do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Landri_Sales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Landri Sales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Luís_Correia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Luís Correia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Luzilândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Luzilândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Madeiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Madeiro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Manoel_Emídio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manoel Emídio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Marcolândia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marcolândia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Marcos_Parente.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marcos Parente</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Massapê_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Massapê do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Matias_Olímpio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matias Olímpio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Miguel_Alves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Miguel Alves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Miguel_Leão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Miguel Leão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Milton_Brandão.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Milton Brandão</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Monsenhor_Gil.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monsenhor Gil</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Monsenhor_Hipólito.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monsenhor Hipólito</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Monte_Alegre_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monte Alegre do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Morro_Cabeça_no_Tempo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Morro Cabeça no Tempo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Morro_do_Chapéu_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Morro do Chapéu do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Murici_dos_Portelas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Murici dos Portelas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Nazaré_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nazaré do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Nazária.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nazária</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Nossa_Senhora_de_Nazaré.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nossa Senhora de Nazaré</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Nossa_Senhora_dos_Remédios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nossa Senhora dos Remédios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Nova_Santa_Rita.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nova Santa Rita</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Novo_Oriente_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Novo Oriente do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Novo_Santo_Antônio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Novo Santo Antônio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Oeiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Oeiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Olho_DÁgua_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Olho D’Água do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Padre_Marcos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Padre Marcos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Paes_Landim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paes Landim</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pajeú_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pajeú do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Palmeira_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palmeira do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Palmeirais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Palmeirais</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Paquetá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paquetá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Parnaguá.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parnaguá</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Parnaíba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parnaíba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Passagem_Franca_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Passagem Franca do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Patos_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Patos do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pau_DArco_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pau D’Arco do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Paulistana.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paulistana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pavussu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pavussu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pedro_II.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pedro II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pedro_Laurentino.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pedro Laurentino</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Picos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Picos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pimenteiras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pimenteiras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Pio_IX.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pio IX</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Piracuruca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piracuruca</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Piripiri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piripiri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Porto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Porto_Alegre_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Porto Alegre do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Prata_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prata do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Queimada_Nova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queimada Nova</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Redenção_do_Gurguéia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redenção do Gurguéia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Regeneração.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regeneração</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Riacho_Frio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riacho Frio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Ribeira_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ribeira do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Ribeiro_Gonçalves.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ribeiro Gonçalves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Rio_Grande_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rio Grande do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Cruz_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Cruz do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Cruz_dos_Milagres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Cruz dos Milagres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Filomena.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Filomena</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Luz.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Santa Luz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Rosa_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santa Rosa do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santana_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santana do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santo_Antônio_de_Lisboa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio de Lisboa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santo_Antônio_dos_Milagres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Antônio dos Milagres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santo_Inácio_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Santo Inácio do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Braz_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Braz do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Félix_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Félix do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Francisco_de_Assis_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Francisco de Assis do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Francisco_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Francisco do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Gonçalo_do_Gurguéia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Gonçalo do Gurguéia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Gonçalo_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Gonçalo do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_da_Canabrava.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João da Canabrava</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_da_Fronteira.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João da Fronteira</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_da_Serra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João da Serra</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_da_Varjota.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João da Varjota</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_do_Arraial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João do Arraial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_João_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São João do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_José_do_Divino.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José do Divino</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_José_do_Peixe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José do Peixe</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_José_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São José do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Julião.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Julião</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Lourenço_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Lourenço do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Luis_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Luis do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Miguel_da_Baixa_Grande.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Miguel da Baixa Grande</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Miguel_do_Fidalgo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Miguel do Fidalgo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Miguel_do_Tapuio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Miguel do Tapuio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Pedro_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Pedro do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-São_Raimundo_Nonato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">São Raimundo Nonato</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Sebastião_Barros.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sebastião Barros</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Sebastião_Leal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sebastião Leal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Sigefredo_Pacheco.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sigefredo Pacheco</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Simões.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simões</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Simplício_Mendes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simplício Mendes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Socorro_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Socorro do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Sussuapara.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sussuapara</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Tamboril_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tamboril do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Tanque_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tanque do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Teresina.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teresina</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-União.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">União</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Uruçuí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uruçuí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Valença_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Valença do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Várzea_Branca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Várzea Branca</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Várzea_Grande.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Várzea Grande</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Vera_Mendes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vera Mendes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Vila_Nova_do_Piauí.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vila Nova do Piauí</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Wall_Ferraz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wall Ferraz</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#id-cras-índice-de-desenvolvimento-do-cras" id="toc-id-cras-índice-de-desenvolvimento-do-cras" class="nav-link active" data-scroll-target="#id-cras-índice-de-desenvolvimento-do-cras"><span class="header-section-number">1</span> ID CRAS: Índice de Desenvolvimento do CRAS</a>
+  <ul class="collapse">
+  <li><a href="#id-cras-dimensão-estrutura-física" id="toc-id-cras-dimensão-estrutura-física" class="nav-link" data-scroll-target="#id-cras-dimensão-estrutura-física"><span class="header-section-number">1.1</span> ID CRAS: Dimensão Estrutura Física</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias"><span class="header-section-number">1.1.1</span> CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias"><span class="header-section-number">1.1.2</span> CRAS com capacidade de referenciamento para até 5.000 famílias</a></li>
+  <li><a href="#id-cras-dimensão-recursos-humanos" id="toc-id-cras-dimensão-recursos-humanos" class="nav-link" data-scroll-target="#id-cras-dimensão-recursos-humanos"><span class="header-section-number">1.2</span> ID CRAS: Dimensão Recursos Humanos</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-2.500-famílias"><span class="header-section-number">1.2.1</span> CRAS com capacidade de referenciamento para até 2.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" id="toc-cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-3.500-famílias"><span class="header-section-number">1.2.2</span> CRAS com capacidade de referenciamento para até 3.500 famílias</a></li>
+  <li><a href="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" id="toc-cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" class="nav-link" data-scroll-target="#cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1"><span class="header-section-number">1.2.3</span> CRAS com capacidade de referenciamento para até 5.000 famílias</a></li>
+  <li><a href="#id-cras-dimensão-serviços-benefícios" id="toc-id-cras-dimensão-serviços-benefícios" class="nav-link" data-scroll-target="#id-cras-dimensão-serviços-benefícios"><span class="header-section-number">1.3</span> ID CRAS: Dimensão Serviços &amp; Benefícios</a></li>
+  </ul></li>
+  <li><a href="#id-creas-índice-de-desenvolvimento-do-creas" id="toc-id-creas-índice-de-desenvolvimento-do-creas" class="nav-link" data-scroll-target="#id-creas-índice-de-desenvolvimento-do-creas"><span class="header-section-number">2</span> ID CREAS: Índice de Desenvolvimento do CREAS</a></li>
+  <li><a href="#id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" id="toc-id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" class="nav-link" data-scroll-target="#id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social"><span class="header-section-number">3</span> ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social</a>
+  <ul class="collapse">
+  <li><a href="#id-conselho-dimensão-estrutura-administrativa" id="toc-id-conselho-dimensão-estrutura-administrativa" class="nav-link" data-scroll-target="#id-conselho-dimensão-estrutura-administrativa"><span class="header-section-number">3.1</span> ID Conselho: Dimensão Estrutura Administrativa</a></li>
+  <li><a href="#id-conselho-dimensão-dinâmica-de-funcionamento" id="toc-id-conselho-dimensão-dinâmica-de-funcionamento" class="nav-link" data-scroll-target="#id-conselho-dimensão-dinâmica-de-funcionamento"><span class="header-section-number">3.2</span> ID Conselho: Dimensão Dinâmica de Funcionamento</a></li>
+  <li><a href="#id-conselho-dimensão-composição-do-conselho" id="toc-id-conselho-dimensão-composição-do-conselho" class="nav-link" data-scroll-target="#id-conselho-dimensão-composição-do-conselho"><span class="header-section-number">3.3</span> ID Conselho: Dimensão Composição do Conselho</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Acauã.html">Municípios</a></li><li class="breadcrumb-item"><a href="../../Municipais/Piauí/Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Luz.html">Santa Luz</a></li></ol></nav><h1 class="title display-7">Santa Luz</h1></header>
+
+<header id="title-block-header">
+
+<p class="subtitle lead">Relatório de Indicadores Censo SUAS 2023 do município de Santa Luz, Piauí</p>
+<p class="author">SAGICAD e SNAS / MDS</p>
+
+</header>
+
+
+<section id="id-cras-índice-de-desenvolvimento-do-cras" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> ID CRAS: Índice de Desenvolvimento do CRAS</h1>
+<p>O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços &amp; Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.</p>
+<p>O <a href="#fig-ID-CRAS" class="quarto-xref">Gráfico&nbsp;1</a> mostra a evolução das médias do ID CRAS ao longo dos anos no município de Santa Luz, Piauí.</p>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-CRAS" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-CRAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;1. Evolução das médias do ID CRAS, 2014 a 2023: Santa Luz, Piauí
+</figcaption>
+<div aria-describedby="fig-ID-CRAS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Luz_files/figure-html/fig-ID-CRAS-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-cras-por-capacidade" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cras-por-capacidade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1. Quantidade de CRAS em 2023 no município de Santa Luz por capacidade de referenciamento.
+</figcaption>
+<div aria-describedby="tbl-cras-por-capacidade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<caption>Quantidade de CRAS em 2023 no município de Santa Luz por capacidade de referenciamento.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Capacidade de até:</th>
+<th style="text-align: right;">Quantidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2.500 famílias referenciadas</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3.500 famílias referenciadas</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5.000 famílias referenciadas</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>As seções a seguir apresentam os resultados do município de Santa Luz em cada uma das dimensões do ID CRAS, bem como os requisitos para se alcançar os níveis superiores.</p>
+<section id="id-cras-dimensão-estrutura-física" class="level2 cell" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="id-cras-dimensão-estrutura-física"><span class="header-section-number">1.1</span> ID CRAS: Dimensão Estrutura Física</h2>
+</section>
+<section id="cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias" class="level3 cell" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-2.500-ou-3.500-famílias"><span class="header-section-number">1.1.1</span> CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias</h3>
+</section>
+<p>Na dimensão Estrutura Física, o nível de ID do CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias no município de Santa Luz é 4.</p>
+<p>O CRAS de <strong>nível 4</strong>, com capacidade de referenciamento para até 2.500 ou 3.500 famílias, na dimensão Estrutura Física:</p>
+<div class="cell">
+<ul>
+<li>Possui <strong>recepção</strong>; e</li>
+<li>Possui no mínimo <strong>2 salas de atendimento</strong>, sendo <strong>pelo menos 1 com capacidade para 15 ou mais pessoas</strong>; e</li>
+<li>Possui no mínimo <strong>2 banheiros</strong>; e</li>
+<li>Possui <strong>acessibilidade, ao menos parcial</strong>; e</li>
+<li>Possui <strong>pelo menos 1 computador conectado à internet</strong>.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 5</strong> na dimensão Estrutura Física, o CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias precisa, além dos requisitos do nível 4:</p>
+<div class="cell">
+<ul>
+<li>Possuir no mínimo <strong>1 sala administrativa</strong>; e</li>
+<li>Possuir <strong>acessibilidade</strong>; e</li>
+<li>Possuir conjunto de equipamentos que inclua, no mínimo: <strong>2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado</strong>.</li>
+</ul>
+</div>
+<section id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias" class="level3 cell" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias"><span class="header-section-number">1.1.2</span> CRAS com capacidade de referenciamento para até 5.000 famílias</h3>
+</section>
+<p>Santa Luz não tem CRAS com capacidade de referenciamento para até 5.000 famílias.</p>
+<section id="id-cras-dimensão-recursos-humanos" class="level2 cell" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="id-cras-dimensão-recursos-humanos"><span class="header-section-number">1.2</span> ID CRAS: Dimensão Recursos Humanos</h2>
+</section>
+<section id="cras-com-capacidade-de-referenciamento-para-até-2.500-famílias" class="level3 cell" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-2.500-famílias"><span class="header-section-number">1.2.1</span> CRAS com capacidade de referenciamento para até 2.500 famílias</h3>
+</section>
+<p>Na dimensão Recursos Humanos, o nível de ID do CRAS com capacidade de referenciamento para até 2.500 famílias no município de Santa Luz é 4.</p>
+<p>O CRAS de <strong>nível 4</strong>, com capacidade de referenciamento para até 2.500 famílias, na dimensão Recursos Humanos:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo <strong>4</strong> (7, se EV) profissionais, sendo pelo menos <strong>3</strong> (5, se EV) com nível superior; e</li>
+<li>Possui no mínimo <strong>1 Assistente Social</strong> (2, se EV); e</li>
+<li>Possui <strong>coordenador</strong> com nível superior.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 5</strong> na dimensão Recursos Humanos, o CRAS com capacidade de referenciamento para até 2.500 famílias precisa, além dos requisitos do nível 4:</p>
+<div class="cell">
+<ul>
+<li>Possuir no mínimo <strong>5</strong> (9, se EV) <strong>profissionais</strong> (sendo pelo menos <strong>3</strong> (5, se EV) com <strong>nível superior</strong>); e</li>
+<li>Possuir no mínimo <strong>1 Psicólogo</strong>; e</li>
+<li>Possuir no mínimo <strong>1</strong> profissional de nível superior com <strong>vínculo estatutário ou empregado público celetista</strong>.</li>
+</ul>
+</div>
+<section id="cras-com-capacidade-de-referenciamento-para-até-3.500-famílias" class="level3 cell" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-3.500-famílias"><span class="header-section-number">1.2.2</span> CRAS com capacidade de referenciamento para até 3.500 famílias</h3>
+</section>
+<p>Santa Luz não tem CRAS com capacidade de referenciamento para até 3.500 famílias.</p>
+<section id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1" class="level3 cell" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="cras-com-capacidade-de-referenciamento-para-até-5.000-famílias-1"><span class="header-section-number">1.2.3</span> CRAS com capacidade de referenciamento para até 5.000 famílias</h3>
+</section>
+<p>Santa Luz não tem CRAS com capacidade de referenciamento para até 5.000 famílias.</p>
+<section id="id-cras-dimensão-serviços-benefícios" class="level2 cell" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="id-cras-dimensão-serviços-benefícios"><span class="header-section-number">1.3</span> ID CRAS: Dimensão Serviços &amp; Benefícios</h2>
+</section>
+<p>Na dimensão Serviços &amp; Benefícios, o nível de ID do CRAS no município de Santa Luz é 3.</p>
+<p>O CRAS de <strong>nível 3</strong> na dimensão Serviços &amp; Benefícios em município de porte Pequeno I:</p>
+<div class="cell">
+<ul>
+<li><strong>Executa o PAIF</strong> realizando no mínimo as seguintes atividades: <strong>acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC</strong>; e</li>
+<li>Possui oferta de Serviço de Convivência <strong>pelo menos para um ciclo de vida</strong> (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e</li>
+<li>Possui <strong>forte articulação com os Serviços de Educação e Saúde</strong> no território.</li>
+</ul>
+</div>
+<p>Para alcançar o <strong>nível 4</strong> na dimensão Serviços &amp; Benefícios, o CRAS em município de porte Pequeno I precisa, além dos requisitos do nível 3:</p>
+<div class="cell">
+<ul>
+<li>Ter <strong>quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica</strong> (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e</li>
+<li><strong>Executar o PAIF</strong> realizando <strong>palestras, campanhas ou eventos comunitários e acompanhamento dos encaminhamentos realizados</strong>, além das atividades exigidas para o nível 3; e</li>
+<li>Possuir oferta de Serviço de Convivência <strong>para no mínimo dois ciclos de vida</strong> (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e</li>
+<li><strong>Funcionar</strong> no mínimo <strong>5 dias</strong> por semana e <strong>40 horas</strong> semanais.<br>
+</li>
+</ul>
+</div>
+</section>
+<section id="id-creas-índice-de-desenvolvimento-do-creas" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> ID CREAS: Índice de Desenvolvimento do CREAS</h1>
+<p>O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços &amp; Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.</p>
+<p>Santa Luz não tem CREAS.</p>
+</section>
+<section id="id-conselho-índice-de-desenvolvimento-dos-conselhos-de-assistência-social" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social</h1>
+<p>O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.</p>
+<p>O <a href="#fig-ID-conselho" class="quarto-xref">Gráfico&nbsp;2</a> mostra a evolução das médias do ID Conselho ao longo dos anos no município de Santa Luz, Piauí.</p>
+<div class="cell" data-fig.footer="Fonte: MDS, Censo SUAS.">
+<div class="cell-output-display">
+<div id="fig-ID-conselho" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ID-conselho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Gráfico&nbsp;2. Evolução das médias do ID Conselho, 2014 a 2023: Santa Luz, Piauí
+</figcaption>
+<div aria-describedby="fig-ID-conselho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Relatório_Indicadores_Censo_SUAS_2023-Piauí-Santa_Luz_files/figure-html/fig-ID-conselho-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<p>As seções a seguir apresentam os resultados do município de Santa Luz em cada uma das dimensões do ID Conselho, bem como os requisitos para se alcançar os níveis superiores.</p>
+<section id="id-conselho-dimensão-estrutura-administrativa" class="level2 cell" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="id-conselho-dimensão-estrutura-administrativa"><span class="header-section-number">3.1</span> ID Conselho: Dimensão Estrutura Administrativa</h2>
+</section>
+<p>Na dimensão Estrutura Administrativa, o nível de ID do Conselho no município de Santa Luz é 5.</p>
+<p>O Conselho de <strong>nível 5</strong> na dimensão Estrutura Administrativa em município de porte Pequeno I:</p>
+<div class="cell">
+<ul>
+<li>Possui previsão de recursos específicos na Lei Orçamentária Anual; e</li>
+<li>Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e</li>
+<li>Possui uma ou mais salas de uso exclusivo; e</li>
+<li>Possui Secretaria Executiva; e</li>
+<li>Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e</li>
+<li>Possui telefone de uso exclusivo ou compartilhado.</li>
+</ul>
+</div>
+<section id="id-conselho-dimensão-dinâmica-de-funcionamento" class="level2 cell" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="id-conselho-dimensão-dinâmica-de-funcionamento"><span class="header-section-number">3.2</span> ID Conselho: Dimensão Dinâmica de Funcionamento</h2>
+</section>
+<p>Na dimensão Dinâmica de Funcionamento, o nível de ID do Conselho no município de Santa Luz é 5.</p>
+<p>O Conselho de <strong>nível 5</strong> na dimensão Dinâmica de Funcionamento em município de porte Pequeno I:</p>
+<div class="cell">
+<ul>
+<li>Realizou 10 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e</li>
+<li>Possui Regimento Interno; e</li>
+<li>Deliberou sobre o orçamento do executivo; e</li>
+<li>Deliberou sobre o Plano de Assistência Social; e</li>
+<li>É instância de Controle Social do Bolsa Família; e</li>
+<li>Acompanha o cumprimento de deliberações da Conferência Municipal; e</li>
+<li>Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e</li>
+<li>Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.</li>
+</ul>
+</div>
+<section id="id-conselho-dimensão-composição-do-conselho" class="level2 cell" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="id-conselho-dimensão-composição-do-conselho"><span class="header-section-number">3.3</span> ID Conselho: Dimensão Composição do Conselho</h2>
+</section>
+<p>Na dimensão Composição do Conselho, o nível de ID do Conselho no município de Santa Luz é 5.</p>
+<p>O Conselho de <strong>nível 5</strong> na dimensão Composição do Conselho em município de porte Pequeno I:</p>
+<div class="cell">
+<ul>
+<li>Possui no mínimo 8 conselheiros titulares; e</li>
+<li>Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e</li>
+<li>Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e</li>
+<li>Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e</li>
+<li>Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e</li>
+<li>Possui Presidente e Vice-Presidente eleitos em plenária; e</li>
+<li>Permite que o Conselheiro possa ser reconduzido uma única vez; e</li>
+<li>Possui representação governamental da área de assistência, saúde e educação.</li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
