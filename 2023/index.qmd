@@ -1,22 +1,10 @@
 ---
 title: "Indicadores Censo SUAS 2023"
-author: "SAGICAD e SNAS / MDS"
+# author: "SAGICAD e SNAS / MDS"
 
 subtitle: "Indicadores Sintéticos de Desenvolvimento"
 
-sidebar: municipais
-
-number-sections: true
-
-crossref:
-  fig-title: Gráfico     # (default is "Figure")
-  tbl-title: Tabela     # (default is "Table")
-  title-delim: "."      # (default is ":")
-  fig-prefix: Gráfico   # (default is "Figure")
-  tbl-prefix: Tabela    # (default is "Table")
-#  ref-hyperlink: false # (default is true)
 ---
-
 
 ```{r}
 library("dplyr")
@@ -28,6 +16,8 @@ library("readxl")
 library("readr")
 library("ggrepel")
 library("readODS")
+library("knitr")
+library("janitor")
 
 idconselho_2014 <- read_excel("../ID CONSELHO/IDConselho2014_alterado_08-12-2016.xlsx")
 idconselho_2015 <- read_excel("../ID CONSELHO/ID CONSELHO - 2015.xlsx")
@@ -84,6 +74,7 @@ idcreas_2023 <- read_ods("../ID CREAS/IDCREAS2023_divulgacao_retificado090824.od
 
 niveis_ID <- c(1, 2, 3, 4, 5)
 
+color.map.option = "E" #"cividis"
 ```
 
 ```{r funcoes}
@@ -182,6 +173,41 @@ f_percentual_regiao_niveis = function(df, q_grupo, regiao, grupo2){
     mutate("Grupo2" = !! grupo2)
 }
 
+f_grafico_col_numero_flip_2_x = function(df, x1, y, x2){
+  x1 <- enquo(x1)
+  y <- enquo(y)
+  x2 <- enquo(x2)
+  
+  df <- df %>%
+    ggplot(aes(x = fct_rev(!! x2), y = !! y)) +
+    geom_col(aes(fill = !! y), position = "dodge") +
+    geom_text(aes(label = format(!! y, big.mark=".", digits = 3, decimal.mark = ",")),
+              hjust = -0.1,
+              position = position_dodge(width = 0.9),
+              check_overlap = TRUE) +
+    facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
+    scale_x_discrete(expand = expansion(add = 1)) +
+    scale_y_continuous(expand = expansion(mult = c(0, .1))) +
+    scale_fill_viridis_c(option = color.map.option) +
+    coord_flip() +
+    theme(legend.position="none",
+          axis.title = element_blank(),
+          axis.ticks = element_blank(),
+          axis.text.x = element_blank(),
+          axis.line.y = element_line(),
+          panel.background = element_blank(),
+          panel.spacing = unit(0, "lines"),
+          strip.background = element_blank(),
+          strip.placement = "outside",
+          strip.text.y.left = element_text(angle = 0, hjust = 1)
+    )
+#  if(gera.graficos.office) {
+#    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
+#    arquivo_graficos_criado <<- TRUE
+#  }
+  df
+}
+
 f_grafico_col_numero_flip_3_groups = function(df, x1, x2, y, grupo){
   x1 <- enquo(x1)
   x2 <- enquo(x2)
@@ -198,7 +224,7 @@ f_grafico_col_numero_flip_3_groups = function(df, x1, x2, y, grupo){
     facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
     scale_x_discrete(expand = expansion(add = 1)) +
     scale_y_continuous(expand = expansion(mult = c(0, .11))) +
-    scale_fill_viridis_d(option = "E") +
+    scale_fill_viridis_d(option = color.map.option) +
     coord_flip() +
     theme(legend.position="right",
           legend.title = element_blank(),
@@ -236,7 +262,7 @@ f_grafico_col_stack_percent_flip_2_x_groups = function(df, x1, x2, y, grupo){
     facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
     scale_x_discrete(expand = expansion(add = 1)) +
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-    scale_fill_viridis_d(option = "E") +
+    scale_fill_viridis_d(option = color.map.option) +
     coord_flip() +
     theme(legend.position="bottom",
           legend.title = element_blank(),
@@ -258,6 +284,7 @@ f_grafico_col_stack_percent_flip_2_x_groups = function(df, x1, x2, y, grupo){
 }
 
 ```
+
 # Apresentação
 
 Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento dos equipamentos do SUAS. Esta publicação contém um relatório com resultados nacionais e por regiões, e também relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
@@ -266,14 +293,15 @@ Para visualizar um relatório municipal, selecione o Município no menu ou digit
 
 Segue abaixo o relatório Nacional e por Grandes Regiões.
 
-# Indicador de Desenvolvimento do CRAS
+# Indicador de Desenvolvimento dos CRAS
 
-## Indicador de Desenvolvimento do CRAS, médias
+O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
 
-```{r fig-idcras, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
-#| fig-height: 40
+O @fig-idcras mostra a evolução das médias do ID CRAS ao longo dos anos no Brasil e Grandes Regiões.
 
-tabela <- f_media_regiao_2_grupos(idcras_2014, `IDCRAS 2014sintético`, IBGE, "ID CRAS", "2014") %>%
+```{r}
+
+tabela_medias <- f_media_regiao_2_grupos(idcras_2014, `IDCRAS 2014sintético`, IBGE, "ID CRAS", "2014") %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2014, `Dimensão Estrutura Física`, IBGE, "Estrutura Física", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2014, `Dimensão Recursos Humanos`, IBGE, "Recursos Humanos", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2014, `Dimensão Serviços & Benefícios`, IBGE, "Serviços & Benefícios", "2014")) %>%
@@ -328,51 +356,62 @@ tabela <- f_media_regiao_2_grupos(idcras_2014, `IDCRAS 2014sintético`, IBGE, "I
                                           "Serviços & Benefícios",
                                           "ID CRAS")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)
+```
+
+```{r fig-idcras, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "ID CRAS") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
 
 ```
 
-```{r fig-idcras-2, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras-1, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)
 
 ```
 
-```{r fig-idcras-3, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras-2, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
 
 ```
 
-```{r fig-idcras-4, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras-3, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
 
 ```
 
-```{r fig-idcras-5, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras-4, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
 
 ```
 
-```{r fig-idcras-6, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras-5, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
 
 ```
 
-## Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023
+```{r fig-idcras-6, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:", eval=FALSE}
+#| fig-height: 40
 
-```{r fig-idcras-niveis, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
-#| fig-height: 20
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
 
-tabela <- f_quantitativo_regiao_niveis(idcras_2023, `Estrutura Física`, IBGE7, "Estrutura Física") %>%
+```
+
+```{r}
+
+tabela_quant <- f_quantitativo_regiao_niveis(idcras_2023, `Estrutura Física`, IBGE7, "Estrutura Física") %>%
   bind_rows(f_quantitativo_regiao_niveis(idcras_2023, `Recursos Humanos`, IBGE7, "Recursos Humanos")) %>%
   bind_rows(f_quantitativo_regiao_niveis(idcras_2023, `Serviços `, IBGE7, "Serviços & Benefícios")) %>%
 
@@ -380,50 +419,53 @@ tabela <- f_quantitativo_regiao_niveis(idcras_2023, `Estrutura Física`, IBGE7,
                                             "Recursos Humanos",
                                             "Serviços & Benefícios")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
-
 ```
 
-```{r fig-idcras-niveis-2, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
+```{r fig-idcras-niveis-1, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
 
 ```
 
-```{r fig-idcras-niveis-3, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
+```{r fig-idcras-niveis-2, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
 
 ```
 
-```{r fig-idcras-niveis-4, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
+```{r fig-idcras-niveis-3, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
 
 ```
 
-```{r fig-idcras-niveis-5, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
+```{r fig-idcras-niveis-4, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
 
 ```
 
-```{r fig-idcras-niveis-6, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:"}
+```{r fig-idcras-niveis-5, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
 
 ```
 
-## Indicador de Desenvolvimento do CRAS, percentuais de CRAS em cada nível, 2023
+```{r fig-idcras-niveis-6, fig.cap = "Indicador de Desenvolvimento do CRAS, quantitativo de CRAS em cada nível, 2023:", eval=FALSE}
+#| fig-height: 20
 
-```{r fig-idcras-percentual, fig.cap = "Indicador de Desenvolvimento do CRAS, percentuais de CRAS em cada nível, 2023"}
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
 
-tabela <-
+```
+
+```{r}
+
+tabela_perc <-
             f_percentual_regiao_niveis(idcras_2023, `Estrutura Física`, IBGE7, "Estrutura Física") %>%
   bind_rows(f_percentual_regiao_niveis(idcras_2023, `Recursos Humanos`, IBGE7, "Recursos Humanos")) %>%
   bind_rows(f_percentual_regiao_niveis(idcras_2023, `Serviços `, IBGE7, "Serviços & Benefícios")) %>%
@@ -432,24 +474,363 @@ tabela <-
                                             "Recursos Humanos",
                                             "Serviços & Benefícios")))
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
+```
+
+```{r fig-idcras-percentual, fig.cap = "Indicador de Desenvolvimento do CRAS, percentuais de CRAS em cada nível, 2023", eval=FALSE}
+
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
 
 ```
 
-```{r fig-idcras-percentual-1, fig.cap = "Indicador de Desenvolvimento do CRAS, percentuais de CRAS em cada nível, 2023"}
+```{r fig-idcras-percentual-1, fig.cap = "Indicador de Desenvolvimento do CRAS, percentuais de CRAS em cada nível, 2023", eval=FALSE}
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
 
 ```
 
-# Indicador de Desenvolvimento do CREAS
+```{r tbl-cras-por-capacidade, fig.align='center'}
+cras_por_capacidade <- idcras_2023 %>%
+                        mutate(q1 = factor(q1, levels = c("2.500 famílias referenciadas",
+                                                          "3.500 famílias referenciadas",
+                                                          "5.000 famílias referenciadas"))) 
 
-## Indicador de Desenvolvimento do CREAS, médias
+#unidades_2500 <- cras_por_capacidade %>%
+#                  filter(q1 == "2.500 famílias referenciadas")
+#unidades_3500 <- cras_por_capacidade %>%
+#                  filter(q1 == "3.500 famílias referenciadas")
+#unidades_2500_3500 <- cras_por_capacidade %>%
+#                  filter(q1 == "2.500 famílias referenciadas" | q1 == "3.500 famílias referenciadas")
+#unidades_5000 <- cras_por_capacidade %>%
+#                  filter(q1 == "5.000 famílias referenciadas")
 
-```{r fig-idcreas, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
-#| fig-height: 40
+equipamento <- "CRAS"
 
-tabela <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `Código IBGE`, "ID CREAS", "2014") %>%
+tabela <- cras_por_capacidade %>%
+            tabyl(q1) %>%
+            select(q1, n) %>%
+            kable(caption=sprintf("Quantidade de %s em 2023 no Brasil por capacidade de referenciamento.", equipamento),
+                  col.names=c("Capacidade de até:", "Quantidade"))
+tabela  
+```
+
+As seções a seguir tratam de cada uma das 3 dimensões do ID CRAS.
+
+## ID CRAS: Dimensão Estrutura Física
+
+O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Física do ID CRAS no Brasil e Grandes Regiões.
+
+```{r fig-idcras-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Estrutura Física") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcras-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, quantitativo de CRAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Estrutura Física") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Estrutura Física, de acordo com a capacidade de referenciamento do CRAS.
+
+### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias
+
+**Nível 1**:
+
+* Possui **menos de 2 salas de atendimento**; ou
+* **Não possui banheiro**; ou
+* Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
+
+**Nível 2**:
+
+* Possui no mínimo **2 salas de atendimento**; e
+* Possui pelo menos **1 banheiro**.
+
+**Nível 3**:
+
+* Possui **recepção**; e
+* Possui no mínimo **2 salas de atendimento**; e
+* Possui pelo menos **1 banheiro**; e
+* Possui **acessibilidade, ao menos parcial**.
+
+**Nível 4**:
+
+* Possui **recepção**; e
+* Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+* Possui no mínimo **2 banheiros**; e
+* Possui **acessibilidade, ao menos parcial**; e
+* Possui **pelo menos 1 computador conectado à internet**.
+
+**Nível 5**:
+
+* Possui **recepção**; e
+* Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+* Possui no mínimo **1 sala administrativa**; e
+* Possui no mínimo **2 banheiros**; e
+* Possui **acessibilidade**; e
+* Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+
+### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 5.000 famílias
+
+**Nível 1**:
+
+* Possui **menos de 3 salas de atendimento**; ou
+* **Não possui banheiro**; ou
+* Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
+
+**Nível 2**:
+
+* Possui no mínimo **3 salas de atendimento**; e
+* Possui pelo menos **1 banheiro**.
+
+**Nível 3**:
+
+* Possui **recepção**; e
+* Possui no mínimo **3 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+* Possui pelo menos **1 banheiro**; e
+* Possui **acessibilidade, ao menos parcial**.
+
+**Nível 4**:
+
+* Possui **recepção**; e
+* Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+* Possui no mínimo **2 banheiros**; e
+* Possui **acessibilidade, ao menos parcial**; e
+* Possui **pelo menos 2 computadores conectados à internet**.
+
+**Nível 5**:
+
+* Possui **recepção**; e
+* Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+* Possui no mínimo **1 sala administrativa**; e
+* Possui no mínimo **2 banheiros**; e
+* Possui **acessibilidade**; e
+* Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+
+## ID CRAS: Dimensão Recursos Humanos
+
+O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da dimensão de Recursos Humanos do ID CRAS no Brasil e Grandes Regiões.
+
+```{r fig-idcras-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Recursos Humanos") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcras-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, quantitativo de CRAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Recursos Humanos") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Recursos Humanos, de acordo com a capacidade de referenciamento do CRAS.
+
+### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 2.500 famílias
+
+**Nível 1**:
+
+* Possui **menos de 3 profissionais**; ou
+* **Não possui Assistente Social nem Psicólogo**. 
+
+**Nível 2**:
+
+* Possui no mínimo **3** profissionais, sendo, pelo menos **2** com nível superior*; e
+* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+
+**Nível 3**:
+
+* Possui no mínimo **4** (6, se EV) profissionais, sendo pelo menos **2** (4, se EV) com nível superior; e
+* Possui no mínimo **1 Assistente Social** (2, se EV).
+
+**Nível 4**:
+
+* Possui no mínimo **4** (7, se EV) profissionais, sendo pelo menos **3** (5, se EV) com nível superior; e
+* Possui no mínimo **1 Assistente Social** (2, se EV); e 
+* Possui **coordenador** com nível superior.
+
+**Nível 5**:
+
+* Possui no mínimo **5** (9, se EV) **profissionais**, sendo pelo menos **3** (5, se EV) com **nível superior**; e
+* Possui no mínimo **1 Assistente Social** (2, se EV) e **1 Psicólogo**; e 
+* Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
+* Possui **coordenador** com nível superior.
+
+### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 3.500 famílias
+
+**Nível 1**:
+
+* Possui **menos de 5 profissionais**; ou
+* **Não possui Assistente Social nem Psicólogo**. 
+
+**Nível 2**:
+
+* Possui no mínimo **5** profissionais, sendo, pelo menos **2** com nível superior*; e
+* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+
+**Nível 3**:
+
+* Possui no mínimo **6** (8, se EV) profissionais, sendo pelo menos **3** (4, se EV) com nível superior; e
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV).
+
+**Nível 4**:
+
+* Possui no mínimo **6** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV); e 
+* Possui **coordenador** com nível superior.
+
+**Nível 5**:
+
+* Possui no mínimo **7** (11, se EV) **profissionais**, sendo pelo menos **4** (6, se EV) com **nível superior**; e
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
+* Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
+* Possui **coordenador** com nível superior.
+
+### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 5.000 famílias
+
+**Nível 1**:
+
+* Possui **menos de 6 profissionais ao todo, ou menos de 3 com nível superior**; ou
+* **Não possui Assistente Social nem Psicólogo**. 
+
+**Nível 2**:
+
+* Possui no mínimo **6** profissionais, sendo pelo menos **3** com nível superior; e
+* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+
+**Nível 3**:
+
+* Possui no mínimo **7** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV).
+
+**Nível 4**:
+
+* Possui no mínimo **7** (10, se EV) profissionais, sendo pelo menos **5** (7, se EV) com nível superior; e 
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
+* Possui **coordenador** com nível superior.
+
+**Nível 5**:
+
+* Possui no mínimo **9** (13, se EV) **profissionais**, sendo pelo menos **5** (7, se EV) com **nível superior**; e
+* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
+* Possui no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**; e
+* Possui **coordenador** com nível superior.
+
+## ID CRAS: Dimensão Serviços & Benefícios
+
+O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da dimensão de Serviços & Benefícios do ID CRAS no Brasil e Grandes Regiões.
+
+```{r fig-idcras-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Serviços & Benefícios") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcras-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, quantitativo de CRAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Serviços & Benefícios") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Serviços & Benefícios, de acordo com o porte do Município onde está o CRAS.
+
+### Dimensão Serviços & Benefícios: CRAS em municípios de porte Pequeno I
+
+**Nível 1**:
+
+* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+* Possui **articulação frágil ou inexistente** com os Serviços de Educação e com os Serviços de Saúde; ou
+* Não possui profissionais de Serviço Social nem de Psicologia.
+
+**Nível 2**:
+
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
+* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**. 
+
+**Nível 3**:
+
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+* Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* Possui **forte articulação com os Serviços de Educação e Saúde** no território. 
+
+**Nível 4**:
+
+* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
+* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+
+**Nível 5**:
+
+* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* Possui profissionais de Serviço Social e/ou de Psicologia; e 
+* Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+* Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
+* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+
+### Dimensão Serviços & Benefícios: CRAS em municípios de porte Pequeno II ou maior
+
+**Nível 1**:
+
+* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+* Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os CREAS; ou 
+* Não possui profissionais de Serviço Social nem de Psicologia.
+
+**Nível 2**:
+
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
+* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
+
+**Nível 3**:
+
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+* Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
+
+**Nível 4**:
+
+* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
+* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+
+**Nível 5**:
+
+* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* Possui profissionais de Serviço Social e de Psicologia; e
+* Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
+* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+
+# Indicador de Desenvolvimento dos CREAS
+
+O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
+
+O @fig-idcreas mostra a evolução das médias do ID CREAS ao longo dos anos no Brasil e Grandes Regiões.
+
+```{r}
+
+tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `Código IBGE`, "ID CREAS", "2014") %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2014, `Dimensão Estrutura Física`, `Código IBGE`, "Estrutura Física", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2014, `Dimensão Recursos Humanos`, `Código IBGE`, "Recursos Humanos", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2014, `Dimensão Serviços`, `Código IBGE`, "Serviços & Benefícios", "2014")) %>%
@@ -504,51 +885,62 @@ tabela <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `Código I
                                           "Serviços & Benefícios",
                                           "ID CREAS")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)  
+```
+
+```{r fig-idcreas, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "ID CREAS") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
 
 ```
 
-```{r fig-idcreas-2, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas-1, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)  
 
 ```
 
-```{r fig-idcreas-3, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas-2, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
 
 ```
 
-```{r fig-idcreas-4, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas-3, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
 
 ```
 
-```{r fig-idcreas-5, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas-4, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
 
 ```
 
-```{r fig-idcreas-6, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas-5, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
 
 ```
 
-## Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023
+```{r fig-idcreas-6, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:", eval=FALSE}
+#| fig-height: 40
 
-```{r fig-idcreas-niveis, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
-#| fig-height: 20
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
 
-tabela <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
+```
+
+```{r}
+
+tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
   bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
   bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Serviços`, `Código IBGE`, "Serviços & Benefícios")) %>%
 
@@ -556,50 +948,53 @@ tabela <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`, `Cód
                                             "Recursos Humanos",
                                             "Serviços & Benefícios")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
-
 ```
 
-```{r fig-idcreas-niveis-2, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-1, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
 
 ```
 
-```{r fig-idcreas-niveis-3, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-2, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
 
 ```
 
-```{r fig-idcreas-niveis-4, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-3, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
 
 ```
 
-```{r fig-idcreas-niveis-5, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-4, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
 
 ```
 
-```{r fig-idcreas-niveis-6, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-5, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
 
 ```
 
-## Indicador de Desenvolvimento do CREAS, percentuais de CREAS em cada nível, 2023
+```{r fig-idcreas-niveis-6, fig.cap = "Indicador de Desenvolvimento do CREAS, quantitativo de CREAS em cada nível, 2023:", eval=FALSE}
+#| fig-height: 20
 
-```{r fig-idcreas-percentual, fig.cap = "Indicador de Desenvolvimento do CREAS, percentuais de CREAS em cada nível, 2023"}
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
 
-tabela <-
+```
+
+```{r}
+
+tabela_perc <-
             f_percentual_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
   bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
   bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Serviços`, `Código IBGE`, "Serviços & Benefícios")) %>%
@@ -608,24 +1003,325 @@ tabela <-
                                             "Recursos Humanos",
                                             "Serviços & Benefícios")))
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
+```
+
+```{r fig-idcreas-percentual, fig.cap = "Indicador de Desenvolvimento do CREAS, percentuais de CREAS em cada nível, 2023", eval=FALSE}
+
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
 
 ```
 
-```{r fig-idcreas-percentual-1, fig.cap = "Indicador de Desenvolvimento do CREAS, percentuais de CREAS em cada nível, 2023"}
+```{r fig-idcreas-percentual-1, fig.cap = "Indicador de Desenvolvimento do CREAS, percentuais de CREAS em cada nível, 2023", eval=FALSE}
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
 
 ```
+
+As seções a seguir tratam de cada uma das 3 dimensões do ID CREAS.
+
+## ID CREAS: Dimensão Estrutura Física
+
+O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Física do ID CREAS no Brasil e Grandes Regiões.
+
+```{r fig-idcreas-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Estrutura Física") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcreas-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Estrutura Física") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Estrutura Física, de acordo com o porte do Município onde está o CREAS.
+
+### Dimensão Estrutura Física: CREAS em municípios de porte Médio ou menor
+
+**Nível 1**:
+
+* Possui menos de 3 salas; e/ou
+* Não possui banheiro; e/ou
+* Faz compartilhamento dos espaços de atendimento.
+
+**Nível 2**:
+
+* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+* Possui no mínimo 1 banheiro.
+
+**Nível 3**:
+
+* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+* Possui recepção; e
+* Possui no mínimo 1 banheiro; e
+* Possui acessibilidade, ao menos parcial. 
+
+**Nível 4**:
+
+* Possui recepção; e
+* Possui no mínimo 2 banheiros; e
+* Possui 1 ou mais computadores com Internet; e
+* Possui veículo próprio ou compartilhado; e
+* Possui acessibilidade, ao menos parcial; e
+* Possui 3 salas ou mais para atendimento (5 se CREAS Regional).
+
+**Nível 5**:
+
+* Possui recepção; e
+* Possui no mínimo 2 banheiros; e
+* Possui 1 ou mais sala Administrativa; e
+* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+* Possui acessibilidade (com ou sem ABNT); e
+* Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
+
+### Dimensão Estrutura Física: CREAS em municípios de porte Grande ou em Metrópole
+
+**Nível 1**:
+
+* Possui menos de 3 salas; e/ou
+* Não possui banheiro; e/ou
+* Faz compartilhamento dos espaços de atendimento.
+
+**Nível 2**:
+
+* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+* Possui no mínimo 1 banheiro.
+
+**Nível 3**:
+
+* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+* Possui recepção; e
+* Possui no mínimo 1 banheiro; e
+* Possui acessibilidade, ao menos parcial. 
+
+**Nível 4**:
+
+* Possui recepção; e
+* Possui no mínimo 2 banheiros; e
+* Possui 1 ou mais computadores com Internet; e
+* Possui veículo próprio ou compartilhado; e
+* Possui acessibilidade, ao menos parcial; e
+* Possui 5 salas ou mais para atendimento.
+
+**Nível 5**:
+
+* Possui recepção; e
+* Possui no mínimo 2 banheiros; e
+* Possui 1 ou mais sala Administrativa; e
+* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+* Possui acessibilidade (com ou sem ABNT); e
+* Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
+
+## ID CREAS: Dimensão Recursos Humanos
+
+O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na dimensão de Recursos Humanos do ID CREAS no Brasil e Grandes Regiões.
+
+```{r fig-idcreas-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Recursos Humanos") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcreas-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Recursos Humanos") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Recursos Humanos, de acordo com o porte do Município onde está o CREAS.
+
+### Dimensão Recursos Humanos: CREAS em municípios de porte Médio ou menor
+
+**Nível 1**:
+
+* Inexistência de Assistente Social ou de Psicólogo; ou
+* Possuir menos de 3 trabalhadores (6, se CREAS Regional).
+
+**Nível 2**:
+
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 3 (6, se CREAS Regional); e
+* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+
+**Nível 3**:
+
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 3 (5, se CREAS Regional) deles de nível superior; e
+* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+
+**Nível 4**:
+
+* Possui no mínimo 1 Advogado; e
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 4 (6, se CREAS Regional) deles de nível superior; e
+* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+
+**Nível 5**:
+
+* Possui no mínimo 1 Advogado; e
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 7 (14, se CREAS Regional), sendo no mínimo 4 (7, se CREAS Regional) deles de nível superior; e
+* Possui no mínimo 1 Assistente Social (2, se CREAS Regional); e
+* Possui no mínimo 1 Psicólogos (2, se CREAS Regional); e
+* Possui no mínimo 1 trabalhador de nível superior com vínculo estatutário ou empregado público celetista (2, se CREAS Regional).
+
+### Dimensão Recursos Humanos: CREAS em municípios de porte Grande ou em Metrópole
+
+**Nível 1**:
+
+* Inexistência de Assistente Social ou de Psicólogo; ou
+* Possuir menos de 6 trabalhadores; ou
+* Possuir menos de 4 profissionais das áreas de serviço social e psicologia.
+
+**Nível 2**:
+
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 6; e 
+* Tem quantidade total de Assistentes Sociais mais Psicólogos maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+
+**Nível 3**:
+
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 5 deles de nível superior; e 
+* Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+
+**Nível 4**:
+
+* Possui no mínimo 1 Advogado; e
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 6 deles de nível superior; e 
+* Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+
+**Nível 5**:
+
+* Possui no mínimo 1 Advogado; e
+* Possui Coordenador com nível superior; e
+* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 14, sendo no mínimo 7 deles de nível superior; e 
+* Possui no mínimo 2 Assistentes Sociais; e
+* Possui no mínimo 2 Psicólogos; e
+* Possui no mínimo 2 trabalhadores de nível superior com vínculo estatutário ou empregado público celetista. 
+
+## ID CREAS: Dimensão Serviços & Benefícios
+
+O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da dimensão de Serviços & Benefícios do ID CREAS no Brasil e Grandes Regiões.
+
+```{r fig-idcreas-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Serviços & Benefícios") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idcreas-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Serviços & Benefícios") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Serviços & Benefícios, de acordo com o porte do Município onde está o CREAS.
+
+### Dimensão Serviços & Benefícios: CREAS em municípios de porte Médio ou menor
+
+**Nível 1**:
+
+* Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+* Ter articulação frágil ou inexistente com o CRAS; ou
+* Não possuir Assistente Social nem Psicólogo. 
+
+**Nível 2**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Possui forte articulação com o CRAS.
+
+**Nível 3**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Oferta o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+
+**Nível 4**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+* Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+* Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+
+**Nível 5**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Possui Assistente Social e Psicólogo; e
+* Funciona no mínimo 5 dias por semana e 40 horas semanais; e
+* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+* Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+* Mantém forte articulação com o CRAS e com o Conselho Tutelar.
+
+### Dimensão Serviços & Benefícios: CREAS  em municípios de porte Grande ou em Metrópole
+
+**Nível 1**:
+
+* Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+* Ter articulação frágil ou inexistente com o CRAS; ou
+* Não possuir Assistente Social nem Psicólogo. 
+
+**Nível 2**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Possui forte articulação com o CRAS.
+
+**Nível 3**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Oferta o Serviço de MSE.
+
+**Nível 4**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+* Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
+* Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
+
+**Nível 5**:
+
+* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Possui Assistente Social e Psicólogo; e
+* Funciona no mínimo 5 dias por semana e 40 horas semanais; e
+* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e
+* Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e
+* Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
 # Indicador de Desenvolvimento dos Conselhos
 
-## Indicador de Desenvolvimento dos Conselhos, médias
+O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
 
-```{r fig-idconselho, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
-#| fig-height: 40
+O @fig-idconselho mostra a evolução das médias do ID Conselho ao longo dos anos no Brasil e Grandes Regiões.
 
-tabela <- f_media_regiao_2_grupos(idconselho_2014, IDConselho, IBGE, "ID Conselho", "2014") %>%
+```{r}
+
+tabela_medias <- f_media_regiao_2_grupos(idconselho_2014, IDConselho, IBGE, "ID Conselho", "2014") %>%
   bind_rows(f_media_regiao_2_grupos(idconselho_2014, `Estrutura Administrativa`, IBGE, "Estrutura Administrativa", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idconselho_2014, `Dinâmica de Funcionamento`, IBGE, "Dinâmica de Funcionamento", "2014")) %>%
   bind_rows(f_media_regiao_2_grupos(idconselho_2014, `Composição do Conselho`, IBGE, "Composição do Conselho", "2014")) %>%
@@ -680,51 +1376,62 @@ tabela <- f_media_regiao_2_grupos(idconselho_2014, IDConselho, IBGE, "ID Conselh
                                           "Composição do Conselho",
                                           "ID Conselho")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)  
+```
+
+```{r fig-idconselho, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "ID Conselho") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
 
 ```
 
-```{r fig-idconselho-2, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho-1, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, m, Grupo1)  
 
 ```
 
-```{r fig-idconselho-3, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho-2, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, m, Grupo2)
 
 ```
 
-```{r fig-idconselho-4, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho-3, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, m, Grupo2)
 
 ```
 
-```{r fig-idconselho-5, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho-4, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, m, Região)
 
 ```
 
-```{r fig-idconselho-6, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho-5, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
 #| fig-height: 40
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, m, Região)
 
 ```
 
-## Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023
+```{r fig-idconselho-6, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:", eval=FALSE}
+#| fig-height: 40
 
-```{r fig-idconselho-niveis, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
-#| fig-height: 20
+  tabela_medias %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, m, Grupo1)
 
-tabela <- f_quantitativo_regiao_niveis(idconselho_2023, `Estrutura Administrativa`, IBGE7, "Estrutura Administrativa") %>%
+```
+
+```{r}
+
+tabela_quant <- f_quantitativo_regiao_niveis(idconselho_2023, `Estrutura Administrativa`, IBGE7, "Estrutura Administrativa") %>%
   bind_rows(f_quantitativo_regiao_niveis(idconselho_2023, `Dinâmica de Funcionamento`, IBGE7, "Dinâmica de Funcionamento")) %>%
   bind_rows(f_quantitativo_regiao_niveis(idconselho_2023, `Composição do Conselho`, IBGE7, "Composição do Conselho")) %>%
 
@@ -732,50 +1439,53 @@ tabela <- f_quantitativo_regiao_niveis(idconselho_2023, `Estrutura Administrativ
                                             "Dinâmica de Funcionamento",
                                             "Composição do Conselho")))
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
-
 ```
 
-```{r fig-idconselho-niveis-2, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
+```{r fig-idconselho-niveis, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo2, n, Grupo1)
 
 ```
 
-```{r fig-idconselho-niveis-3, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
+```{r fig-idconselho-niveis-2, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Região, Grupo1, n, Grupo2)
 
 ```
 
-```{r fig-idconselho-niveis-4, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
+```{r fig-idconselho-niveis-3, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Região, n, Grupo2)
 
 ```
 
-```{r fig-idconselho-niveis-5, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
+```{r fig-idconselho-niveis-4, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo1, Grupo2, n, Região)
 
 ```
 
-```{r fig-idconselho-niveis-6, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:"}
+```{r fig-idconselho-niveis-5, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
 #| fig-height: 20
 
-  tabela %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Grupo1, n, Região)
 
 ```
 
-## Indicador de Desenvolvimento dos Conselhos, percentuais de Conselhos em cada nível, 2023
+```{r fig-idconselho-niveis-6, fig.cap = "Indicador de Desenvolvimento dos Conselhos, quantitativo de Conselhos em cada nível, 2023:", eval=FALSE}
+#| fig-height: 20
 
-```{r fig-idconselho-percentual, fig.cap = "Indicador de Desenvolvimento dos Conselhos, percentuais de Conselhos em cada nível, 2023"}
+  tabela_quant %>% f_grafico_col_numero_flip_3_groups(Grupo2, Região, n, Grupo1)
 
-tabela <-
+```
+
+```{r}
+
+tabela_perc <-
             f_percentual_regiao_niveis(idconselho_2023, `Estrutura Administrativa`, IBGE7, "Estrutura Administrativa") %>%
   bind_rows(f_percentual_regiao_niveis(idconselho_2023, `Dinâmica de Funcionamento`, IBGE7, "Dinâmica de Funcionamento")) %>%
   bind_rows(f_percentual_regiao_niveis(idconselho_2023, `Composição do Conselho`, IBGE7, "Composição do Conselho")) %>%
@@ -784,12 +1494,288 @@ tabela <-
                                             "Dinâmica de Funcionamento",
                                             "Composição do Conselho")))
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
+```
+
+```{r fig-idconselho-percentual, fig.cap = "Indicador de Desenvolvimento dos Conselhos, percentuais de Conselhos em cada nível, 2023", eval=FALSE}
+
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Região, Grupo2, Percentual, Grupo1)
 
 ```
 
-```{r fig-idconselho-percentual-1, fig.cap = "Indicador de Desenvolvimento dos Conselhos, percentuais de Conselhos em cada nível, 2023"}
+```{r fig-idconselho-percentual-1, fig.cap = "Indicador de Desenvolvimento dos Conselhos, percentuais de Conselhos em cada nível, 2023", eval=FALSE}
 
-  tabela %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
+  tabela_perc %>% f_grafico_col_stack_percent_flip_2_x_groups(Grupo2, Região, Percentual, Grupo1)
 
 ```
+
+As seções a seguir tratam de cada uma das 3 dimensões do ID Conselho.
+
+## ID Conselho: Dimensão Estrutura Administrativa
+
+O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Administrativa do ID Conselho no Brasil e Grandes Regiões.
+
+```{r fig-idconselho-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Estrutura Administrativa") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idconselho-niveis-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, quantitativo de Conselhos em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Estrutura Administrativa") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID Conselho na dimensão Estrutura Administrativa, de acordo com o porte do Município onde está o Conselho.
+
+### Dimensão Estrutura Administrativa: Conselhos em municípios de porte Médio ou menor
+
+**Nível 1**:
+
+* **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou 
+* **Não** possui sala (exclusiva ou compartilhada); ou 
+* **Não** possui Secretaria Executiva.
+
+**Nível 2**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui uma ou mais salas de uso exclusivo ou compartilhado; e
+* Possui Secretaria Executiva. 
+
+**Nível 3**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui Secretaria Executiva; e 
+* Possui um ou mais computadores conectados à internet; e
+* Possui telefone de uso exclusivo ou compartilhado; e
+* Possui uma ou mais salas de uso exclusivo ou compartilhado.
+
+**Nível 4**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui Secretaria Executiva; e 
+* Possui um ou mais computadores conectados à internet; e
+* Possui telefone de uso exclusivo ou compartilhado; e
+* Possui uma ou mais salas de uso exclusivo.
+
+**Nível 5**:
+
+* Possui previsão de recursos específicos na Lei Orçamentária Anual; e
+* Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui uma ou mais salas de uso exclusivo; e
+* Possui Secretaria Executiva; e 
+* Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+* Possui telefone de uso exclusivo ou compartilhado.
+
+### Dimensão Estrutura Administrativa: Conselhos em municípios de porte Grande ou em Metrópole
+
+**Nível 1**:
+
+* **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou 
+* **Não** possui sala (exclusiva ou compartilhada); ou 
+* **Não** possui Secretaria Executiva.
+
+**Nível 2**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui uma ou mais salas de uso exclusivo ou compartilhado; e
+* Possui Secretaria Executiva. 
+
+**Nível 3**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui Secretaria Executiva; e 
+* Possui um ou mais computadores conectados à internet; e
+* Possui telefone de uso exclusivo ou compartilhado; e
+* Possui uma ou mais salas de uso exclusivo ou compartilhado.
+
+**Nível 4**:
+
+* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui Secretaria Executiva; e 
+* Possui um ou mais computadores conectados à internet; e
+* Possui telefone de uso exclusivo ou compartilhado; e
+* Possui uma ou mais salas de uso exclusivo.
+
+**Nível 5**:
+
+* Possui previsão de recursos específicos na Lei Orçamentária Anual; e
+* Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+* Possui uma ou mais salas de uso exclusivo; e
+* Possui Secretaria Executiva; e 
+* Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+* Possui telefone de uso exclusivo do Conselho; e
+* Tem Secretário Executivo exclusivo do Conselho de Assistência Social.
+
+## ID Conselho: Dimensão Dinâmica de Funcionamento
+
+O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na dimensão de Dinâmica de Funcionamento do ID Conselho no Brasil e Grandes Regiões.
+
+```{r fig-idconselho-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Dinâmica de Funcionamento") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idconselho-niveis-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, quantitativo de Conselhos em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Dinâmica de Funcionamento") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+Os requisitos para cada nível do ID Conselho na dimensão Dinâmica de Funcionamento são descritos a seguir:
+
+**Nível 1**:
+
+* **Não** realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); ou
+* **Não** deliberou sobre o Plano de Assistência Social.
+
+**Nível 2**:
+
+* Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+* Deliberou sobre o Plano de Assistência Social.
+
+**Nível 3**:
+
+* Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+* Possui Regimento Interno; e
+* Deliberou sobre o Plano de Assistência Social; e
+* Acompanha o cumprimento de deliberações da Conferência Municipal.
+
+**Nível 4**:
+
+* Realizou 8 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+* Possui Regimento Interno; e
+* Deliberou sobre o orçamento do executivo; e
+* Deliberou sobre o Plano de Assistência Social; e
+* É instância de Controle Social do Bolsa Família; e
+* Acompanha o cumprimento de deliberações da Conferência Municipal.
+
+**Nível 5**:
+
+* Realizou 10 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+* Possui Regimento Interno; e
+* Deliberou sobre o orçamento do executivo; e
+* Deliberou sobre o Plano de Assistência Social; e
+* É instância de Controle Social do Bolsa Família; e
+* Acompanha o cumprimento de deliberações da Conferência Municipal; e
+* Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e
+* Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.
+
+
+## ID Conselho: Dimensão Composição do Conselho
+
+O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da dimensão de Composição do Conselho do ID Conselho no Brasil e Grandes Regiões.
+
+```{r fig-idconselho-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, médias:"}
+#| fig-height: 10
+
+  tabela_medias %>%
+  filter(Grupo1 == "Composição do Conselho") %>%
+  f_grafico_col_numero_flip_2_x(Região, m, Grupo2)
+
+```
+
+```{r fig-idconselho-niveis-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, quantitativo de Conselhos em cada nível, 2023:"}
+
+  tabela_quant %>%
+  filter(Grupo2 == "Composição do Conselho") %>%
+  f_grafico_col_numero_flip_2_x(Região, n, Grupo1)
+
+```
+
+As subseções a seguir descrevem os requisitos para cada nível do ID Conselho na dimensão Composição do Conselho, de acordo com o porte do Município onde está o Conselho.
+
+### Dimensão Composição do Conselho: Conselhos em municípios de porte Médio ou menor
+
+**Nível 1**:
+
+* Possui menos de 6 conselheiros titulares; ou 
+* **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou 
+* **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 2**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 3**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 4**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+* Possui Presidente e Vice-Presidente eleitos em plenária; e
+* Permite que o Conselheiro possa ser reconduzido uma única vez. 
+
+**Nível 5**:
+
+* Possui no mínimo 8 conselheiros titulares; e
+* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+* Possui Presidente e Vice-Presidente eleitos em plenária; e
+* Permite que o Conselheiro possa ser reconduzido uma única vez; e
+* Possui representação governamental da área de assistência, saúde e educação.
+
+### Dimensão Composição do Conselho: Conselhos  em municípios de porte Grande ou em Metrópole
+
+**Nível 1**:
+
+* Possui menos de 6 conselheiros titulares; ou 
+* **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou 
+* **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 2**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 3**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+
+**Nível 4**:
+
+* Possui no mínimo 6 conselheiros titulares; e
+* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+* Possui Presidente e Vice-Presidente eleitos em plenária; e
+* Permite que o Conselheiro possa ser reconduzido uma única vez. 
+
+**Nível 5**:
+
+* Possui no mínimo 10 conselheiros titulares; e
+* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+* Possui Presidente e Vice-Presidente eleitos em plenária; e
+* Permite que o Conselheiro possa ser reconduzido uma única vez; e
+* Possui representação governamental da área de assistência, saúde e educação.
