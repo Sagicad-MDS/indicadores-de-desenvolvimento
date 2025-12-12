@@ -3,28 +3,48 @@ project:
   render: 
     - "*.qmd"
     - "!Municipais/Relatório*"
-    
+
 website:
   title: "Indicadores Censo SUAS"
-  navbar:
-    left:
-      - text: "Início"
-        href: index.qmd
+#  navbar:
+#    left:
+#      - text: "Início"
+#        href: index.qmd
 
   sidebar:
-    - id: municipais
-      contents:
-        - auto: Municipais
+    contents:
+      - text: "Nacional"
+        href: index.qmd
+      - auto: Municipais
+
+toc: true
+number-sections: true
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true
-    template-partials:
-      - title-block.html
+#    css: styles.css
+#    template-partials:
+#      - title-block.html
+    mainfont: "Rawline, Raleway, sans-serif"
+    fontsize: 14px
+    fontcolor: "#333333"
+    linkcolor: "#1351B4"
+    linestretch: 1.45
+    backgroundcolor: "#ffffff"
+    link-external-icon: true
+    link-external-newwindow: true
+    include-in-header:
+      - text: |
+          <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+          <script src="responsive-height.js"></script>
+
+crossref:
+  fig-title: Gráfico     # (default is "Figure")
+  tbl-title: Tabela     # (default is "Table")
+  title-delim: "."      # (default is ":")
+  fig-prefix: Gráfico   # (default is "Figure")
+  tbl-prefix: Tabela    # (default is "Table")
+#  ref-hyperlink: false # (default is true)
 
 execute:
   echo: false
@@ -34,5 +54,5 @@ execute:
   freeze: false
 
 lang: pt   
-fig-cap-location: top
+# fig-cap-location: top
 
