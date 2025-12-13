@@ -1,20 +1,10 @@
 ---
 title: Rio da Conceição
-author: "SAGICAD e SNAS / MDS"
+# author: "SAGICAD e SNAS / MDS"
 
-sidebar: false
+# sidebar: false
 
-number-sections: true
-
-fig-cap-location: top
-
-crossref:
-  fig-title: Gráfico     # (default is "Figure")
-  tbl-title: Tabela     # (default is "Table")
-  title-delim: "."      # (default is ":")
-  fig-prefix: Gráfico   # (default is "Figure")
-  tbl-prefix: Tabela    # (default is "Table")
-#  ref-hyperlink: false # (default is true)
+# fig-cap-location: top
 
 #format:
 #  html:
@@ -168,7 +158,7 @@ f_selecao_grupo_media = function(df, q_selecao, selecao, q_media, grupo, eixo_x)
 
 ```
 
-# ID CRAS: Índice de Desenvolvimento do CRAS
+# ID CRAS: Indicador de Desenvolvimento dos CRAS
 
 O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
 
@@ -1260,7 +1250,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 ```
 
-# ID CREAS: Índice de Desenvolvimento do CREAS
+# ID CREAS: Indicador de Desenvolvimento dos CREAS
 
 O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
 
@@ -1980,7 +1970,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 ```
 
-# ID Conselho: Índice de Desenvolvimento dos Conselhos de Assistência Social
+# ID Conselho: Indicador de Desenvolvimento dos Conselhos de Assistência Social
 
 O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
 
