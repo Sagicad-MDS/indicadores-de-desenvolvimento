@@ -3,299 +3,28 @@ title: "Indicadores Censo SUAS 2023"
 # author: "SAGICAD e SNAS / MDS"
 
 subtitle: "Indicadores Sintéticos de Desenvolvimento"
-
 ---
 
 ```{r}
-library("dplyr")
-library("stringr")
-library("forcats")
-library("tidyr")
-library("scales")
-library("readxl")
-library("readr")
-library("ggrepel")
-library("readODS")
-library("knitr")
-library("janitor")
-
-idconselho_2014 <- read_excel("../ID CONSELHO/IDConselho2014_alterado_08-12-2016.xlsx")
-idconselho_2015 <- read_excel("../ID CONSELHO/ID CONSELHO - 2015.xlsx")
-idconselho_2016 <- read_excel("../ID CONSELHO/ID CONSELHO - 2016.xlsx")
-idconselho_2017 <- read_excel("../ID CONSELHO/ID CONSELHO - 2017.xlsx")
-idconselho_2018 <- read_excel("../ID CONSELHO/ID CONSELHO - 2018.xlsx")
-idconselho_2019 <- read_excel("../ID CONSELHO/ID CONSELHO - 2019.xlsx",guess_max=7)
-idconselho_2020 <- read_excel("../ID CONSELHO/ID CONSELHO - 2020.xlsx",guess_max=12)
-idconselho_2021 <- read_excel("../ID CONSELHO/IDCONSELHO_2021_divulgacao.xlsx",guess_max=140)
-idconselho_2022 <- read_excel("../ID CONSELHO/IDConselho_Municipal_2022_divulgacao.xlsx")
-idconselho_2023 <- read_excel("../ID CONSELHO/IDConselho_Municipal_2023_divulgacao.xlsx", skip=4) %>%
-  mutate(Porte = case_when(Porte == "Pequeno Porte I"~"Pequeno I",
-                           Porte == "Pequeno Porte II"~"Pequeno II",
-                           Porte == "Médio Porte"~"Médio",
-                           Porte == "Grande Porte"~"Grande",
-                           Porte == "Metrópole"~"Metrópole"))
-
-idcras_2014 <- read_excel("../ID CRAS/NOVO_IDCRAS_2014_divulgação_retificado_07_10_2016.xlsx")
-idcras_2015 <- read_excel("../ID CRAS/NOVO_IDCRAS_2015_divulgação_retificado_07_10_2016.xlsx")
-idcras_2016 <- read_excel("../ID CRAS/IDCRAS_2016_FINAL_(01062017).xlsx")
-idcras_2017 <- read_excel("../ID CRAS/IDCRAS_2017_DIVULGAÇÃO_atualizado__030523.xlsx",sheet = 2, skip=6)
-idcras_2018 <- read_excel("../ID CRAS/IDCRAS_2018_DIVULGAÇÃO_atualizado_280423.xlsx")
-idcras_2019 <- read_excel("../ID CRAS/IDCRAS_2019_DIVULGAÇÃO_atualizado_280423.xlsx")
-idcras_2020 <- read_excel("../ID CRAS/IDCRAS_2020_DIVULGAÇÃO_atualizado_280423(1).xlsx")
-idcras_2021 <- read_excel("../ID CRAS/IDCRAS_2021_DIVULGAÇÃO_atulaizado_280423(1).xlsx")
-
-idcras_2022 <- read_excel("../ID CRAS/IDCRAS_2022_DIVULGAÇÃO_atualizado_280423(1).xlsx")
-cras_2022 <- read_excel("../Censo SUAS 2022/1_CRAS/Censo_SUAS_2022_CRAS_Dados_Gerais_Divulgação.xlsx") %>%
-  select(NU_IDENTIFICADOR, q1)
-idcras_2022 <- idcras_2022 %>%
-  merge(cras_2022, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
-
-idcras_2023 <- read_excel("../ID CRAS/IDCRAS_2023_DIVULGAÇÃO_retificado EV_260824(1).xlsx", skip=6) %>%
-  mutate(Porte = case_when(Porte == 1~"Pequeno I",
-                           Porte == 2~"Pequeno II",
-                           Porte == 3~"Médio",
-                           Porte == 4~"Grande",
-                           Porte == 5~"Metrópole"))
-cras_2023 <- read_csv2("../Censo SUAS 2023/1 - CRAS/Censo_SUAS_2023_CRAS_Dados_Gerais.csv", locale = locale(encoding = "latin1")) %>%
-  select(NU_IDENTIFICADOR, q1)
-idcras_2023 <- idcras_2023 %>%
-  merge(cras_2023, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
-
-idcreas_2014 <- read_excel("../ID CREAS/IDCREAS_2014_DIVULGACAO_site.xlsx")
-idcreas_2015 <- read_excel("../ID CREAS/ID_CREAS_2015_divulgacao_site.xlsx",)
-idcreas_2016 <- read_excel("../ID CREAS/IDCREAS_2016_DIVULGAÇÃO.xlsx")
-idcreas_2017 <- read_excel("../ID CREAS/IDCREAS_2017_DIVULGAÇÃO (2).xlsx")
-idcreas_2018 <- read_excel("../ID CREAS/IDCREAS2018_divulgacao(2).xlsx")
-idcreas_2019 <- read_excel("../ID CREAS/IDCREAS2019_divulgacao.xlsx")
-idcreas_2020 <- read_excel("../ID CREAS/IDCREAS2020_divulgacao.xlsx")
-idcreas_2021 <- read_excel("../ID CREAS/IDCREAS2021_divulgacao_retificado191022(1) (1).xlsx")
-idcreas_2022 <- read_excel("../ID CREAS/IDCREAS2022_divulgacao_retificado270923.xlsx")
-idcreas_2023 <- read_ods("../ID CREAS/IDCREAS2023_divulgacao_retificado090824.ods", skip=6)
-
-niveis_ID <- c(1, 2, 3, 4, 5)
-
-color.map.option = "E" #"cividis"
-```
-
-```{r funcoes}
-
-f_media_regiao_2_grupos = function(df, q, regiao, grupo1, grupo2){
-  q <- enquo(q)
-  regiao <- enquo(regiao)
-  grupo1 <- quo_name(grupo1)
-  grupo2 <- quo_name(grupo2)
-
-  brasil <- df %>%
-    select(!! q) %>%
-    filter(!is.na(!! q)) %>%
-    summarise(m=mean(!! q)) %>%
-    mutate("Região" = "Brasil")
-
-  df %>%
-    select(!! q, !! regiao) %>%
-    filter(!is.na(!! q)) %>%
-    mutate(!! regiao := case_when(
-      substr(!! regiao,1,1) == "1"~"Norte",
-      substr(!! regiao,1,1) == "2"~"Nordeste",
-      substr(!! regiao,1,1) == "3"~"Sudeste",
-      substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
-      TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
-    group_by(!! regiao) %>%
-    summarise(m=mean(!! q)) %>%
-    mutate("Região" = !! regiao) %>%
-    bind_rows(brasil) %>%
-    mutate("Grupo1" = !! grupo1) %>%
-    mutate("Grupo2" = !! grupo2)
-}
-
-f_quantitativo_regiao_niveis = function(df, q_grupo, regiao, grupo2){
-  q_grupo <- enquo(q_grupo)
-  regiao <- enquo(regiao)
-  grupo2 <- quo_name(grupo2)
-
-  df %>%
-    select(!! q_grupo, !! regiao) %>%
-    mutate(!! regiao := case_when(
-      substr(!! regiao,1,1) == "1"~"Norte",
-      substr(!! regiao,1,1) == "2"~"Nordeste",
-      substr(!! regiao,1,1) == "3"~"Sudeste",
-      substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
-      TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
-    mutate(!! q_grupo := case_when(
-      !! q_grupo == 1~"Nível 1",
-      !! q_grupo == 2~"Nível 2",
-      !! q_grupo == 3~"Nível 3",
-      !! q_grupo == 4~"Nível 4",
-      !! q_grupo == 5~"Nível 5",
-      is.na(!! q_grupo)~"Sem informação")) %>%
-    count(!! q_grupo, !! regiao, name = "n", .drop = F) %>%
-
-# Não coloca o total nacional no gráfico por ser gráfico de um valor absoluto, e colocar uma categoria que corresponde à soma das outras deixa a escala do gráfico ruim para as outras categorias.
-#    spread(!! regiao, n, fill = 0) %>%
-#    mutate("Brasil" = rowSums(.[2:6])) %>%
-#    gather("Região","n", -!! q_grupo) %>%
-    mutate("Região" = !! regiao) %>%
-
-    mutate("Grupo1" = !! q_grupo) %>%
-    mutate("Grupo2" = !! grupo2)
-}
-
-f_percentual_regiao_niveis = function(df, q_grupo, regiao, grupo2){
-  q_grupo <- enquo(q_grupo)
-  regiao <- enquo(regiao)
-  grupo2 <- quo_name(grupo2)
-
-  df %>%
-    select(!! q_grupo, !! regiao) %>%
-    mutate(!! regiao := case_when(
-      substr(!! regiao,1,1) == "1"~"Norte",
-      substr(!! regiao,1,1) == "2"~"Nordeste",
-      substr(!! regiao,1,1) == "3"~"Sudeste",
-      substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
-      TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
-    mutate(!! q_grupo := case_when(
-      !! q_grupo == 1~"Nível 1",
-      !! q_grupo == 2~"Nível 2",
-      !! q_grupo == 3~"Nível 3",
-      !! q_grupo == 4~"Nível 4",
-      !! q_grupo == 5~"Nível 5",
-      is.na(!! q_grupo)~"Sem informação")) %>%
-    count(!! q_grupo, !! regiao, name = "n", .drop = F) %>%
-    spread(!! regiao, n, fill = 0) %>%
-    mutate("Brasil" = rowSums(.[2:6])) %>%
-    gather("Região","n", -!! q_grupo) %>%
-    group_by(Região) %>%
-    mutate(Percentual = n/sum(n)) %>%
-    mutate("Grupo1" = !! q_grupo) %>%
-    mutate("Grupo2" = !! grupo2)
-}
-
-f_grafico_col_numero_flip_2_x = function(df, x1, y, x2){
-  x1 <- enquo(x1)
-  y <- enquo(y)
-  x2 <- enquo(x2)
-  
-  df <- df %>%
-    ggplot(aes(x = fct_rev(!! x2), y = !! y)) +
-    geom_col(aes(fill = !! y), position = "dodge") +
-    geom_text(aes(label = format(!! y, big.mark=".", digits = 3, decimal.mark = ",")),
-              hjust = -0.1,
-              position = position_dodge(width = 0.9),
-              check_overlap = TRUE) +
-    facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
-    scale_x_discrete(expand = expansion(add = 1)) +
-    scale_y_continuous(expand = expansion(mult = c(0, .1))) +
-    scale_fill_viridis_c(option = color.map.option) +
-    coord_flip() +
-    theme(legend.position="none",
-          axis.title = element_blank(),
-          axis.ticks = element_blank(),
-          axis.text.x = element_blank(),
-          axis.line.y = element_line(),
-          panel.background = element_blank(),
-          panel.spacing = unit(0, "lines"),
-          strip.background = element_blank(),
-          strip.placement = "outside",
-          strip.text.y.left = element_text(angle = 0, hjust = 1)
-    )
-#  if(gera.graficos.office) {
-#    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-#    arquivo_graficos_criado <<- TRUE
-#  }
-  df
-}
-
-f_grafico_col_numero_flip_3_groups = function(df, x1, x2, y, grupo){
-  x1 <- enquo(x1)
-  x2 <- enquo(x2)
-  y <- enquo(y)
-  grupo <- enquo(grupo)
-
-  df <- df %>%
-    ggplot(aes(x = fct_rev(!! x2), y = !! y, group = fct_rev(!! grupo))) +
-    geom_col(aes(fill = !! grupo), position = "dodge") +
-    geom_text(aes(label = format(!! y, big.mark=".", digits = 3, decimal.mark = ",")),
-              hjust = -0.1,
-              position = position_dodge(width = 0.9),
-              check_overlap = TRUE) +
-    facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
-    scale_x_discrete(expand = expansion(add = 1)) +
-    scale_y_continuous(expand = expansion(mult = c(0, .11))) +
-    scale_fill_viridis_d(option = color.map.option) +
-    coord_flip() +
-    theme(legend.position="right",
-          legend.title = element_blank(),
-          axis.title = element_blank(),
-          axis.ticks = element_blank(),
-          axis.text.x = element_blank(),
-          axis.line.y = element_line(),
-          panel.background = element_blank(),
-          panel.spacing = unit(0, "lines"),
-          strip.background = element_blank(),
-          strip.placement = "outside",
-          strip.text.y.left = element_text(angle = 0, hjust = 1)
-         )
-#  if(gera.graficos.office) {
-#    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-#    arquivo_graficos_criado <<- TRUE
-#  }
-  df
-}
-
-f_grafico_col_stack_percent_flip_2_x_groups = function(df, x1, x2, y, grupo){
-  x1 <- enquo(x1)
-  x2 <- enquo(x2)
-  y <- enquo(y)
-  grupo <- enquo(grupo)
-
-  df <- df %>%
-    mutate(precisao = ifelse(!! y < 0.0995, 0.1, 1)) %>%
-    arrange(!! grupo) %>%
-    ggplot(aes(x = fct_rev(!! x2), y = !! y)) +
-    geom_col(aes(fill = !! grupo), position = position_stack(reverse = TRUE)) +
-    geom_text(aes(label = ifelse(!! y > 0.0005, label_percent(accuracy = precisao, decimal.mark = ",")(!! y), ""), fill = !! grupo, color = after_scale(prismatic::best_contrast(fill, c("white", "black")))),
-              position = position_stack(reverse = TRUE, vjust = .5),
-              check_overlap = TRUE) +
-    facet_wrap(vars(!! x1), strip.position = "left", ncol = 1) +
-    scale_x_discrete(expand = expansion(add = 1)) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-    scale_fill_viridis_d(option = color.map.option) +
-    coord_flip() +
-    theme(legend.position="bottom",
-          legend.title = element_blank(),
-          axis.title = element_blank(),
-          axis.ticks = element_blank(),
-          axis.text.x = element_blank(),
-          axis.line.y = element_line(),
-          panel.background = element_blank(),
-          panel.spacing = unit(0, "lines"),
-          strip.background = element_blank(),
-          strip.placement = "outside",
-          strip.text.y.left = element_text(angle = 0, hjust = 1)
-          )
-#  if(gera.graficos.office) {
-#    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-#    arquivo_graficos_criado <<- TRUE
-#  }
-  df
-}
-
+source("_setup.R")
+pasta_dados <- "../"
+source("_carregamento.R")
+source("_funcoes.R")
 ```
 
 # Apresentação
 
 Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento dos equipamentos do SUAS. Esta publicação contém um relatório com resultados nacionais e por regiões, e também relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
 
+A fonte dos dados apresentados está disponibilizada [nesta página](https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index5.php) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social do Ministério do Desenvolvimento e Assistência Social, Famíia e Combate à Fome.
+
 Para visualizar um relatório municipal, selecione o Município no menu ou digite o nome do Município no campo de busca (ícone de lupa).
 
 Segue abaixo o relatório Nacional e por Grandes Regiões.
 
-# Indicador de Desenvolvimento dos CRAS
+# [Indicador de Desenvolvimento dos CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)
 
-O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
+O [ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-idcras mostra a evolução das médias do ID CRAS ao longo dos anos no Brasil e Grandes Regiões.
 
@@ -316,7 +45,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcras_2014, `IDCRAS 2014sintético`, I
   bind_rows(f_media_regiao_2_grupos(idcras_2016, `Dimensão Recursos Humanos`, IBGE, "Recursos Humanos", "2016")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2016, `Dimensão Serviços & Benefícios`, IBGE, "Serviços & Benefícios", "2016")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcras_2017, IDCRAS, Região, "ID CRAS", "2017")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcras_2017, `IDCRAS médio do município`, Região, "ID CRAS", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2017, `Estrutura Física`, Região, "Estrutura Física", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2017, `Recursos Humanos`, Região, "Recursos Humanos", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcras_2017, `Serviços `, Região, "Serviços & Benefícios", "2017")) %>%
@@ -515,9 +244,9 @@ tabela
 
 As seções a seguir tratam de cada uma das 3 dimensões do ID CRAS.
 
-## ID CRAS: Dimensão Estrutura Física
+## [ID CRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
 
-O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Física do ID CRAS no Brasil e Grandes Regiões.
+O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104) no Brasil e Grandes Regiões.
 
 ```{r fig-idcras-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, médias:"}
 #| fig-height: 10
@@ -542,79 +271,79 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 **Nível 1**:
 
-* Possui **menos de 2 salas de atendimento**; ou
-* **Não possui banheiro**; ou
-* Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
+-   Possui **menos de 2 salas de atendimento**; ou
+-   **Não possui banheiro**; ou
+-   Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
 
 **Nível 2**:
 
-* Possui no mínimo **2 salas de atendimento**; e
-* Possui pelo menos **1 banheiro**.
+-   Possui no mínimo **2 salas de atendimento**; e
+-   Possui pelo menos **1 banheiro**.
 
 **Nível 3**:
 
-* Possui **recepção**; e
-* Possui no mínimo **2 salas de atendimento**; e
-* Possui pelo menos **1 banheiro**; e
-* Possui **acessibilidade, ao menos parcial**.
+-   Possui **recepção**; e
+-   Possui no mínimo **2 salas de atendimento**; e
+-   Possui pelo menos **1 banheiro**; e
+-   Possui **acessibilidade, ao menos parcial**.
 
 **Nível 4**:
 
-* Possui **recepção**; e
-* Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
-* Possui no mínimo **2 banheiros**; e
-* Possui **acessibilidade, ao menos parcial**; e
-* Possui **pelo menos 1 computador conectado à internet**.
+-   Possui **recepção**; e
+-   Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+-   Possui no mínimo **2 banheiros**; e
+-   Possui **acessibilidade, ao menos parcial**; e
+-   Possui **pelo menos 1 computador conectado à internet**.
 
 **Nível 5**:
 
-* Possui **recepção**; e
-* Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
-* Possui no mínimo **1 sala administrativa**; e
-* Possui no mínimo **2 banheiros**; e
-* Possui **acessibilidade**; e
-* Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui **recepção**; e
+-   Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+-   Possui no mínimo **1 sala administrativa**; e
+-   Possui no mínimo **2 banheiros**; e
+-   Possui **acessibilidade**; e
+-   Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
 ### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 5.000 famílias
 
 **Nível 1**:
 
-* Possui **menos de 3 salas de atendimento**; ou
-* **Não possui banheiro**; ou
-* Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
+-   Possui **menos de 3 salas de atendimento**; ou
+-   **Não possui banheiro**; ou
+-   Funciona em **prédio compartilhado com ONG, ou com compartilhamento de todas as salas de atendimento**.
 
 **Nível 2**:
 
-* Possui no mínimo **3 salas de atendimento**; e
-* Possui pelo menos **1 banheiro**.
+-   Possui no mínimo **3 salas de atendimento**; e
+-   Possui pelo menos **1 banheiro**.
 
 **Nível 3**:
 
-* Possui **recepção**; e
-* Possui no mínimo **3 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
-* Possui pelo menos **1 banheiro**; e
-* Possui **acessibilidade, ao menos parcial**.
+-   Possui **recepção**; e
+-   Possui no mínimo **3 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+-   Possui pelo menos **1 banheiro**; e
+-   Possui **acessibilidade, ao menos parcial**.
 
 **Nível 4**:
 
-* Possui **recepção**; e
-* Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
-* Possui no mínimo **2 banheiros**; e
-* Possui **acessibilidade, ao menos parcial**; e
-* Possui **pelo menos 2 computadores conectados à internet**.
+-   Possui **recepção**; e
+-   Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+-   Possui no mínimo **2 banheiros**; e
+-   Possui **acessibilidade, ao menos parcial**; e
+-   Possui **pelo menos 2 computadores conectados à internet**.
 
 **Nível 5**:
 
-* Possui **recepção**; e
-* Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
-* Possui no mínimo **1 sala administrativa**; e
-* Possui no mínimo **2 banheiros**; e
-* Possui **acessibilidade**; e
-* Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui **recepção**; e
+-   Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
+-   Possui no mínimo **1 sala administrativa**; e
+-   Possui no mínimo **2 banheiros**; e
+-   Possui **acessibilidade**; e
+-   Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
-## ID CRAS: Dimensão Recursos Humanos
+## [ID CRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
 
-O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da dimensão de Recursos Humanos do ID CRAS no Brasil e Grandes Regiões.
+O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão de Recursos Humanos do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) no Brasil e Grandes Regiões.
 
 ```{r fig-idcras-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, médias:"}
 #| fig-height: 10
@@ -639,95 +368,95 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 **Nível 1**:
 
-* Possui **menos de 3 profissionais**; ou
-* **Não possui Assistente Social nem Psicólogo**. 
+-   Possui **menos de 3 profissionais**; ou
+-   **Não possui Assistente Social nem Psicólogo**.
 
 **Nível 2**:
 
-* Possui no mínimo **3** profissionais, sendo, pelo menos **2** com nível superior*; e
-* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+-   Possui no mínimo **3** profissionais, sendo, pelo menos **2** com nível superior\*; e
+-   Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.
 
 **Nível 3**:
 
-* Possui no mínimo **4** (6, se EV) profissionais, sendo pelo menos **2** (4, se EV) com nível superior; e
-* Possui no mínimo **1 Assistente Social** (2, se EV).
+-   Possui no mínimo **4** (6, se EV) profissionais, sendo pelo menos **2** (4, se EV) com nível superior; e
+-   Possui no mínimo **1 Assistente Social** (2, se EV).
 
 **Nível 4**:
 
-* Possui no mínimo **4** (7, se EV) profissionais, sendo pelo menos **3** (5, se EV) com nível superior; e
-* Possui no mínimo **1 Assistente Social** (2, se EV); e 
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **4** (7, se EV) profissionais, sendo pelo menos **3** (5, se EV) com nível superior; e
+-   Possui no mínimo **1 Assistente Social** (2, se EV); e
+-   Possui **coordenador** com nível superior.
 
 **Nível 5**:
 
-* Possui no mínimo **5** (9, se EV) **profissionais**, sendo pelo menos **3** (5, se EV) com **nível superior**; e
-* Possui no mínimo **1 Assistente Social** (2, se EV) e **1 Psicólogo**; e 
-* Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **5** (9, se EV) **profissionais**, sendo pelo menos **3** (5, se EV) com **nível superior**; e
+-   Possui no mínimo **1 Assistente Social** (2, se EV) e **1 Psicólogo**; e
+-   Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
+-   Possui **coordenador** com nível superior.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 3.500 famílias
 
 **Nível 1**:
 
-* Possui **menos de 5 profissionais**; ou
-* **Não possui Assistente Social nem Psicólogo**. 
+-   Possui **menos de 5 profissionais**; ou
+-   **Não possui Assistente Social nem Psicólogo**.
 
 **Nível 2**:
 
-* Possui no mínimo **5** profissionais, sendo, pelo menos **2** com nível superior*; e
-* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+-   Possui no mínimo **5** profissionais, sendo, pelo menos **2** com nível superior\*; e
+-   Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.
 
 **Nível 3**:
 
-* Possui no mínimo **6** (8, se EV) profissionais, sendo pelo menos **3** (4, se EV) com nível superior; e
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV).
+-   Possui no mínimo **6** (8, se EV) profissionais, sendo pelo menos **3** (4, se EV) com nível superior; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV).
 
 **Nível 4**:
 
-* Possui no mínimo **6** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV); e 
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **6** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV); e
+-   Possui **coordenador** com nível superior.
 
 **Nível 5**:
 
-* Possui no mínimo **7** (11, se EV) **profissionais**, sendo pelo menos **4** (6, se EV) com **nível superior**; e
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
-* Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **7** (11, se EV) **profissionais**, sendo pelo menos **4** (6, se EV) com **nível superior**; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
+-   Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
+-   Possui **coordenador** com nível superior.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 5.000 famílias
 
 **Nível 1**:
 
-* Possui **menos de 6 profissionais ao todo, ou menos de 3 com nível superior**; ou
-* **Não possui Assistente Social nem Psicólogo**. 
+-   Possui **menos de 6 profissionais ao todo, ou menos de 3 com nível superior**; ou
+-   **Não possui Assistente Social nem Psicólogo**.
 
 **Nível 2**:
 
-* Possui no mínimo **6** profissionais, sendo pelo menos **3** com nível superior; e
-* Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.  
+-   Possui no mínimo **6** profissionais, sendo pelo menos **3** com nível superior; e
+-   Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.
 
 **Nível 3**:
 
-* Possui no mínimo **7** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV).
+-   Possui no mínimo **7** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV).
 
 **Nível 4**:
 
-* Possui no mínimo **7** (10, se EV) profissionais, sendo pelo menos **5** (7, se EV) com nível superior; e 
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **7** (10, se EV) profissionais, sendo pelo menos **5** (7, se EV) com nível superior; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
+-   Possui **coordenador** com nível superior.
 
 **Nível 5**:
 
-* Possui no mínimo **9** (13, se EV) **profissionais**, sendo pelo menos **5** (7, se EV) com **nível superior**; e
-* Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e 
-* Possui no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**; e
-* Possui **coordenador** com nível superior.
+-   Possui no mínimo **9** (13, se EV) **profissionais**, sendo pelo menos **5** (7, se EV) com **nível superior**; e
+-   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
+-   Possui no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**; e
+-   Possui **coordenador** com nível superior.
 
-## ID CRAS: Dimensão Serviços & Benefícios
+## [ID CRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
 
-O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da dimensão de Serviços & Benefícios do ID CRAS no Brasil e Grandes Regiões.
+O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106) no Brasil e Grandes Regiões.
 
 ```{r fig-idcras-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, médias:"}
 #| fig-height: 10
@@ -752,79 +481,79 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 **Nível 1**:
 
-* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
-* Possui **articulação frágil ou inexistente** com os Serviços de Educação e com os Serviços de Saúde; ou
-* Não possui profissionais de Serviço Social nem de Psicologia.
+-   **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+-   Possui **articulação frágil ou inexistente** com os Serviços de Educação e com os Serviços de Saúde; ou
+-   Não possui profissionais de Serviço Social nem de Psicologia.
 
 **Nível 2**:
 
-* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**. 
+-   **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e
+-   Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**.
 
 **Nível 3**:
 
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
-* Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* Possui **forte articulação com os Serviços de Educação e Saúde** no território. 
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+-   Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   Possui **forte articulação com os Serviços de Educação e Saúde** no território.
 
 **Nível 4**:
 
-* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
-* Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
-* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+-   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
+-   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
 **Nível 5**:
 
-* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
-* Possui profissionais de Serviço Social e/ou de Psicologia; e 
-* Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
-* Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
-* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+-   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   Possui profissionais de Serviço Social e/ou de Psicologia; e
+-   Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+-   Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
+-   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
 ### Dimensão Serviços & Benefícios: CRAS em municípios de porte Pequeno II ou maior
 
 **Nível 1**:
 
-* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
-* Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os CREAS; ou 
-* Não possui profissionais de Serviço Social nem de Psicologia.
+-   **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+-   Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os CREAS; ou
+-   Não possui profissionais de Serviço Social nem de Psicologia.
 
 **Nível 2**:
 
-* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
+-   **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e
+-   Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
 
 **Nível 3**:
 
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
-* Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+-   Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
 
 **Nível 4**:
 
-* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
-* Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
-* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+-   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
+-   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
 **Nível 5**:
 
-* Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
-* Possui profissionais de Serviço Social e de Psicologia; e
-* Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
-* Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
-* **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
+-   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
+-   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   Possui profissionais de Serviço Social e de Psicologia; e
+-   Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+-   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
+-   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
-# Indicador de Desenvolvimento dos CREAS
+# [Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
 
-O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
+O [ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-idcreas mostra a evolução das médias do ID CREAS ao longo dos anos no Brasil e Grandes Regiões.
 
@@ -845,7 +574,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
   bind_rows(f_media_regiao_2_grupos(idcreas_2016, `Dimensão Recursos Humanos`, IBGE, "Recursos Humanos", "2016")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2016, `Dimensão Serviços`, IBGE, "Serviços & Benefícios", "2016")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcreas_2017, IDCREAS, Região, "ID CREAS", "2017")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2017, `...11`, Região, "ID CREAS", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Estrutura Física`, Região, "Estrutura Física", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Recursos Humanos`, Região, "Recursos Humanos", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Serviços `, Região, "Serviços & Benefícios", "2017")) %>%
@@ -870,15 +599,15 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
   bind_rows(f_media_regiao_2_grupos(idcreas_2021, `RH`, Região, "Recursos Humanos", "2021")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2021, `SERV`, Região, "Serviços & Benefícios", "2021")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcreas_2022, idcreas, Região, "ID CREAS", "2022")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2022, IDCREAS, Região, "ID CREAS", "2022")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2022, `Estrutura Física`, Região, "Estrutura Física", "2022")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2022, `Recursos Humanos`, Região, "Recursos Humanos", "2022")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2022, `Serviços `, Região, "Serviços & Benefícios", "2022")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcreas_2023, IDCREAS, Região, "ID CREAS", "2023")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2023, `...10`, Região, "ID CREAS", "2023")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Estrutura Física`, Região, "Estrutura Física", "2023")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Recursos Humanos`, Região, "Recursos Humanos", "2023")) %>%
-  bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Serviços`, Região, "Serviços & Benefícios", "2023")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Serviços `, Região, "Serviços & Benefícios", "2023")) %>%
 
   mutate(Grupo1 = factor(Grupo1, levels = c("Estrutura Física",
                                           "Recursos Humanos",
@@ -942,7 +671,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
 
 tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
   bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
-  bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Serviços`, `Código IBGE`, "Serviços & Benefícios")) %>%
+  bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
 
   mutate(Grupo2 = factor(Grupo2, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -997,7 +726,7 @@ tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`,
 tabela_perc <-
             f_percentual_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
   bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
-  bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Serviços`, `Código IBGE`, "Serviços & Benefícios")) %>%
+  bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
 
   mutate(Grupo2 = factor(Grupo2, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -1019,9 +748,9 @@ tabela_perc <-
 
 As seções a seguir tratam de cada uma das 3 dimensões do ID CREAS.
 
-## ID CREAS: Dimensão Estrutura Física
+## [ID CREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
 
-O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Física do ID CREAS no Brasil e Grandes Regiões.
+O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108) no Brasil e Grandes Regiões.
 
 ```{r fig-idcreas-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, médias:"}
 #| fig-height: 10
@@ -1046,81 +775,81 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 **Nível 1**:
 
-* Possui menos de 3 salas; e/ou
-* Não possui banheiro; e/ou
-* Faz compartilhamento dos espaços de atendimento.
+-   Possui menos de 3 salas; e/ou
+-   Não possui banheiro; e/ou
+-   Faz compartilhamento dos espaços de atendimento.
 
 **Nível 2**:
 
-* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
-* Possui no mínimo 1 banheiro.
+-   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui no mínimo 1 banheiro.
 
 **Nível 3**:
 
-* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
-* Possui recepção; e
-* Possui no mínimo 1 banheiro; e
-* Possui acessibilidade, ao menos parcial. 
+-   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui recepção; e
+-   Possui no mínimo 1 banheiro; e
+-   Possui acessibilidade, ao menos parcial.
 
 **Nível 4**:
 
-* Possui recepção; e
-* Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais computadores com Internet; e
-* Possui veículo próprio ou compartilhado; e
-* Possui acessibilidade, ao menos parcial; e
-* Possui 3 salas ou mais para atendimento (5 se CREAS Regional).
+-   Possui recepção; e
+-   Possui no mínimo 2 banheiros; e
+-   Possui 1 ou mais computadores com Internet; e
+-   Possui veículo próprio ou compartilhado; e
+-   Possui acessibilidade, ao menos parcial; e
+-   Possui 3 salas ou mais para atendimento (5 se CREAS Regional).
 
 **Nível 5**:
 
-* Possui recepção; e
-* Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais sala Administrativa; e
-* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
-* Possui acessibilidade (com ou sem ABNT); e
-* Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
+-   Possui recepção; e
+-   Possui no mínimo 2 banheiros; e
+-   Possui 1 ou mais sala Administrativa; e
+-   Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+-   Possui acessibilidade (com ou sem ABNT); e
+-   Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
 ### Dimensão Estrutura Física: CREAS em municípios de porte Grande ou em Metrópole
 
 **Nível 1**:
 
-* Possui menos de 3 salas; e/ou
-* Não possui banheiro; e/ou
-* Faz compartilhamento dos espaços de atendimento.
+-   Possui menos de 3 salas; e/ou
+-   Não possui banheiro; e/ou
+-   Faz compartilhamento dos espaços de atendimento.
 
 **Nível 2**:
 
-* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
-* Possui no mínimo 1 banheiro.
+-   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui no mínimo 1 banheiro.
 
 **Nível 3**:
 
-* Possui no mínimo 3 salas (atendimento e/ou administrativa); e
-* Possui recepção; e
-* Possui no mínimo 1 banheiro; e
-* Possui acessibilidade, ao menos parcial. 
+-   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui recepção; e
+-   Possui no mínimo 1 banheiro; e
+-   Possui acessibilidade, ao menos parcial.
 
 **Nível 4**:
 
-* Possui recepção; e
-* Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais computadores com Internet; e
-* Possui veículo próprio ou compartilhado; e
-* Possui acessibilidade, ao menos parcial; e
-* Possui 5 salas ou mais para atendimento.
+-   Possui recepção; e
+-   Possui no mínimo 2 banheiros; e
+-   Possui 1 ou mais computadores com Internet; e
+-   Possui veículo próprio ou compartilhado; e
+-   Possui acessibilidade, ao menos parcial; e
+-   Possui 5 salas ou mais para atendimento.
 
 **Nível 5**:
 
-* Possui recepção; e
-* Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais sala Administrativa; e
-* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
-* Possui acessibilidade (com ou sem ABNT); e
-* Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
+-   Possui recepção; e
+-   Possui no mínimo 2 banheiros; e
+-   Possui 1 ou mais sala Administrativa; e
+-   Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+-   Possui acessibilidade (com ou sem ABNT); e
+-   Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
-## ID CREAS: Dimensão Recursos Humanos
+## [ID CREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
 
-O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na dimensão de Recursos Humanos do ID CREAS no Brasil e Grandes Regiões.
+O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensão de Recursos Humanos do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) no Brasil e Grandes Regiões.
 
 ```{r fig-idcreas-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, médias:"}
 #| fig-height: 10
@@ -1145,74 +874,74 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 **Nível 1**:
 
-* Inexistência de Assistente Social ou de Psicólogo; ou
-* Possuir menos de 3 trabalhadores (6, se CREAS Regional).
+-   Inexistência de Assistente Social ou de Psicólogo; ou
+-   Possuir menos de 3 trabalhadores (6, se CREAS Regional).
 
 **Nível 2**:
 
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 3 (6, se CREAS Regional); e
-* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 3 (6, se CREAS Regional); e
+-   Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
 
 **Nível 3**:
 
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 3 (5, se CREAS Regional) deles de nível superior; e
-* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 3 (5, se CREAS Regional) deles de nível superior; e
+-   Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
 
 **Nível 4**:
 
-* Possui no mínimo 1 Advogado; e
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 4 (6, se CREAS Regional) deles de nível superior; e
-* Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
+-   Possui no mínimo 1 Advogado; e
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 5 (10, se CREAS Regional), sendo no mínimo 4 (6, se CREAS Regional) deles de nível superior; e
+-   Possui no mínimo 1 Assistente Social e 1 Psicólogo (além disso, se for CREAS Regional, o total de Assistentes Sociais mais Psicólogos deve ser maior ou igual a 4).
 
 **Nível 5**:
 
-* Possui no mínimo 1 Advogado; e
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 7 (14, se CREAS Regional), sendo no mínimo 4 (7, se CREAS Regional) deles de nível superior; e
-* Possui no mínimo 1 Assistente Social (2, se CREAS Regional); e
-* Possui no mínimo 1 Psicólogos (2, se CREAS Regional); e
-* Possui no mínimo 1 trabalhador de nível superior com vínculo estatutário ou empregado público celetista (2, se CREAS Regional).
+-   Possui no mínimo 1 Advogado; e
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 7 (14, se CREAS Regional), sendo no mínimo 4 (7, se CREAS Regional) deles de nível superior; e
+-   Possui no mínimo 1 Assistente Social (2, se CREAS Regional); e
+-   Possui no mínimo 1 Psicólogos (2, se CREAS Regional); e
+-   Possui no mínimo 1 trabalhador de nível superior com vínculo estatutário ou empregado público celetista (2, se CREAS Regional).
 
 ### Dimensão Recursos Humanos: CREAS em municípios de porte Grande ou em Metrópole
 
 **Nível 1**:
 
-* Inexistência de Assistente Social ou de Psicólogo; ou
-* Possuir menos de 6 trabalhadores; ou
-* Possuir menos de 4 profissionais das áreas de serviço social e psicologia.
+-   Inexistência de Assistente Social ou de Psicólogo; ou
+-   Possuir menos de 6 trabalhadores; ou
+-   Possuir menos de 4 profissionais das áreas de serviço social e psicologia.
 
 **Nível 2**:
 
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 6; e 
-* Tem quantidade total de Assistentes Sociais mais Psicólogos maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 6; e
+-   Tem quantidade total de Assistentes Sociais mais Psicólogos maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
 
 **Nível 3**:
 
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 5 deles de nível superior; e 
-* Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 5 deles de nível superior; e
+-   Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
 
 **Nível 4**:
 
-* Possui no mínimo 1 Advogado; e
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 6 deles de nível superior; e 
-* Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
+-   Possui no mínimo 1 Advogado; e
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 10, sendo no mínimo 6 deles de nível superior; e
+-   Tem quantidade total de Assistentes Sociais, mais Psicólogos, maior ou igual a 4, sendo obrigatória a presença de profissionais destas duas áreas.
 
 **Nível 5**:
 
-* Possui no mínimo 1 Advogado; e
-* Possui Coordenador com nível superior; e
-* Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 14, sendo no mínimo 7 deles de nível superior; e 
-* Possui no mínimo 2 Assistentes Sociais; e
-* Possui no mínimo 2 Psicólogos; e
-* Possui no mínimo 2 trabalhadores de nível superior com vínculo estatutário ou empregado público celetista. 
+-   Possui no mínimo 1 Advogado; e
+-   Possui Coordenador com nível superior; e
+-   Tem quantidade total de trabalhadores (nível superior e médio) maior ou igual a 14, sendo no mínimo 7 deles de nível superior; e
+-   Possui no mínimo 2 Assistentes Sociais; e
+-   Possui no mínimo 2 Psicólogos; e
+-   Possui no mínimo 2 trabalhadores de nível superior com vínculo estatutário ou empregado público celetista.
 
-## ID CREAS: Dimensão Serviços & Benefícios
+## [ID CREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
 
-O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da dimensão de Serviços & Benefícios do ID CREAS no Brasil e Grandes Regiões.
+O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110) no Brasil e Grandes Regiões.
 
 ```{r fig-idcreas-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, médias:"}
 #| fig-height: 10
@@ -1237,85 +966,85 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 **Nível 1**:
 
-* Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
-* Ter articulação frágil ou inexistente com o CRAS; ou
-* Não possuir Assistente Social nem Psicólogo. 
+-   Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+-   Ter articulação frágil ou inexistente com o CRAS; ou
+-   Não possuir Assistente Social nem Psicólogo.
 
 **Nível 2**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Possui forte articulação com o CRAS.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Possui forte articulação com o CRAS.
 
 **Nível 3**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Oferta o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Oferta o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 
 **Nível 4**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
-* Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
-* Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+-   Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 
 **Nível 5**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
-* Possui Assistente Social e Psicólogo; e
-* Funciona no mínimo 5 dias por semana e 40 horas semanais; e
-* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
-* Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
-* Mantém forte articulação com o CRAS e com o Conselho Tutelar.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+-   Possui Assistente Social e Psicólogo; e
+-   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
+-   Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Mantém forte articulação com o CRAS e com o Conselho Tutelar.
 
-### Dimensão Serviços & Benefícios: CREAS  em municípios de porte Grande ou em Metrópole
+### Dimensão Serviços & Benefícios: CREAS em municípios de porte Grande ou em Metrópole
 
 **Nível 1**:
 
-* Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
-* Ter articulação frágil ou inexistente com o CRAS; ou
-* Não possuir Assistente Social nem Psicólogo. 
+-   Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+-   Ter articulação frágil ou inexistente com o CRAS; ou
+-   Não possuir Assistente Social nem Psicólogo.
 
 **Nível 2**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Possui forte articulação com o CRAS.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Possui forte articulação com o CRAS.
 
 **Nível 3**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Oferta o Serviço de MSE.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Oferta o Serviço de MSE.
 
 **Nível 4**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Possui forte articulação com o CRAS e com o Conselho Tutelar; e
-* Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
-* Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
+-   Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
+-   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
 **Nível 5**:
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
-* Possui Assistente Social e Psicólogo; e
-* Funciona no mínimo 5 dias por semana e 40 horas semanais; e
-* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e
-* Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e
-* Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+-   Possui Assistente Social e Psicólogo; e
+-   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
+-   Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e
+-   Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e
+-   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
-# Indicador de Desenvolvimento dos Conselhos
+# [Indicador de Desenvolvimento dos Conselhos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)
 
-O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
+O [ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
 
 O @fig-idconselho mostra a evolução das médias do ID Conselho ao longo dos anos no Brasil e Grandes Regiões.
 
@@ -1510,9 +1239,9 @@ tabela_perc <-
 
 As seções a seguir tratam de cada uma das 3 dimensões do ID Conselho.
 
-## ID Conselho: Dimensão Estrutura Administrativa
+## [ID Conselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
 
-O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na dimensão de Estrutura Administrativa do ID Conselho no Brasil e Grandes Regiões.
+O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Administrativa do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100) no Brasil e Grandes Regiões.
 
 ```{r fig-idconselho-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, médias:"}
 #| fig-height: 10
@@ -1537,84 +1266,84 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 **Nível 1**:
 
-* **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou 
-* **Não** possui sala (exclusiva ou compartilhada); ou 
-* **Não** possui Secretaria Executiva.
+-   **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou
+-   **Não** possui sala (exclusiva ou compartilhada); ou
+-   **Não** possui Secretaria Executiva.
 
 **Nível 2**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui uma ou mais salas de uso exclusivo ou compartilhado; e
-* Possui Secretaria Executiva. 
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui uma ou mais salas de uso exclusivo ou compartilhado; e
+-   Possui Secretaria Executiva.
 
 **Nível 3**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui Secretaria Executiva; e 
-* Possui um ou mais computadores conectados à internet; e
-* Possui telefone de uso exclusivo ou compartilhado; e
-* Possui uma ou mais salas de uso exclusivo ou compartilhado.
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui Secretaria Executiva; e
+-   Possui um ou mais computadores conectados à internet; e
+-   Possui telefone de uso exclusivo ou compartilhado; e
+-   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
 **Nível 4**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui Secretaria Executiva; e 
-* Possui um ou mais computadores conectados à internet; e
-* Possui telefone de uso exclusivo ou compartilhado; e
-* Possui uma ou mais salas de uso exclusivo.
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui Secretaria Executiva; e
+-   Possui um ou mais computadores conectados à internet; e
+-   Possui telefone de uso exclusivo ou compartilhado; e
+-   Possui uma ou mais salas de uso exclusivo.
 
 **Nível 5**:
 
-* Possui previsão de recursos específicos na Lei Orçamentária Anual; e
-* Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui uma ou mais salas de uso exclusivo; e
-* Possui Secretaria Executiva; e 
-* Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
-* Possui telefone de uso exclusivo ou compartilhado.
+-   Possui previsão de recursos específicos na Lei Orçamentária Anual; e
+-   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui uma ou mais salas de uso exclusivo; e
+-   Possui Secretaria Executiva; e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+-   Possui telefone de uso exclusivo ou compartilhado.
 
 ### Dimensão Estrutura Administrativa: Conselhos em municípios de porte Grande ou em Metrópole
 
 **Nível 1**:
 
-* **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou 
-* **Não** possui sala (exclusiva ou compartilhada); ou 
-* **Não** possui Secretaria Executiva.
+-   **Não** possui previsão de recursos na Lei Orçamentária Anual e **não** utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; ou
+-   **Não** possui sala (exclusiva ou compartilhada); ou
+-   **Não** possui Secretaria Executiva.
 
 **Nível 2**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui uma ou mais salas de uso exclusivo ou compartilhado; e
-* Possui Secretaria Executiva. 
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui uma ou mais salas de uso exclusivo ou compartilhado; e
+-   Possui Secretaria Executiva.
 
 **Nível 3**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui Secretaria Executiva; e 
-* Possui um ou mais computadores conectados à internet; e
-* Possui telefone de uso exclusivo ou compartilhado; e
-* Possui uma ou mais salas de uso exclusivo ou compartilhado.
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui Secretaria Executiva; e
+-   Possui um ou mais computadores conectados à internet; e
+-   Possui telefone de uso exclusivo ou compartilhado; e
+-   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
 **Nível 4**:
 
-* Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui Secretaria Executiva; e 
-* Possui um ou mais computadores conectados à internet; e
-* Possui telefone de uso exclusivo ou compartilhado; e
-* Possui uma ou mais salas de uso exclusivo.
+-   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui Secretaria Executiva; e
+-   Possui um ou mais computadores conectados à internet; e
+-   Possui telefone de uso exclusivo ou compartilhado; e
+-   Possui uma ou mais salas de uso exclusivo.
 
 **Nível 5**:
 
-* Possui previsão de recursos específicos na Lei Orçamentária Anual; e
-* Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
-* Possui uma ou mais salas de uso exclusivo; e
-* Possui Secretaria Executiva; e 
-* Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
-* Possui telefone de uso exclusivo do Conselho; e
-* Tem Secretário Executivo exclusivo do Conselho de Assistência Social.
+-   Possui previsão de recursos específicos na Lei Orçamentária Anual; e
+-   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
+-   Possui uma ou mais salas de uso exclusivo; e
+-   Possui Secretaria Executiva; e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+-   Possui telefone de uso exclusivo do Conselho; e
+-   Tem Secretário Executivo exclusivo do Conselho de Assistência Social.
 
-## ID Conselho: Dimensão Dinâmica de Funcionamento
+## [ID Conselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
 
-O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na dimensão de Dinâmica de Funcionamento do ID Conselho no Brasil e Grandes Regiões.
+O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na [dimensão de Dinâmica de Funcionamento do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) no Brasil e Grandes Regiões.
 
 ```{r fig-idconselho-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, médias:"}
 #| fig-height: 10
@@ -1637,45 +1366,44 @@ Os requisitos para cada nível do ID Conselho na dimensão Dinâmica de Funciona
 
 **Nível 1**:
 
-* **Não** realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); ou
-* **Não** deliberou sobre o Plano de Assistência Social.
+-   **Não** realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); ou
+-   **Não** deliberou sobre o Plano de Assistência Social.
 
 **Nível 2**:
 
-* Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
-* Deliberou sobre o Plano de Assistência Social.
+-   Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+-   Deliberou sobre o Plano de Assistência Social.
 
 **Nível 3**:
 
-* Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
-* Possui Regimento Interno; e
-* Deliberou sobre o Plano de Assistência Social; e
-* Acompanha o cumprimento de deliberações da Conferência Municipal.
+-   Realizou 6 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+-   Possui Regimento Interno; e
+-   Deliberou sobre o Plano de Assistência Social; e
+-   Acompanha o cumprimento de deliberações da Conferência Municipal.
 
 **Nível 4**:
 
-* Realizou 8 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
-* Possui Regimento Interno; e
-* Deliberou sobre o orçamento do executivo; e
-* Deliberou sobre o Plano de Assistência Social; e
-* É instância de Controle Social do Bolsa Família; e
-* Acompanha o cumprimento de deliberações da Conferência Municipal.
+-   Realizou 8 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+-   Possui Regimento Interno; e
+-   Deliberou sobre o orçamento do executivo; e
+-   Deliberou sobre o Plano de Assistência Social; e
+-   É instância de Controle Social do Bolsa Família; e
+-   Acompanha o cumprimento de deliberações da Conferência Municipal.
 
 **Nível 5**:
 
-* Realizou 10 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
-* Possui Regimento Interno; e
-* Deliberou sobre o orçamento do executivo; e
-* Deliberou sobre o Plano de Assistência Social; e
-* É instância de Controle Social do Bolsa Família; e
-* Acompanha o cumprimento de deliberações da Conferência Municipal; e
-* Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e
-* Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.
+-   Realizou 10 ou mais reuniões plenárias no ano anterior (ordinárias e extraordinárias); e
+-   Possui Regimento Interno; e
+-   Deliberou sobre o orçamento do executivo; e
+-   Deliberou sobre o Plano de Assistência Social; e
+-   É instância de Controle Social do Bolsa Família; e
+-   Acompanha o cumprimento de deliberações da Conferência Municipal; e
+-   Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e
+-   Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.
 
+## [ID Conselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
 
-## ID Conselho: Dimensão Composição do Conselho
-
-O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da dimensão de Composição do Conselho do ID Conselho no Brasil e Grandes Regiões.
+O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da [dimensão de Composição do Conselho do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102) no Brasil e Grandes Regiões.
 
 ```{r fig-idconselho-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, médias:"}
 #| fig-height: 10
@@ -1700,82 +1428,82 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 **Nível 1**:
 
-* Possui menos de 6 conselheiros titulares; ou 
-* **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou 
-* **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui menos de 6 conselheiros titulares; ou
+-   **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou
+-   **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 2**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 3**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 4**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
-* Possui Presidente e Vice-Presidente eleitos em plenária; e
-* Permite que o Conselheiro possa ser reconduzido uma única vez. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+-   Possui Presidente e Vice-Presidente eleitos em plenária; e
+-   Permite que o Conselheiro possa ser reconduzido uma única vez.
 
 **Nível 5**:
 
-* Possui no mínimo 8 conselheiros titulares; e
-* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
-* Possui Presidente e Vice-Presidente eleitos em plenária; e
-* Permite que o Conselheiro possa ser reconduzido uma única vez; e
-* Possui representação governamental da área de assistência, saúde e educação.
+-   Possui no mínimo 8 conselheiros titulares; e
+-   Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+-   Possui Presidente e Vice-Presidente eleitos em plenária; e
+-   Permite que o Conselheiro possa ser reconduzido uma única vez; e
+-   Possui representação governamental da área de assistência, saúde e educação.
 
-### Dimensão Composição do Conselho: Conselhos  em municípios de porte Grande ou em Metrópole
+### Dimensão Composição do Conselho: Conselhos em municípios de porte Grande ou em Metrópole
 
 **Nível 1**:
 
-* Possui menos de 6 conselheiros titulares; ou 
-* **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou 
-* **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui menos de 6 conselheiros titulares; ou
+-   **Não** possui conselheiros titulares representantes de usuários nem de organização de usuários; ou
+-   **Não** possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 2**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 3**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil.
 
 **Nível 4**:
 
-* Possui no mínimo 6 conselheiros titulares; e
-* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
-* Possui Presidente e Vice-Presidente eleitos em plenária; e
-* Permite que o Conselheiro possa ser reconduzido uma única vez. 
+-   Possui no mínimo 6 conselheiros titulares; e
+-   Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+-   Possui Presidente e Vice-Presidente eleitos em plenária; e
+-   Permite que o Conselheiro possa ser reconduzido uma única vez.
 
 **Nível 5**:
 
-* Possui no mínimo 10 conselheiros titulares; e
-* Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
-* Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
-* Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
-* Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
-* Possui Presidente e Vice-Presidente eleitos em plenária; e
-* Permite que o Conselheiro possa ser reconduzido uma única vez; e
-* Possui representação governamental da área de assistência, saúde e educação.
+-   Possui no mínimo 10 conselheiros titulares; e
+-   Possui representantes da sociedade civil eleitos por assembleias constituídas para esse fim; e
+-   Possui pelo menos um conselheiro titular representante de usuários ou organização de usuários; e
+-   Possui pelo menos um conselheiro titular representante de trabalhadores do setor; e
+-   Possui alternância na presidência entre os representantes de governo e os representantes da sociedade civil; e
+-   Possui Presidente e Vice-Presidente eleitos em plenária; e
+-   Permite que o Conselheiro possa ser reconduzido uma única vez; e
+-   Possui representação governamental da área de assistência, saúde e educação.
