@@ -23,69 +23,10 @@ params:
 ---
 
 ```{r}
-library("dplyr")
-library("janitor")
-library("readxl")
-library("readr")
-library("readODS")
-library("ggrepel")
-library("knitr")
-
-idconselho_2014 <- read_excel("../../../ID CONSELHO/IDConselho2014_alterado_08-12-2016.xlsx")
-idconselho_2015 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2015.xlsx")
-idconselho_2016 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2016.xlsx")
-idconselho_2017 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2017.xlsx")
-idconselho_2018 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2018.xlsx")
-idconselho_2019 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2019.xlsx",guess_max=7)
-idconselho_2020 <- read_excel("../../../ID CONSELHO/ID CONSELHO - 2020.xlsx",guess_max=12)
-idconselho_2021 <- read_excel("../../../ID CONSELHO/IDCONSELHO_2021_divulgacao.xlsx",guess_max=140)
-idconselho_2022 <- read_excel("../../../ID CONSELHO/IDConselho_Municipal_2022_divulgacao.xlsx")
-idconselho_2023 <- read_excel("../../../ID CONSELHO/IDConselho_Municipal_2023_divulgacao.xlsx", skip=4) %>%
-  mutate(Porte = case_when(Porte == "Pequeno Porte I"~"Pequeno I",
-                           Porte == "Pequeno Porte II"~"Pequeno II",
-                           Porte == "Médio Porte"~"Médio",
-                           Porte == "Grande Porte"~"Grande",
-                           Porte == "Metrópole"~"Metrópole"))
-
-idcras_2014 <- read_excel("../../../ID CRAS/NOVO_IDCRAS_2014_divulgação_retificado_07_10_2016.xlsx")
-idcras_2015 <- read_excel("../../../ID CRAS/NOVO_IDCRAS_2015_divulgação_retificado_07_10_2016.xlsx")
-idcras_2016 <- read_excel("../../../ID CRAS/IDCRAS_2016_FINAL_(01062017).xlsx")
-idcras_2017 <- read_excel("../../../ID CRAS/IDCRAS_2017_DIVULGAÇÃO_atualizado__030523.xlsx",sheet = 2, skip=6)
-idcras_2018 <- read_excel("../../../ID CRAS/IDCRAS_2018_DIVULGAÇÃO_atualizado_280423.xlsx")
-idcras_2019 <- read_excel("../../../ID CRAS/IDCRAS_2019_DIVULGAÇÃO_atualizado_280423.xlsx")
-idcras_2020 <- read_excel("../../../ID CRAS/IDCRAS_2020_DIVULGAÇÃO_atualizado_280423(1).xlsx")
-idcras_2021 <- read_excel("../../../ID CRAS/IDCRAS_2021_DIVULGAÇÃO_atulaizado_280423(1).xlsx")
-
-idcras_2022 <- read_excel("../../../ID CRAS/IDCRAS_2022_DIVULGAÇÃO_atualizado_280423(1).xlsx")
-cras_2022 <- read_excel("../../../Censo SUAS 2022/1_CRAS/Censo_SUAS_2022_CRAS_Dados_Gerais_Divulgação.xlsx") %>%
-  select(NU_IDENTIFICADOR, q1)
-idcras_2022 <- idcras_2022 %>%
-  merge(cras_2022, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
-
-idcras_2023 <- read_excel("../../../ID CRAS/IDCRAS_2023_DIVULGAÇÃO_retificado EV_260824(1).xlsx", skip=6) %>%
-  mutate(Porte = case_when(Porte == 1~"Pequeno I",
-                           Porte == 2~"Pequeno II",
-                           Porte == 3~"Médio",
-                           Porte == 4~"Grande",
-                           Porte == 5~"Metrópole"))
-cras_2023 <- read_csv2("../../../Censo SUAS 2023/1 - CRAS/Censo_SUAS_2023_CRAS_Dados_Gerais.csv", locale = locale(encoding = "latin1")) %>%
-  select(NU_IDENTIFICADOR, q1)
-idcras_2023 <- idcras_2023 %>%
-  merge(cras_2023, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
-
-idcreas_2014 <- read_excel("../../../ID CREAS/IDCREAS_2014_DIVULGACAO_site.xlsx")
-idcreas_2015 <- read_excel("../../../ID CREAS/ID_CREAS_2015_divulgacao_site.xlsx",)
-idcreas_2016 <- read_excel("../../../ID CREAS/IDCREAS_2016_DIVULGAÇÃO.xlsx")
-idcreas_2017 <- read_excel("../../../ID CREAS/IDCREAS_2017_DIVULGAÇÃO (2).xlsx")
-idcreas_2018 <- read_excel("../../../ID CREAS/IDCREAS2018_divulgacao(2).xlsx")
-idcreas_2019 <- read_excel("../../../ID CREAS/IDCREAS2019_divulgacao.xlsx")
-idcreas_2020 <- read_excel("../../../ID CREAS/IDCREAS2020_divulgacao.xlsx")
-idcreas_2021 <- read_excel("../../../ID CREAS/IDCREAS2021_divulgacao_retificado191022(1) (1).xlsx")
-idcreas_2022 <- read_excel("../../../ID CREAS/IDCREAS2022_divulgacao_retificado270923.xlsx")
-idcreas_2023 <- read_ods("../../../ID CREAS/IDCREAS2023_divulgacao_retificado090824.ods", skip=6)
-
-niveis_ID <- c(1, 2, 3, 4, 5)
-
+source("../../_setup.R")
+pasta_dados <- "../../../"
+source("../../_carregamento.R")
+source("../../_funcoes.R")
 ```
 
 ```{r setup-municipio}
@@ -123,44 +64,9 @@ porte <- sprintf("em município de porte %s", as.character(factor_porte))
 subtitle: "Relatório de Indicadores Censo SUAS 2023 do Município de `r nome_municipio`, `r uf_municipio`"
 ---
 
-```{r funcoes}
+# [ID CRAS: Indicador de Desenvolvimento dos CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)
 
-f_quantitativo_niveis_filtro = function(df, q_filtro, filtro, q_grupo, eixo_x, niveis){
-  q_filtro <- enquo(q_filtro)
-  filtro <- quo_name(filtro)
-  q_grupo <- enquo(q_grupo)
-  eixo_x <- quo_name(eixo_x)
-
-  df %>%
-    filter(!! q_filtro == !! filtro) %>% 
-    select(!! q_grupo) %>% 
-    mutate(!! q_grupo := factor(!! q_grupo, levels = niveis)) %>% 
-    count(!! q_grupo, name = "n", .drop = F) %>%
-    mutate("Eixo_X" = !! eixo_x) %>%  
-    mutate("Grupo" = !! q_grupo) 
-}
-
-f_selecao_grupo_media = function(df, q_selecao, selecao, q_media, grupo, eixo_x){
-  q_selecao <- enquo(q_selecao)
-  grupo <- quo_name(grupo)
-  selecao <- quo_name(selecao)
-  q_media <- enquo(q_media)
-  eixo_x <- quo_name(eixo_x)
-
-  df %>%
-    select(!! q_selecao, !! q_media) %>% 
-    filter(!! q_selecao == !! selecao) %>% 
-    filter(!is.na(!! q_media)) %>% 
-    summarise(m=mean(!! q_media)) %>% 
-    mutate("Eixo_X" = !! eixo_x) %>% 
-    mutate("Grupo" = !! grupo) 
-}
-
-```
-
-# ID CRAS: Indicador de Desenvolvimento dos CRAS
-
-O ID CRAS é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
+O [ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-ID-CRAS mostra a evolução das médias do ID CRAS ao longo dos anos no Município de `r nome_municipio`, `r uf_municipio`.
 
@@ -181,10 +87,10 @@ grafico <- f_selecao_grupo_media(idcras_2014, IBGE, municipio, `IDCRAS 2014sint�
   bind_rows(f_selecao_grupo_media(idcras_2016, IBGE, municipio, `Dimensão Recursos Humanos`, "Recursos Humanos", "2016")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2016, IBGE, municipio, `Dimensão Serviços & Benefícios`, "Serviços & Benefícios", "2016")) %>%
   
-  bind_rows(f_selecao_grupo_media(idcras_2017, `Código IBGE`, municipio, IDCRAS, "ID CRAS", "2017")) %>%
-  bind_rows(f_selecao_grupo_media(idcras_2017, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2017")) %>%
-  bind_rows(f_selecao_grupo_media(idcras_2017, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2017")) %>%
-  bind_rows(f_selecao_grupo_media(idcras_2017, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `IDCRAS médio do município`, "ID CRAS", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2017")) %>%
   
   bind_rows(f_selecao_grupo_media(idcras_2018, `Código IBGE`, municipio, IDCRAS, "ID CRAS", "2018")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2018, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2018")) %>%
@@ -305,7 +211,7 @@ cat("As seções a seguir apresentam os resultados do Município de", nome_munic
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CRAS: Dimensão Estrutura Física
+## [ID CRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
 ```
 
 ```{r}
@@ -614,7 +520,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CRAS: Dimensão Recursos Humanos
+## [ID CRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
 ```
 
 ```{r}
@@ -1047,7 +953,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CRAS: Dimensão Serviços & Benefícios
+## [ID CRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
 ```
 
 ```{r}
@@ -1250,9 +1156,9 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 ```
 
-# ID CREAS: Indicador de Desenvolvimento dos CREAS
+# [ID CREAS: Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
 
-O ID CREAS é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: Estrutura Física, Recursos Humanos e Serviços & Benefícios. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
+O [ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-CREAS-tabela}
 
@@ -1271,7 +1177,7 @@ tabela <- f_selecao_grupo_media(idcreas_2014, `Código IBGE`, municipio, `IDCREA
   bind_rows(f_selecao_grupo_media(idcreas_2016, IBGE, municipio, `Dimensão Recursos Humanos`, "Recursos Humanos", "2016")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2016, IBGE, municipio, `Dimensão Serviços`, "Serviços & Benefícios", "2016")) %>%
   
-  bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, IDCREAS, "ID CREAS", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `...11`, "ID CREAS", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2017")) %>%
@@ -1296,15 +1202,15 @@ tabela <- f_selecao_grupo_media(idcreas_2014, `Código IBGE`, municipio, `IDCREA
   bind_rows(f_selecao_grupo_media(idcreas_2021, IBGE, municipio, `RH`, "Recursos Humanos", "2021")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2021, IBGE, municipio, `SERV`, "Serviços & Benefícios", "2021")) %>%
   
-  bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, idcreas, "ID CREAS", "2022")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, IDCREAS, "ID CREAS", "2022")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2022")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2022")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2022")) %>% 
 
-  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, IDCREAS, "ID CREAS", "2023")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `...10`, "ID CREAS", "2023")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2023")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2023")) %>% 
-  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Serviços`, "Serviços & Benefícios", "2023")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2023")) %>% 
 
   mutate(Grupo = factor(Grupo, levels = c("Estrutura Física",
                                           "Recursos Humanos",
@@ -1360,7 +1266,7 @@ n_unidades <- n_unidades_municipio
 
 grafico <- f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", niveis_ID) %>% 
   bind_rows(f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", niveis_ID)) %>%
-  bind_rows(f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Serviços`, "Serviços & Benefícios", niveis_ID)) %>% 
+  bind_rows(f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", niveis_ID)) %>% 
 
   mutate(Eixo_X = factor(Eixo_X, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -1390,7 +1296,7 @@ cat("As seções a seguir apresentam os resultados do Município de", nome_munic
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CREAS: Dimensão Estrutura Física
+## [ID CREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
 ```
 
 ```{r}
@@ -1563,7 +1469,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CREAS: Dimensão Recursos Humanos
+## [ID CREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
 ```
 
 ```{r}
@@ -1766,7 +1672,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID CREAS: Dimensão Serviços & Benefícios
+## [ID CREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
 ```
 
 ```{r}
@@ -1970,9 +1876,9 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 * Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 ```
 
-# ID Conselho: Indicador de Desenvolvimento dos Conselhos de Assistência Social
+# [ID Conselho: Indicador de Desenvolvimento dos Conselhos de Assistência Social](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)
 
-O ID Conselho é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: Estrutura Administrativa, Dinâmica de Funcionamento e Composição do Conselho. Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
+O [ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-conselho-tabela}
 
@@ -2085,7 +1991,7 @@ cat("As seções a seguir apresentam os resultados do Município de", nome_munic
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID Conselho: Dimensão Estrutura Administrativa
+## [ID Conselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
 ```
 
 ```{r}
@@ -2246,7 +2152,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID Conselho: Dimensão Dinâmica de Funcionamento
+## [ID Conselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
 ```
 
 ```{r}
@@ -2390,7 +2296,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## ID Conselho: Dimensão Composição do Conselho
+## [ID Conselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
 ```
 
 ```{r}
