@@ -1,0 +1,61 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+    - "!Municipais/Relatório*"
+
+website:
+  title: "Indicadores Censo SUAS"
+#  navbar:
+#    left:
+#      - text: "Início"
+#        href: index.qmd
+
+  sidebar:
+    - id: inicio
+      contents:
+        - text: "Relatório Nacional / Selecionar outro Município"
+          href: index.qmd
+
+    - id: municipais
+      contents:
+        - auto: Municipais
+
+toc: true
+number-sections: true
+
+format:
+  html:
+#    css: styles.css
+#    template-partials:
+#      - title-block.html
+    mainfont: "Rawline, Raleway, sans-serif"
+    fontsize: 14px
+    fontcolor: "#333333"
+    linkcolor: "#1351B4"
+    linestretch: 1.45
+    backgroundcolor: "#ffffff"
+    link-external-icon: true
+    link-external-newwindow: true
+    include-in-header:
+      - text: |
+          <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+
+crossref:
+  fig-title: Gráfico     # (default is "Figure")
+  tbl-title: Tabela     # (default is "Table")
+  title-delim: "."      # (default is ":")
+  fig-prefix: Gráfico   # (default is "Figure")
+  tbl-prefix: Tabela    # (default is "Table")
+#  ref-hyperlink: false # (default is true)
+
+execute:
+  echo: false
+  message: false
+  warning: false
+  cache: false
+  freeze: false
+
+lang: pt   
+# fig-cap-location: top
+
