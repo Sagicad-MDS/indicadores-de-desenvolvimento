@@ -3,6 +3,13 @@ title: Santo Antônio do Descoberto
 # author: "SAGICAD e SNAS / MDS"
 
 # sidebar: false
+sidebar: inicio
+
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="../../responsive-height.js"></script>
 
 # fig-cap-location: top
 

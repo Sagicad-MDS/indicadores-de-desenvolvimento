@@ -12,10 +12,14 @@ website:
 #        href: index.qmd
 
   sidebar:
-    contents:
-      - text: "Nacional"
-        href: index.qmd
-      - auto: Municipais
+    - id: inicio
+      contents:
+        - text: "Relatório Nacional / Selecionar outro Município"
+          href: index.qmd
+
+    - id: municipais
+      contents:
+        - auto: Municipais
 
 toc: true
 number-sections: true
@@ -36,7 +40,6 @@ format:
     include-in-header:
       - text: |
           <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
-          <script src="responsive-height.js"></script>
 
 crossref:
   fig-title: Gráfico     # (default is "Figure")

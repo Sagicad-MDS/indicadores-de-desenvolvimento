@@ -3,6 +3,14 @@ title: "Indicadores Censo SUAS 2023"
 # author: "SAGICAD e SNAS / MDS"
 
 subtitle: "Indicadores Sintéticos de Desenvolvimento"
+
+sidebar: municipais
+
+format:
+  html:
+    include-in-header:
+      - text: |
+          <script src="responsive-height.js"></script>
 ---
 
 ```{r}
