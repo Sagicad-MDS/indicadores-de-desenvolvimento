@@ -10,4 +10,4 @@ library("readODS")
 library("knitr")
 library("janitor")
 
-color.map.option = "E" #"cividis"
+color.map.option = "F" #"rocket"
