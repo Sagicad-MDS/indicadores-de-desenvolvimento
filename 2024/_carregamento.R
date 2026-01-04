@@ -7,13 +7,20 @@ idconselho_2019 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDCONSELHO_2019_d
 idconselho_2020 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDCONSELHO_2020_divulgacao.xlsx"), skip=4, guess_max=12)
 idconselho_2021 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDCONSELHO_2021_divulgacao.xlsx"), skip=4, guess_max=140)
 idconselho_2022 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDConselho_Municipal_2022_divulgacao.xlsx"), sheet = "IDConselho_Municipal_2022_divul", skip=4)
+
 idconselho_2023 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDConselho_Municipal_2023_divulgacao.xlsx"), skip=4) %>%
   mutate(Porte = case_when(Porte == "Pequeno Porte I"~"Pequeno I",
                            Porte == "Pequeno Porte II"~"Pequeno II",
                            Porte == "Médio Porte"~"Médio",
                            Porte == "Grande Porte"~"Grande",
                            Porte == "Metrópole"~"Metrópole"))
-idconselho_2024 <- read_excel("../ID CONSELHO/IDConselho_Municipal_2024_divulgacao(1).xlsx", skip=4)
+
+idconselho_2024 <- read_excel(paste0(pasta_dados, "ID CONSELHO/IDConselho_Municipal_2024_divulgacao(1).xlsx"), skip=4) %>%
+  mutate(Porte = case_when(Porte == "Pequeno Porte I"~"Pequeno I",
+                           Porte == "Pequeno Porte II"~"Pequeno II",
+                           Porte == "Médio Porte"~"Médio",
+                           Porte == "Grande Porte"~"Grande",
+                           Porte == "Metrópole"~"Metrópole"))
 
 
 idcras_2014 <- read_excel(paste0(pasta_dados, "ID CRAS/NOVO_IDCRAS_2014_divulgação_retificado_07_10_2016.xlsx"))
@@ -43,7 +50,16 @@ cras_2023 <- read_csv2(paste0(pasta_dados, "Censo SUAS 2023/1 - CRAS/Censo_SUAS_
 idcras_2023 <- idcras_2023 %>%
   merge(cras_2023, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
 
-idcras_2024 <- read_excel("../ID CRAS/IDCRAS_2024_DIVULGAÇÃO(1).xlsx", skip=6)
+idcras_2024 <- read_excel(paste0(pasta_dados, "ID CRAS/IDCRAS_2024_DIVULGAÇÃO(1).xlsx"), skip=6) %>%
+  mutate(Porte = case_when(Porte == 1~"Pequeno I",
+                           Porte == 2~"Pequeno II",
+                           Porte == 3~"Médio",
+                           Porte == 4~"Grande",
+                           Porte == 5~"Metrópole"))
+cras_2024 <- read_csv2(paste0(pasta_dados, "Censo SUAS 2024/1_CRAS/Censo_SUAS_2024_CRAS_Dados_Gerais.csv"), locale = locale(encoding = "latin1")) %>%
+  select(NU_IDENTIFICADOR, q1)
+idcras_2024 <- idcras_2024 %>%
+  merge(cras_2024, by.x = "Nº IDENTIFICADOR do CRAS", by.y = "NU_IDENTIFICADOR")
 
 
 idcreas_2014 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS_2014_DIVULGACAO_site.xlsx"))
