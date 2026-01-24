@@ -65,10 +65,14 @@ idcras_2024 <- idcras_2024 %>%
 idcreas_2014 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS_2014_DIVULGACAO_site.xlsx"))
 idcreas_2015 <- read_excel(paste0(pasta_dados, "ID CREAS/ID_CREAS_2015_divulgacao_site.xlsx"))
 idcreas_2016 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS_2016_DIVULGAÇÃO.xlsx"), sheet = "IDCREAS 2016")
-idcreas_2017 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS_2017_DIVULGAÇÃO.xlsx"), skip=6)
+idcreas_2017 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS_2017_DIVULGAÇÃO.xlsx"), skip=6) %>%
+  rename(IDCREAS = ...11)
 idcreas_2018 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2018_divulgacao(2).xlsx"), skip=7)
 idcreas_2019 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2019_divulgacao.xlsx"), skip=7)
 idcreas_2020 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2020_divulgacao.xlsx"), skip=7)
 idcreas_2021 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2021_divulgacao_retificado191022(1).xlsx"), skip=7)
 idcreas_2022 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2022_divulgacao_retificado290124.xlsx"), skip=6)
-idcreas_2023 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2023_divulgacao_retificado090824.xlsx"), skip=6)
+idcreas_2023 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2023_divulgacao_retificado090824.xlsx"), skip=6) %>%
+  rename(IDCREAS = ...10)
+idcreas_2024 <- read_excel(paste0(pasta_dados, "ID CREAS/IDCREAS2024_divulgacao_retificado_13082025.xlsx"), skip=6) %>%
+  rename(IDCREAS = ...11)

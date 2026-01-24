@@ -100,7 +100,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcras_2014, `IDCRAS 2014sintético`, I
 
 ```
 
-```{r fig-idcras, fig.cap = "Indicador de Desenvolvimento do CRAS, médias:"}
+```{r fig-idcras, fig.cap = "Indicador de Desenvolvimento do CRAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -165,7 +165,7 @@ As seções a seguir tratam de cada uma das 3 dimensões do ID CRAS.
 
 O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104) no Brasil e Grandes Regiões.
 
-```{r fig-idcras-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, médias:"}
+```{r fig-idcras-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -174,7 +174,7 @@ O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [di
 
 ```
 
-```{r fig-idcras-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, quantitativo de CRAS em cada nível, 2024:"}
+```{r fig-idcras-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, quantitativo de CRAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Estrutura Física") %>%
@@ -262,7 +262,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão de Recursos Humanos do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) no Brasil e Grandes Regiões.
 
-```{r fig-idcras-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, médias:"}
+```{r fig-idcras-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -271,7 +271,7 @@ O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão
 
 ```
 
-```{r fig-idcras-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, quantitativo de CRAS em cada nível, 2024:"}
+```{r fig-idcras-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, quantitativo de CRAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Recursos Humanos") %>%
@@ -375,7 +375,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106) no Brasil e Grandes Regiões.
 
-```{r fig-idcras-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, médias:"}
+```{r fig-idcras-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -384,7 +384,7 @@ O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dim
 
 ```
 
-```{r fig-idcras-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, quantitativo de CRAS em cada nível, 2024:"}
+```{r fig-idcras-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, quantitativo de CRAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Serviços & Benefícios") %>%
@@ -491,7 +491,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
   bind_rows(f_media_regiao_2_grupos(idcreas_2016, `Dimensão Recursos Humanos`, IBGE, "Recursos Humanos", "2016")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2016, `Dimensão Serviços`, IBGE, "Serviços & Benefícios", "2016")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcreas_2017, `...11`, Região, "ID CREAS", "2017")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2017, `IDCREAS`, Região, "ID CREAS", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Estrutura Física`, Região, "Estrutura Física", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Recursos Humanos`, Região, "Recursos Humanos", "2017")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2017, `Serviços `, Região, "Serviços & Benefícios", "2017")) %>%
@@ -521,10 +521,15 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
   bind_rows(f_media_regiao_2_grupos(idcreas_2022, `Recursos Humanos`, Região, "Recursos Humanos", "2022")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2022, `Serviços `, Região, "Serviços & Benefícios", "2022")) %>%
 
-  bind_rows(f_media_regiao_2_grupos(idcreas_2023, `...10`, Região, "ID CREAS", "2023")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2023, `IDCREAS`, Região, "ID CREAS", "2023")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Estrutura Física`, Região, "Estrutura Física", "2023")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Recursos Humanos`, Região, "Recursos Humanos", "2023")) %>%
   bind_rows(f_media_regiao_2_grupos(idcreas_2023, `Serviços `, Região, "Serviços & Benefícios", "2023")) %>%
+
+  bind_rows(f_media_regiao_2_grupos(idcreas_2024, `IDCREAS`, Região, "ID CREAS", "2024")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2024, `Estrutura Física`, Região, "Estrutura Física", "2024")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2024, `Recursos Humanos`, Região, "Recursos Humanos", "2024")) %>%
+  bind_rows(f_media_regiao_2_grupos(idcreas_2024, `Serviços `, Região, "Serviços & Benefícios", "2024")) %>%
 
   mutate(Grupo1 = factor(Grupo1, levels = c("Estrutura Física",
                                           "Recursos Humanos",
@@ -533,7 +538,7 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
 
 ```
 
-```{r fig-idcreas, fig.cap = "Indicador de Desenvolvimento do CREAS, médias:"}
+```{r fig-idcreas, fig.cap = "Indicador de Desenvolvimento do CREAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -544,9 +549,9 @@ tabela_medias <- f_media_regiao_2_grupos(idcreas_2014, `IDCREAS sintético`, `C�
 
 ```{r}
 
-tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
-  bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
-  bind_rows(f_quantitativo_regiao_niveis(idcreas_2023, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
+tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2024, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
+  bind_rows(f_quantitativo_regiao_niveis(idcreas_2024, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
+  bind_rows(f_quantitativo_regiao_niveis(idcreas_2024, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
 
   mutate(Grupo2 = factor(Grupo2, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -557,9 +562,9 @@ tabela_quant <- f_quantitativo_regiao_niveis(idcreas_2023, `Estrutura Física`,
 ```{r}
 
 tabela_perc <-
-            f_percentual_regiao_niveis(idcreas_2023, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
-  bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
-  bind_rows(f_percentual_regiao_niveis(idcreas_2023, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
+            f_percentual_regiao_niveis(idcreas_2024, `Estrutura Física`, `Código IBGE`, "Estrutura Física") %>%
+  bind_rows(f_percentual_regiao_niveis(idcreas_2024, `Recursos Humanos`, `Código IBGE`, "Recursos Humanos")) %>%
+  bind_rows(f_percentual_regiao_niveis(idcreas_2024, `Serviços `, `Código IBGE`, "Serviços & Benefícios")) %>%
 
   mutate(Grupo2 = factor(Grupo2, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -573,7 +578,7 @@ As seções a seguir tratam de cada uma das 3 dimensões do ID CREAS.
 
 O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108) no Brasil e Grandes Regiões.
 
-```{r fig-idcreas-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, médias:"}
+```{r fig-idcreas-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -582,7 +587,7 @@ O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [d
 
 ```
 
-```{r fig-idcreas-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, quantitativo de CREAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Estrutura Física") %>%
@@ -672,7 +677,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensão de Recursos Humanos do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) no Brasil e Grandes Regiões.
 
-```{r fig-idcreas-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, médias:"}
+```{r fig-idcreas-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -681,7 +686,7 @@ O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensã
 
 ```
 
-```{r fig-idcreas-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, quantitativo de CREAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Recursos Humanos") %>%
@@ -764,7 +769,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110) no Brasil e Grandes Regiões.
 
-```{r fig-idcreas-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, médias:"}
+```{r fig-idcreas-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -773,7 +778,7 @@ O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [di
 
 ```
 
-```{r fig-idcreas-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, quantitativo de CREAS em cada nível, 2023:"}
+```{r fig-idcreas-niveis-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, quantitativo de CREAS em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Serviços & Benefícios") %>%
@@ -933,7 +938,7 @@ tabela_medias <- f_media_regiao_2_grupos(idconselho_2014, IDConselho, IBGE, "ID 
 
 ```
 
-```{r fig-idconselho, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias:"}
+```{r fig-idconselho, fig.cap = "Indicador de Desenvolvimento dos Conselhos, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -974,7 +979,7 @@ As seções a seguir tratam de cada uma das 3 dimensões do ID Conselho.
 
 O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Administrativa do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100) no Brasil e Grandes Regiões.
 
-```{r fig-idconselho-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, médias:"}
+```{r fig-idconselho-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -983,7 +988,7 @@ O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na
 
 ```
 
-```{r fig-idconselho-niveis-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, quantitativo de Conselhos em cada nível, 2024:"}
+```{r fig-idconselho-niveis-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, quantitativo de Conselhos em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Estrutura Administrativa") %>%
@@ -1076,7 +1081,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na [dimensão de Dinâmica de Funcionamento do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) no Brasil e Grandes Regiões.
 
-```{r fig-idconselho-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, médias:"}
+```{r fig-idconselho-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -1085,7 +1090,7 @@ O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na 
 
 ```
 
-```{r fig-idconselho-niveis-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, quantitativo de Conselhos em cada nível, 2024:"}
+```{r fig-idconselho-niveis-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, quantitativo de Conselhos em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Dinâmica de Funcionamento") %>%
@@ -1136,7 +1141,7 @@ Os requisitos para cada nível do ID Conselho na dimensão Dinâmica de Funciona
 
 O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da [dimensão de Composição do Conselho do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102) no Brasil e Grandes Regiões.
 
-```{r fig-idconselho-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, médias:"}
+```{r fig-idconselho-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, médias."}
 #| fig-height: 10
 
   tabela_medias %>%
@@ -1145,7 +1150,7 @@ O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias d
 
 ```
 
-```{r fig-idconselho-niveis-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, quantitativo de Conselhos em cada nível, 2024:"}
+```{r fig-idconselho-niveis-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, quantitativo de Conselhos em cada nível, 2024."}
 
   tabela_quant %>%
   filter(Grupo2 == "Composição do Conselho") %>%

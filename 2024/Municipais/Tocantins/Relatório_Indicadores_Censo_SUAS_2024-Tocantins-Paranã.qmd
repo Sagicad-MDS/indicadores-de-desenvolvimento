@@ -57,14 +57,14 @@ uf_municipio <- dados_municipio %>% pull(Nome_UF)
 porte_cras <- idcras_2024  %>%
                 filter(`Código IBGE` == municipio)  %>%
                 select(Porte)
-#porte_creas <- idcreas_2024  %>%
-#                filter(`Código IBGE` == municipio)  %>%
-#                select(Porte)
+porte_creas <- idcreas_2024  %>%
+                filter(`Código IBGE` == municipio)  %>%
+                select(Porte)
 porte_conselho <- idconselho_2024  %>%
                 filter(IBGE == municipio)  %>%
                 select(Porte)
 porte_municipio <- porte_cras %>%
-#                    bind_rows(porte_creas) %>%
+                    bind_rows(porte_creas) %>%
                     bind_rows(porte_conselho) %>%
                     mutate(Porte = factor(Porte, levels = c("Pequeno I",
                                                             "Pequeno II",
@@ -1201,7 +1201,7 @@ tabela <- f_selecao_grupo_media(idcreas_2014, `Código IBGE`, municipio, `IDCREA
   bind_rows(f_selecao_grupo_media(idcreas_2016, IBGE, municipio, `Dimensão Recursos Humanos`, "Recursos Humanos", "2016")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2016, IBGE, municipio, `Dimensão Serviços`, "Serviços & Benefícios", "2016")) %>%
   
-  bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `...11`, "ID CREAS", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `IDCREAS`, "ID CREAS", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcreas_2017, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2017")) %>%
@@ -1231,10 +1231,15 @@ tabela <- f_selecao_grupo_media(idcreas_2014, `Código IBGE`, municipio, `IDCREA
   bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2022")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2022, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2022")) %>% 
 
-  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `...10`, "ID CREAS", "2023")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `IDCREAS`, "ID CREAS", "2023")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2023")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2023")) %>% 
   bind_rows(f_selecao_grupo_media(idcreas_2023, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2023")) %>% 
+
+  bind_rows(f_selecao_grupo_media(idcreas_2024, `Código IBGE`, municipio, `IDCREAS`, "ID CREAS", "2024")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2024, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2024")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2024, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2024")) %>% 
+  bind_rows(f_selecao_grupo_media(idcreas_2024, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2024")) %>% 
 
   mutate(Grupo = factor(Grupo, levels = c("Estrutura Física",
                                           "Recursos Humanos",
@@ -1258,43 +1263,27 @@ cat(nome_municipio, " não tem ", equipamento, ".", sep="")
 cat("O @fig-ID-CREAS mostra a evolução das médias do ID CREAS ao longo dos anos no Município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do ID CREAS, 2014 a 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do ID CREAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 #| fig-height: 10
 
 tabela %>% 
   f_grafico_col_numero_flip_2_x(Grupo, m, Eixo_X)
 
-#grafico <- tabela %>% 
-#  ggplot(aes(x = Eixo_X, y = m, group = Grupo)) +
-#  geom_col(aes(fill = Grupo), position="dodge") +
-#  geom_text(aes(label = format(m, digits=3), y=m+0.3), position = position_dodge(width = 0.9), angle = 90, size = 3) +
-#  scale_y_continuous(expand = expand_scale(mult = c(0, .1))) +
-#  scale_fill_viridis_d(option = "E") +
-#  theme(legend.position="bottom",
-#        legend.title = element_blank(),
-#        axis.title = element_blank(),
-#        axis.ticks = element_blank(),
-#        axis.text.y = element_blank(),
-#        axis.line.x = element_line(),
-#        panel.background = element_blank()) +
-#  guides(fill=guide_legend(nrow=1,byrow=TRUE))
-
-#grafico
 ```
 
 ```{r}
-unidades_municipio <- idcreas_2023 %>%
+unidades_municipio <- idcreas_2024 %>%
                        filter(`Código IBGE` == municipio)
 
 n_unidades_municipio <- nrow(unidades_municipio)
 n_unidades <- n_unidades_municipio
 ```
 
-```{r fig-ID-CREAS-nivel, fig.cap = sprintf("Quantidade de CREAS em cada nível de ID, 2023: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
+```{r fig-ID-CREAS-nivel, fig.cap = sprintf("Quantidade de CREAS em cada nível de ID, 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
 
-  f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", niveis_ID) %>% 
-  bind_rows(f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", niveis_ID)) %>%
-  bind_rows(f_quantitativo_niveis_filtro(idcreas_2023, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", niveis_ID)) %>% 
+  f_quantitativo_niveis_filtro(idcreas_2024, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", niveis_ID) %>% 
+  bind_rows(f_quantitativo_niveis_filtro(idcreas_2024, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", niveis_ID)) %>%
+  bind_rows(f_quantitativo_niveis_filtro(idcreas_2024, `Código IBGE`, municipio, `Serviços `, "Serviços & Benefícios", niveis_ID)) %>% 
 
   mutate(Eixo_X = factor(Eixo_X, levels = c("Estrutura Física",
                                             "Recursos Humanos",
@@ -1302,21 +1291,6 @@ n_unidades <- n_unidades_municipio
 
   f_grafico_col_numero_flip_2_x(Eixo_X, n, Grupo)
 
-#  ggplot(aes(x = Eixo_X, y = n, group = Grupo)) +
-#  geom_col(aes(fill = Grupo), position="dodge") +
-#  geom_text(aes(label = sprintf("%d", n)), position = position_dodge(width = 0.9), vjust = -0.5) +
-#  scale_y_continuous(expand = expand_scale(mult = c(0, .1))) +
-#  scale_fill_viridis_d(option = "E") +
-#  theme(legend.position="bottom",
-#        legend.title = element_blank(),
-#        axis.title = element_blank(),
-#        axis.ticks = element_blank(),
-#        axis.text.y = element_blank(),
-#        axis.line.x = element_line(),
-#        panel.background = element_blank()) +
-#  guides(fill=guide_legend(nrow=1,byrow=TRUE))
-
-#grafico
 ```
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}

@@ -51,7 +51,8 @@ f_media_regiao_2_grupos = function(df, q, regiao, grupo1, grupo2){
       substr(!! regiao,1,1) == "2"~"Nordeste",
       substr(!! regiao,1,1) == "3"~"Sudeste",
       substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
+      substr(!! regiao,1,1) == "5" |
+      !! regiao == "Região Centro Oeste"~"Centro-Oeste",
       TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
     group_by(!! regiao) %>%
     summarise(m=mean(!! q)) %>%
@@ -73,7 +74,8 @@ f_quantitativo_regiao_niveis = function(df, q_grupo, regiao, grupo2){
       substr(!! regiao,1,1) == "2"~"Nordeste",
       substr(!! regiao,1,1) == "3"~"Sudeste",
       substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
+      substr(!! regiao,1,1) == "5" |
+      !! regiao == "Região Centro Oeste"~"Centro-Oeste",
       TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
     mutate(!! q_grupo := case_when(
       !! q_grupo == 1~"Nível 1",
@@ -106,7 +108,8 @@ f_percentual_regiao_niveis = function(df, q_grupo, regiao, grupo2){
       substr(!! regiao,1,1) == "2"~"Nordeste",
       substr(!! regiao,1,1) == "3"~"Sudeste",
       substr(!! regiao,1,1) == "4"~"Sul",
-      substr(!! regiao,1,1) == "5"~"Centro-Oeste",
+      substr(!! regiao,1,1) == "5" |
+      !! regiao == "Região Centro Oeste"~"Centro-Oeste",
       TRUE ~ str_replace(!! regiao, "Região ", ""))) %>%
     mutate(!! q_grupo := case_when(
       !! q_grupo == 1~"Nível 1",
@@ -153,10 +156,6 @@ f_grafico_col_numero_flip_2_x = function(df, x1, y, x2){
           strip.placement = "outside",
           strip.text.y.left = element_text(angle = 0, hjust = 1)
     )
-  #  if(gera.graficos.office) {
-  #    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-  #    arquivo_graficos_criado <<- TRUE
-  #  }
   df
 }
 
@@ -190,10 +189,6 @@ f_grafico_col_numero_flip_3_groups = function(df, x1, x2, y, grupo){
           strip.placement = "outside",
           strip.text.y.left = element_text(angle = 0, hjust = 1)
     )
-  #  if(gera.graficos.office) {
-  #    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-  #    arquivo_graficos_criado <<- TRUE
-  #  }
   df
 }
 
@@ -228,9 +223,5 @@ f_grafico_col_stack_percent_flip_2_x_groups = function(df, x1, x2, y, grupo){
           strip.placement = "outside",
           strip.text.y.left = element_text(angle = 0, hjust = 1)
     )
-  #  if(gera.graficos.office) {
-  #    df %>% graph2office(file=arquivo_graficos, append = arquivo_graficos_criado, paper = "A4", orient = "portrait")
-  #    arquivo_graficos_criado <<- TRUE
-  #  }
   df
 }
