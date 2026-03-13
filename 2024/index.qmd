@@ -22,19 +22,19 @@ source("_funcoes.R")
 
 # Apresentação
 
-Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento dos equipamentos do SUAS. Esta publicação contém um relatório com resultados nacionais e por regiões, e também relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
+Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento das unidades do Sistema Único de Assistência Social (SUAS). Esta publicação contém um relatório com resultados nacionais e por regiões, e relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
 
-A fonte dos dados apresentados está disponibilizada [nesta página](https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index5.php) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social do Ministério do Desenvolvimento e Assistência Social, Famíia e Combate à Fome.
+As principais fontes de dados são o Censo SUAS e o Registro Mensal de Atendimentos (RMA) e as informações estão disponibilizadas [nesta página](#0) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social, do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome.
 
-Para visualizar um relatório municipal, selecione o Município no menu ou digite o nome do Município no campo de busca (ícone de lupa).
+Para visualizar um relatório municipal, selecione o município no menu ou digite o nome do município no campo de busca (ícone de lupa).
 
-Segue abaixo o relatório Nacional e por Grandes Regiões.
+Segue abaixo o relatório nacional e por grandes regiões.
 
 # [Indicador de Desenvolvimento dos CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)
 
-O [ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O ID CRAS é a média das notas alcançadas nas três dimensões.
+O Indicador de Desenvolvimento do Centro de Referência de Assistência Social ([IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O IDCRAS é a média das notas alcançadas nas três dimensões.
 
-O @fig-idcras mostra a evolução das médias do ID CRAS ao longo dos anos no Brasil e Grandes Regiões.
+O @fig-idcras mostra a evolução das médias do IDCRAS ao longo dos anos no Brasil e nas grandes regiões.
 
 ```{r}
 
@@ -159,11 +159,11 @@ tabela <- cras_por_capacidade %>%
 tabela  
 ```
 
-As seções a seguir tratam de cada uma das 3 dimensões do ID CRAS.
+As seções a seguir tratam de cada uma das 3 dimensões do IDCRAS.
 
-## [ID CRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
+## [IDCRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
 
-O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104) no Brasil e Grandes Regiões.
+O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Física do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104) no Brasil e nas grandes regiões.
 
 ```{r fig-idcras-estrutura, fig.cap = "Dimensão Estrutura Física do ID CRAS, médias."}
 #| fig-height: 10
@@ -182,7 +182,7 @@ O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [di
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Estrutura Física, de acordo com a capacidade de referenciamento do CRAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Estrutura Física, de acordo com a capacidade de referenciamento do CRAS.
 
 ### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias
 
@@ -210,7 +210,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 -   Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade, ao menos parcial**; e
--   Possui **pelo menos 1 computador conectado à internet**.
+-   Possui **pelo menos 1 computador conectado à Internet**.
 
 **Nível 5**:
 
@@ -219,7 +219,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 -   Possui no mínimo **1 sala administrativa**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade**; e
--   Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à Internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
 ### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 5.000 famílias
 
@@ -247,7 +247,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 -   Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade, ao menos parcial**; e
--   Possui **pelo menos 2 computadores conectados à internet**.
+-   Possui **pelo menos 2 computadores conectados à Internet**.
 
 **Nível 5**:
 
@@ -256,11 +256,11 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 -   Possui no mínimo **1 sala administrativa**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade**; e
--   Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à Internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
-## [ID CRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
+## [IDCRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
 
-O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão de Recursos Humanos do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) no Brasil e Grandes Regiões.
+O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão Recursos Humanos do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) no Brasil e nas grandes regiões.
 
 ```{r fig-idcras-rh, fig.cap = "Dimensão Recursos Humanos do ID CRAS, médias."}
 #| fig-height: 10
@@ -279,7 +279,7 @@ O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Recursos Humanos, de acordo com a capacidade de referenciamento do CRAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Recursos Humanos, de acordo com a capacidade de referenciamento do CRAS.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 2.500 famílias
 
@@ -290,26 +290,26 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 **Nível 2**:
 
--   Possui no mínimo **3** profissionais, sendo, pelo menos **2** com nível superior\*; e
+-   Possui no mínimo **3** profissionais, sendo pelo menos **2** com nível superior\*; e
 -   Possui pelo menos **1 Assistente Social ou 1 Psicólogo**.
 
 **Nível 3**:
 
--   Possui no mínimo **4** (6, se EV) profissionais, sendo pelo menos **2** (4, se EV) com nível superior; e
+-   Possui no mínimo **4** (6, se Equipe Volante - EV) profissionais, sendo pelo menos **2** (4, se EV) com nível superior; e
 -   Possui no mínimo **1 Assistente Social** (2, se EV).
 
 **Nível 4**:
 
 -   Possui no mínimo **4** (7, se EV) profissionais, sendo pelo menos **3** (5, se EV) com nível superior; e
 -   Possui no mínimo **1 Assistente Social** (2, se EV); e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
 **Nível 5**:
 
 -   Possui no mínimo **5** (9, se EV) **profissionais**, sendo pelo menos **3** (5, se EV) com **nível superior**; e
 -   Possui no mínimo **1 Assistente Social** (2, se EV) e **1 Psicólogo**; e
 -   Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 3.500 famílias
 
@@ -332,14 +332,14 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 -   Possui no mínimo **6** (9, se EV) profissionais, sendo pelo menos **4** (6, se EV) com nível superior; e
 -   Possui no mínimo **2 Assistentes Sociais** (3, se EV); e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
 **Nível 5**:
 
 -   Possui no mínimo **7** (11, se EV) **profissionais**, sendo pelo menos **4** (6, se EV) com **nível superior**; e
 -   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
 -   Possui no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**; e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 5.000 famílias
 
@@ -362,18 +362,18 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 -   Possui no mínimo **7** (10, se EV) profissionais, sendo pelo menos **5** (7, se EV) com nível superior; e
 -   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
 **Nível 5**:
 
 -   Possui no mínimo **9** (13, se EV) **profissionais**, sendo pelo menos **5** (7, se EV) com **nível superior**; e
 -   Possui no mínimo **2 Assistentes Sociais** (3, se EV) e **1 Psicólogo**; e
 -   Possui no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**; e
--   Possui **coordenador** com nível superior.
+-   Possui **Coordenador** com nível superior.
 
-## [ID CRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
+## [IDCRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
 
-O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106) no Brasil e Grandes Regiões.
+O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dimensão Serviços & Benefícios do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106) no Brasil e nas grandes regiões.
 
 ```{r fig-idcras-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CRAS, médias."}
 #| fig-height: 10
@@ -392,31 +392,31 @@ O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dim
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na dimensão Serviços & Benefícios, de acordo com o porte do Município onde está o CRAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Serviços & Benefícios, de acordo com o porte do município onde está o CRAS.
 
-### Dimensão Serviços & Benefícios: CRAS em municípios de porte Pequeno I
+### Dimensão Serviços & Benefícios: CRAS em municípios de Pequeno Porte I
 
 **Nível 1**:
 
--   **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+-   **Não realiza** alguma(s) das seguintes atividades essenciais do **Serviço de Proteção e Atendimento Integral à Família (PAIF)**: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
 -   Possui **articulação frágil ou inexistente** com os Serviços de Educação e com os Serviços de Saúde; ou
 -   Não possui profissionais de Serviço Social nem de Psicologia.
 
 **Nível 2**:
 
 -   **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e
--   Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**.
+-   Possui **forte articulação com pelo menos um dos seguintes serviços: Serviços de Educação e Serviços de Saúde**.
 
 **Nível 3**:
 
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+-   **Executa o PAIF,** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no Benefício de Prestação Continuada (BPC)**; e
 -   Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 -   Possui **forte articulação com os Serviços de Educação e Saúde** no território.
 
 **Nível 4**:
 
 -   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 -   Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 -   Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
 -   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
@@ -424,19 +424,19 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 **Nível 5**:
 
 -   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 -   Possui profissionais de Serviço Social e/ou de Psicologia; e
 -   Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
--   **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+-   **Realiza no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF; e
 -   Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
 -   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
-### Dimensão Serviços & Benefícios: CRAS em municípios de porte Pequeno II ou maior
+### Dimensão Serviços & Benefícios: CRAS em municípios de Pequeno Porte II ou maiores
 
 **Nível 1**:
 
 -   **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
--   Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os CREAS; ou
+-   Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os Centros de Referência Especializados de Assistência Social (CREAS); ou
 -   Não possui profissionais de Serviço Social nem de Psicologia.
 
 **Nível 2**:
@@ -446,14 +446,14 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 
 **Nível 3**:
 
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
--   Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
+-   **Executa o PAIF,** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+-   Possui oferta de Serviço de Convivência **para** **pelo menos um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 -   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
 
 **Nível 4**:
 
 -   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   **Executa o PAIF,** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 -   Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 -   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
 -   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
@@ -461,18 +461,18 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CRAS na d
 **Nível 5**:
 
 -   Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
--   **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+-   **Executa o PAIF,** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 -   Possui profissionais de Serviço Social e de Psicologia; e
 -   Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
--   **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+-   **Realiza no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF; e
 -   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
 -   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
 # [Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
 
-O [ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
+O Indicador de Desenvolvimento do CREAS ([IDCREAS](#0)) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](#0), [Recursos Humanos](#0) e [Serviços & Benefícios](#0). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
 
-O @fig-idcreas mostra a evolução das médias do ID CREAS ao longo dos anos no Brasil e Grandes Regiões.
+O @fig-idcreas mostra a evolução das médias do IDCREAS ao longo dos anos no Brasil e nas grandes regiões.
 
 ```{r}
 
@@ -572,11 +572,11 @@ tabela_perc <-
 
 ```
 
-As seções a seguir tratam de cada uma das 3 dimensões do ID CREAS.
+As seções a seguir tratam de cada uma das 3 dimensões do IDCREAS.
 
-## [ID CREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
+## [IDCREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
 
-O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Física do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108) no Brasil e Grandes Regiões.
+O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Física do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108) no Brasil e nas grandes regiões.
 
 ```{r fig-idcreas-estrutura, fig.cap = "Dimensão Estrutura Física do ID CREAS, médias."}
 #| fig-height: 10
@@ -595,9 +595,9 @@ O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [d
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Estrutura Física, de acordo com o porte do Município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Estrutura Física, de acordo com o porte do município onde está o CREAS.
 
-### Dimensão Estrutura Física: CREAS em municípios de porte Médio ou menor
+### Dimensão Estrutura Física: CREAS em municípios de Médio Porte ou menores
 
 **Nível 1**:
 
@@ -607,12 +607,12 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 **Nível 2**:
 
--   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui no mínimo 3 salas (de atendimento e/ou administrativa); e
 -   Possui no mínimo 1 banheiro.
 
 **Nível 3**:
 
--   Possui no mínimo 3 salas (atendimento e/ou administrativa); e
+-   Possui no mínimo 3 salas (de atendimento e/ou administrativa); e
 -   Possui recepção; e
 -   Possui no mínimo 1 banheiro; e
 -   Possui acessibilidade, ao menos parcial.
@@ -630,12 +630,12 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
--   Possui 1 ou mais sala Administrativa; e
--   Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+-   Possui 1 ou mais sala administrativa; e
+-   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com Internet e veículo próprio ou compartilhado; e
 -   Possui acessibilidade (com ou sem ABNT); e
 -   Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
-### Dimensão Estrutura Física: CREAS em municípios de porte Grande ou em Metrópole
+### Dimensão Estrutura Física: CREAS em municípios de Grande Porte ou em Metrópoles
 
 **Nível 1**:
 
@@ -668,14 +668,14 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
--   Possui 1 ou mais sala Administrativa; e
--   Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+-   Possui 1 ou mais sala administrativa; e
+-   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com Internet e veículo próprio ou compartilhado; e
 -   Possui acessibilidade (com ou sem ABNT); e
 -   Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
-## [ID CREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
+## [IDCREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
 
-O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensão de Recursos Humanos do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) no Brasil e Grandes Regiões.
+O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensão Recursos Humanos do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) no Brasil e nas grandes regiões.
 
 ```{r fig-idcreas-rh, fig.cap = "Dimensão Recursos Humanos do ID CREAS, médias."}
 #| fig-height: 10
@@ -694,9 +694,9 @@ O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensã
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Recursos Humanos, de acordo com o porte do Município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Recursos Humanos, de acordo com o porte do município onde está o CREAS.
 
-### Dimensão Recursos Humanos: CREAS em municípios de porte Médio ou menor
+### Dimensão Recursos Humanos: CREAS em municípios de Médio Porte ou menores
 
 **Nível 1**:
 
@@ -730,7 +730,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 -   Possui no mínimo 1 Psicólogos (2, se CREAS Regional); e
 -   Possui no mínimo 1 trabalhador de nível superior com vínculo estatutário ou empregado público celetista (2, se CREAS Regional).
 
-### Dimensão Recursos Humanos: CREAS em municípios de porte Grande ou em Metrópole
+### Dimensão Recursos Humanos: CREAS em municípios de Grande Porte ou em Metrópoles
 
 **Nível 1**:
 
@@ -765,9 +765,9 @@ As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na 
 -   Possui no mínimo 2 Psicólogos; e
 -   Possui no mínimo 2 trabalhadores de nível superior com vínculo estatutário ou empregado público celetista.
 
-## [ID CREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
+## [IDCREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
 
-O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [dimensão de Serviços & Benefícios do ID CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110) no Brasil e Grandes Regiões.
+O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [dimensão Serviços & Benefícios do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110) no Brasil e nas grandes regiões.
 
 ```{r fig-idcreas-servicos, fig.cap = "Dimensão Serviços & Benefícios do ID CREAS, médias."}
 #| fig-height: 10
@@ -786,93 +786,93 @@ O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [di
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID CREAS na dimensão Serviços & Benefícios, de acordo com o porte do Município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Serviços & Benefícios, de acordo com o porte do município onde está o CREAS.
 
-### Dimensão Serviços & Benefícios: CREAS em municípios de porte Médio ou menor
+### Dimensão Serviços & Benefícios: CREAS em municípios de Médio Porte ou menores
 
 **Nível 1**:
 
--   Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+-   Não realizar alguma(s) das seguintes atividades essenciais do Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI): entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares, elaboração de relatórios técnicos sobre casos em acompanhamento; ou
 -   Ter articulação frágil ou inexistente com o CRAS; ou
 -   Não possuir Assistente Social nem Psicólogo.
 
 **Nível 2**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Possui forte articulação com o CRAS.
 
 **Nível 3**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
--   Oferta o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+-   Oferta o Serviço de Medidas Socioeducativas - MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 
 **Nível 4**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
--   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 50 casos; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 -   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
--   Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Oferta o Serviço de MSE, assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 
 **Nível 5**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares, ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
--   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 30 casos; e
 -   Possui Assistente Social e Psicólogo; e
 -   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
--   Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta as medidas de Liberdade Assistida (LA) e de Prestação de Serviços à Comunidade (PSC); acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 -   Mantém forte articulação com o CRAS e com o Conselho Tutelar.
 
-### Dimensão Serviços & Benefícios: CREAS em municípios de porte Grande ou em Metrópole
+### Dimensão Serviços & Benefícios: CREAS em municípios de Grande Porte ou em Metrópoles
 
 **Nível 1**:
 
--   Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+-   Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares, elaboração de relatórios técnicos sobre casos em acompanhamento; ou
 -   Ter articulação frágil ou inexistente com o CRAS; ou
 -   Não possuir Assistente Social nem Psicólogo.
 
 **Nível 2**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Possui forte articulação com o CRAS.
 
 **Nível 3**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 -   Oferta o Serviço de MSE.
 
 **Nível 4**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
--   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+-   Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 50 casos; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 -   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
--   Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
+-   Oferta o Serviço de MSE assegurando a elaboração do PIA do adolescente; e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
 **Nível 5**:
 
--   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+-   Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de atendimento, visitas domiciliares, ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
--   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+-   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 30 casos; e
 -   Possui Assistente Social e Psicólogo; e
 -   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
--   Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e
--   Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e
+-   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos; e
+-   Mantém forte articulação com o CRAS, com o Conselho Tutelar e com os Serviços de Acolhimento; e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
 # [Indicador de Desenvolvimento dos Conselhos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)
 
-O [ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
+O Indicador de Desenvolvimento do Conselho ([IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)) é um indicador sintético que retrata o grau de desenvolvimento do Conselho, com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O IDConselho é a média das notas alcançadas nas três dimensões.
 
-O @fig-idconselho mostra a evolução das médias do ID Conselho ao longo dos anos no Brasil e Grandes Regiões.
+O @fig-idconselho mostra a evolução das médias do IDConselho ao longo dos anos no Brasil e nas grandes regiões.
 
 ```{r}
 
@@ -973,11 +973,11 @@ tabela_perc <-
 
 ```
 
-As seções a seguir tratam de cada uma das 3 dimensões do ID Conselho.
+As seções a seguir tratam de cada uma das 3 dimensões do IDConselho.
 
-## [ID Conselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
+## [IDConselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
 
-O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na [dimensão de Estrutura Administrativa do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100) no Brasil e Grandes Regiões.
+O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Administrativa do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100) no Brasil e nas grandes regiões.
 
 ```{r fig-idconselho-estrutura, fig.cap = "Dimensão Estrutura Administrativa do ID Conselho, médias."}
 #| fig-height: 10
@@ -996,9 +996,9 @@ O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID Conselho na dimensão Estrutura Administrativa, de acordo com o porte do Município onde está o Conselho.
+As subseções a seguir descrevem os requisitos para cada nível do IDConselho na dimensão Estrutura Administrativa, de acordo com o porte do município onde está o Conselho.
 
-### Dimensão Estrutura Administrativa: Conselhos em municípios de porte Médio ou menor
+### Dimensão Estrutura Administrativa: Conselhos em municípios de Médio Porte ou menores
 
 **Nível 1**:
 
@@ -1016,7 +1016,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à internet; e
+-   Possui um ou mais computadores conectados à Internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
@@ -1024,7 +1024,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à internet; e
+-   Possui um ou mais computadores conectados à Internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo.
 
@@ -1034,10 +1034,10 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 -   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui uma ou mais salas de uso exclusivo; e
 -   Possui Secretaria Executiva; e
--   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à Internet); e
 -   Possui telefone de uso exclusivo ou compartilhado.
 
-### Dimensão Estrutura Administrativa: Conselhos em municípios de porte Grande ou em Metrópole
+### Dimensão Estrutura Administrativa: Conselhos em municípios de Grande Porte ou em Metrópoles
 
 **Nível 1**:
 
@@ -1055,7 +1055,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à internet; e
+-   Possui um ou mais computadores conectados à Internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
@@ -1063,7 +1063,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à internet; e
+-   Possui um ou mais computadores conectados à Internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo.
 
@@ -1073,13 +1073,13 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 -   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui uma ou mais salas de uso exclusivo; e
 -   Possui Secretaria Executiva; e
--   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à Internet); e
 -   Possui telefone de uso exclusivo do Conselho; e
 -   Tem Secretário Executivo exclusivo do Conselho de Assistência Social.
 
-## [ID Conselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
+## [IDConselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
 
-O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na [dimensão de Dinâmica de Funcionamento do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) no Brasil e Grandes Regiões.
+O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na [dimensão Dinâmica de Funcionamento do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) no Brasil e nas grandes regiões.
 
 ```{r fig-idconselho-dinamica, fig.cap = "Dimensão Dinâmica de Funcionamento do ID Conselho, médias."}
 #| fig-height: 10
@@ -1098,7 +1098,7 @@ O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na 
 
 ```
 
-Os requisitos para cada nível do ID Conselho na dimensão Dinâmica de Funcionamento são descritos a seguir:
+Os requisitos para cada nível do IDConselho na dimensão Dinâmica de Funcionamento são descritos a seguir:
 
 **Nível 1**:
 
@@ -1137,9 +1137,9 @@ Os requisitos para cada nível do ID Conselho na dimensão Dinâmica de Funciona
 -   Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e
 -   Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.
 
-## [ID Conselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
+## [IDConselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
 
-O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da [dimensão de Composição do Conselho do ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102) no Brasil e Grandes Regiões.
+O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da [dimensão Composição do Conselho do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102) no Brasil e nas grandes regiões.
 
 ```{r fig-idconselho-composicao, fig.cap = "Dimensão Composição do Conselho do ID Conselho, médias."}
 #| fig-height: 10
@@ -1158,9 +1158,9 @@ O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias d
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do ID Conselho na dimensão Composição do Conselho, de acordo com o porte do Município onde está o Conselho.
+As subseções a seguir descrevem os requisitos para cada nível do IDConselho na dimensão Composição do Conselho, de acordo com o porte do município onde está o Conselho.
 
-### Dimensão Composição do Conselho: Conselhos em municípios de porte Médio ou menor
+### Dimensão Composição do Conselho: Conselhos em municípios de Médio Porte ou menores
 
 **Nível 1**:
 
@@ -1202,7 +1202,7 @@ As subseções a seguir descrevem os requisitos para cada nível do ID Conselho 
 -   Permite que o Conselheiro possa ser reconduzido uma única vez; e
 -   Possui representação governamental da área de assistência, saúde e educação.
 
-### Dimensão Composição do Conselho: Conselhos em municípios de porte Grande ou em Metrópole
+### Dimensão Composição do Conselho: Conselhos em municípios de Grande Porte ou em Metrópoles
 
 **Nível 1**:
 
