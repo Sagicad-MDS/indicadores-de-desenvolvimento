@@ -24,7 +24,7 @@ source("_funcoes.R")
 
 Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento das unidades do Sistema Único de Assistência Social (SUAS). Esta publicação contém um relatório com resultados nacionais e por regiões, e relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
 
-As principais fontes de dados são o Censo SUAS e o Registro Mensal de Atendimentos (RMA) e as informações estão disponibilizadas [nesta página](#0) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social, do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome.
+As principais fontes de dados para o cálculo dos Indicadores são o Censo SUAS e o Registro Mensal de Atendimentos (RMA), e os resultados, utilizados na elaboração destes relatórios, estão disponibilizados [nesta página](https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index5.php) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social, do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome.
 
 Para visualizar um relatório municipal, selecione o município no menu ou digite o nome do município no campo de busca (ícone de lupa).
 
@@ -470,7 +470,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 
 # [Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
 
-O Indicador de Desenvolvimento do CREAS ([IDCREAS](#0)) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](#0), [Recursos Humanos](#0) e [Serviços & Benefícios](#0). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
+O Indicador de Desenvolvimento do CREAS ([IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-idcreas mostra a evolução das médias do IDCREAS ao longo dos anos no Brasil e nas grandes regiões.
 
