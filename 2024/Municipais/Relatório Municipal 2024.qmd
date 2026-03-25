@@ -1686,8 +1686,8 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades>0)}
 
-  menor_nivel <- min(unidades_municipio$`Serviços`, na.rm = T)
-  maior_nivel <- max(unidades_municipio$`Serviços`, na.rm = T)
+  menor_nivel <- min(unidades_municipio$`Serviços `, na.rm = T)
+  maior_nivel <- max(unidades_municipio$`Serviços `, na.rm = T)
 ```
 
 ```{r eval=(n_unidades==1), results='asis'}
