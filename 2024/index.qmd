@@ -24,15 +24,15 @@ source("_funcoes.R")
 
 Os Indicadores Censo SUAS são indicadores sintéticos que retratam o grau de desenvolvimento das unidades do Sistema Único de Assistência Social (SUAS). Esta publicação contém um relatório com resultados nacionais e por regiões, e relatórios municipais individualizados para cada um dos 5.570 municípios brasileiros.
 
-As principais fontes de dados para o cálculo dos Indicadores são o Censo SUAS e o Registro Mensal de Atendimentos (RMA), e os resultados, utilizados na elaboração destes relatórios, estão disponibilizados [nesta página](https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index5.php) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social, do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome.
+As principais fontes de dados para o cálculo dos Indicadores são o Censo SUAS e o Registro Mensal de Atendimentos (RMA), e os resultados, utilizados na elaboração destes relatórios, estão disponibilizados [nesta página](https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index5.php) da Vigilância Socioassistencial da Secretaria Nacional de Assistência Social (SNAS), do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS).
 
 Para visualizar um relatório municipal, selecione o município no menu ou digite o nome do município no campo de busca (ícone de lupa).
 
 Segue abaixo o relatório nacional e por grandes regiões.
 
-# [Indicador de Desenvolvimento dos CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)
+# IDCRAS: Indicador de Desenvolvimento do CRAS
 
-O Indicador de Desenvolvimento do Centro de Referência de Assistência Social ([IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O IDCRAS é a média das notas alcançadas nas três dimensões.
+O [IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do Centro de Referência de Assistência Social (CRAS). Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O IDCRAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-idcras mostra a evolução das médias do IDCRAS ao longo dos anos no Brasil e nas grandes regiões.
 
@@ -161,7 +161,7 @@ tabela
 
 As seções a seguir tratam de cada uma das 3 dimensões do IDCRAS.
 
-## [IDCRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
+## IDCRAS: Dimensão Estrutura Física
 
 O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Física do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104) no Brasil e nas grandes regiões.
 
@@ -182,7 +182,7 @@ O @fig-idcras-estrutura mostra a evolução ao longo dos anos das médias na [di
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Estrutura Física, de acordo com a capacidade de referenciamento do CRAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Estrutura Física, do IDCRAS, de acordo com a capacidade de referenciamento do CRAS.
 
 ### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 2.500 ou 3.500 famílias
 
@@ -210,7 +210,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui no mínimo **2 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade, ao menos parcial**; e
--   Possui **pelo menos 1 computador conectado à Internet**.
+-   Possui **pelo menos 1 computador conectado à internet**.
 
 **Nível 5**:
 
@@ -219,7 +219,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui no mínimo **1 sala administrativa**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade**; e
--   Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à Internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui conjunto de equipamentos que inclua, no mínimo: **2 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
 ### Dimensão Estrutura Física: CRAS com capacidade de referenciamento para até 5.000 famílias
 
@@ -247,7 +247,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui no mínimo **4 salas de atendimento**, sendo **pelo menos 1 com capacidade para 15 ou mais pessoas**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade, ao menos parcial**; e
--   Possui **pelo menos 2 computadores conectados à Internet**.
+-   Possui **pelo menos 2 computadores conectados à internet**.
 
 **Nível 5**:
 
@@ -256,9 +256,9 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui no mínimo **1 sala administrativa**; e
 -   Possui no mínimo **2 banheiros**; e
 -   Possui **acessibilidade**; e
--   Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à Internet, impressora, telefone e veículo exclusivo ou compartilhado**.
+-   Possui conjunto de equipamentos que inclua, no mínimo: **3 computadores conectados à internet, impressora, telefone e veículo exclusivo ou compartilhado**.
 
-## [IDCRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
+## IDCRAS: Dimensão Recursos Humanos
 
 O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão Recursos Humanos do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) no Brasil e nas grandes regiões.
 
@@ -279,7 +279,7 @@ O @fig-idcras-rh mostra a evolução ao longo dos anos das médias da [dimensão
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Recursos Humanos, de acordo com a capacidade de referenciamento do CRAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Recursos Humanos, do IDCRAS, de acordo com a capacidade de referenciamento do CRAS.
 
 ### Dimensão Recursos Humanos: CRAS com capacidade de referenciamento para até 2.500 famílias
 
@@ -371,7 +371,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**; e
 -   Possui **Coordenador** com nível superior.
 
-## [IDCRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
+## IDCRAS: Dimensão Serviços & Benefícios
 
 O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dimensão Serviços & Benefícios do IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106) no Brasil e nas grandes regiões.
 
@@ -392,7 +392,7 @@ O @fig-idcras-servicos mostra a evolução ao longo dos anos das médias da [dim
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na dimensão Serviços & Benefícios, de acordo com o porte do município onde está o CRAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Serviços & Benefícios, do IDCRAS, de acordo com o porte do município onde está o CRAS.
 
 ### Dimensão Serviços & Benefícios: CRAS em municípios de Pequeno Porte I
 
@@ -468,9 +468,9 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCRAS na di
 -   Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
 -   **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 
-# [Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
+# IDCREAS: Indicador de Desenvolvimento do CREAS
 
-O Indicador de Desenvolvimento do CREAS ([IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
+O [IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do Centro de Referência Especializado de Assistência Social (CREAS). Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
 
 O @fig-idcreas mostra a evolução das médias do IDCREAS ao longo dos anos no Brasil e nas grandes regiões.
 
@@ -574,7 +574,7 @@ tabela_perc <-
 
 As seções a seguir tratam de cada uma das 3 dimensões do IDCREAS.
 
-## [IDCREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
+## IDCREAS: Dimensão Estrutura Física
 
 O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Física do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108) no Brasil e nas grandes regiões.
 
@@ -595,7 +595,7 @@ O @fig-idcreas-estrutura mostra a evolução ao longo dos anos das médias na [d
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Estrutura Física, de acordo com o porte do município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Estrutura Física, do IDCREAS, de acordo com o porte do município onde está o CREAS.
 
 ### Dimensão Estrutura Física: CREAS em municípios de Médio Porte ou menores
 
@@ -621,7 +621,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
--   Possui 1 ou mais computadores com Internet; e
+-   Possui 1 ou mais computadores com internet; e
 -   Possui veículo próprio ou compartilhado; e
 -   Possui acessibilidade, ao menos parcial; e
 -   Possui 3 salas ou mais para atendimento (5 se CREAS Regional).
@@ -631,7 +631,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
 -   Possui 1 ou mais sala administrativa; e
--   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com Internet e veículo próprio ou compartilhado; e
+-   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com internet e veículo próprio ou compartilhado; e
 -   Possui acessibilidade (com ou sem ABNT); e
 -   Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
@@ -659,7 +659,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
--   Possui 1 ou mais computadores com Internet; e
+-   Possui 1 ou mais computadores com internet; e
 -   Possui veículo próprio ou compartilhado; e
 -   Possui acessibilidade, ao menos parcial; e
 -   Possui 5 salas ou mais para atendimento.
@@ -669,11 +669,11 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Possui recepção; e
 -   Possui no mínimo 2 banheiros; e
 -   Possui 1 ou mais sala administrativa; e
--   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com Internet e veículo próprio ou compartilhado; e
+-   Possui kit equipamento: telefone, impressora, 2 ou mais computadores com internet e veículo próprio ou compartilhado; e
 -   Possui acessibilidade (com ou sem ABNT); e
 -   Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 
-## [IDCREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
+## IDCREAS: Dimensão Recursos Humanos
 
 O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensão Recursos Humanos do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) no Brasil e nas grandes regiões.
 
@@ -694,7 +694,7 @@ O @fig-idcreas-rh mostra a evolução ao longo dos anos das médias na [dimensã
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Recursos Humanos, de acordo com o porte do município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Recursos Humanos, do IDCREAS, de acordo com o porte do município onde está o CREAS.
 
 ### Dimensão Recursos Humanos: CREAS em municípios de Médio Porte ou menores
 
@@ -765,7 +765,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Possui no mínimo 2 Psicólogos; e
 -   Possui no mínimo 2 trabalhadores de nível superior com vínculo estatutário ou empregado público celetista.
 
-## [IDCREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
+## IDCREAS: Dimensão Serviços & Benefícios
 
 O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [dimensão Serviços & Benefícios do IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110) no Brasil e nas grandes regiões.
 
@@ -786,7 +786,7 @@ O @fig-idcreas-servicos mostra a evolução ao longo dos anos das médias da [di
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na dimensão Serviços & Benefícios, de acordo com o porte do município onde está o CREAS.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Serviços & Benefícios, do IDCREAS, de acordo com o porte do município onde está o CREAS.
 
 ### Dimensão Serviços & Benefícios: CREAS em municípios de Médio Porte ou menores
 
@@ -824,7 +824,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 30 casos; e
 -   Possui Assistente Social e Psicólogo; e
 -   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
--   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta as medidas de Liberdade Assistida (LA) e de Prestação de Serviços à Comunidade (PSC); acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+-   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta das medidas de Liberdade Assistida (LA) e de Prestação de Serviços à Comunidade (PSC); acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 -   Mantém forte articulação com o CRAS e com o Conselho Tutelar.
 
@@ -854,7 +854,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 50 casos; e
 -   Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 -   Possui forte articulação com o CRAS e com o Conselho Tutelar; e
--   Oferta o Serviço de MSE assegurando a elaboração do PIA do adolescente; e
+-   Oferta o Serviço de MSE, assegurando a elaboração do PIA do adolescente; e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
 **Nível 5**:
@@ -864,13 +864,13 @@ As subseções a seguir descrevem os requisitos para cada nível do IDCREAS na d
 -   Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistentes Sociais e Psicólogos) menor ou igual a 30 casos; e
 -   Possui Assistente Social e Psicólogo; e
 -   Funciona no mínimo 5 dias por semana e 40 horas semanais; e
--   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos; e
+-   Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta das medidas de LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do PIA do adolescente e atendimento do adolescente em grupos; e
 -   Mantém forte articulação com o CRAS, com o Conselho Tutelar e com os Serviços de Acolhimento; e
 -   Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 
-# [Indicador de Desenvolvimento dos Conselhos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)
+# IDConselho: Indicador de Desenvolvimento do Conselho Municipal de Assistência Social
 
-O Indicador de Desenvolvimento do Conselho ([IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)) é um indicador sintético que retrata o grau de desenvolvimento do Conselho, com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O IDConselho é a média das notas alcançadas nas três dimensões.
+O [IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético que retrata o grau de desenvolvimento do Conselho Municipal de Assistência Social, com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O IDConselho é a média das notas alcançadas nas três dimensões.
 
 O @fig-idconselho mostra a evolução das médias do IDConselho ao longo dos anos no Brasil e nas grandes regiões.
 
@@ -975,7 +975,7 @@ tabela_perc <-
 
 As seções a seguir tratam de cada uma das 3 dimensões do IDConselho.
 
-## [IDConselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
+## IDConselho: Dimensão Estrutura Administrativa
 
 O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na [dimensão Estrutura Administrativa do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100) no Brasil e nas grandes regiões.
 
@@ -996,7 +996,7 @@ O @fig-idconselho-estrutura mostra a evolução ao longo dos anos das médias na
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDConselho na dimensão Estrutura Administrativa, de acordo com o porte do município onde está o Conselho.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Estrutura Administrativa, do IDConselho, de acordo com o porte do município onde está o Conselho.
 
 ### Dimensão Estrutura Administrativa: Conselhos em municípios de Médio Porte ou menores
 
@@ -1016,7 +1016,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à Internet; e
+-   Possui um ou mais computadores conectados à internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
@@ -1024,7 +1024,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à Internet; e
+-   Possui um ou mais computadores conectados à internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo.
 
@@ -1034,7 +1034,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 -   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui uma ou mais salas de uso exclusivo; e
 -   Possui Secretaria Executiva; e
--   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à Internet); e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
 -   Possui telefone de uso exclusivo ou compartilhado.
 
 ### Dimensão Estrutura Administrativa: Conselhos em municípios de Grande Porte ou em Metrópoles
@@ -1055,7 +1055,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à Internet; e
+-   Possui um ou mais computadores conectados à internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo ou compartilhado.
 
@@ -1063,7 +1063,7 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 
 -   Possui previsão de recursos na Lei Orçamentária Anual ou utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui Secretaria Executiva; e
--   Possui um ou mais computadores conectados à Internet; e
+-   Possui um ou mais computadores conectados à internet; e
 -   Possui telefone de uso exclusivo ou compartilhado; e
 -   Possui uma ou mais salas de uso exclusivo.
 
@@ -1073,11 +1073,11 @@ As subseções a seguir descrevem os requisitos para cada nível do IDConselho n
 -   Utiliza para as despesas de seu funcionamento o mínimo de 3% do IGD; e
 -   Possui uma ou mais salas de uso exclusivo; e
 -   Possui Secretaria Executiva; e
--   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à Internet); e
+-   Possui kit equipamento (veículo exclusivo ou compartilhado e um ou mais computadores conectados à internet); e
 -   Possui telefone de uso exclusivo do Conselho; e
 -   Tem Secretário Executivo exclusivo do Conselho de Assistência Social.
 
-## [IDConselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
+## IDConselho: Dimensão Dinâmica de Funcionamento
 
 O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na [dimensão Dinâmica de Funcionamento do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) no Brasil e nas grandes regiões.
 
@@ -1098,7 +1098,7 @@ O @fig-idconselho-dinamica mostra a evolução ao longo dos anos das médias na 
 
 ```
 
-Os requisitos para cada nível do IDConselho na dimensão Dinâmica de Funcionamento são descritos a seguir:
+Os requisitos para cada nível na dimensão Dinâmica de Funcionamento, do IDConselho, são descritos a seguir:
 
 **Nível 1**:
 
@@ -1137,7 +1137,7 @@ Os requisitos para cada nível do IDConselho na dimensão Dinâmica de Funcionam
 -   Fiscaliza os serviços, programas e projetos da rede pública e privada (ou fiscaliza somente a rede pública quando não existe rede privada); e
 -   Realiza reuniões/ações de mobilização ou descentralizadas ou ampliadas.
 
-## [IDConselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
+## IDConselho: Dimensão Composição do Conselho
 
 O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias da [dimensão Composição do Conselho do IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102) no Brasil e nas grandes regiões.
 
@@ -1158,7 +1158,7 @@ O @fig-idconselho-composicao mostra a evolução ao longo dos anos das médias d
 
 ```
 
-As subseções a seguir descrevem os requisitos para cada nível do IDConselho na dimensão Composição do Conselho, de acordo com o porte do município onde está o Conselho.
+As subseções a seguir descrevem os requisitos para cada nível na dimensão Composição do Conselho, do IDConselho, de acordo com o porte do município.
 
 ### Dimensão Composição do Conselho: Conselhos em municípios de Médio Porte ou menores
 
