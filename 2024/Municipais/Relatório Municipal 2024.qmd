@@ -273,12 +273,12 @@ cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " 
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
