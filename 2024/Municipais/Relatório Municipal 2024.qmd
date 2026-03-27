@@ -76,16 +76,16 @@ porte <- sprintf("em município de porte %s", as.character(factor_porte))
 ```
 
 ---
-subtitle: "Relatório de Indicadores Censo SUAS 2024 do Município de `r nome_municipio`, `r uf_municipio`"
+subtitle: "Relatório de Indicadores Censo SUAS 2024 do município de `r nome_municipio`, `r uf_municipio`"
 ---
 
-# [IDCRAS: Indicador de Desenvolvimento dos CRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107)
+# IDCRAS: Indicador de Desenvolvimento do CRAS
 
-O [IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do CRAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O IDCRAS é a média das notas alcançadas nas três dimensões.
+O [IDCRAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do Centro de Referência de Assistência Social (CRAS). Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CRAS, sendo 5 o nível máximo de desenvolvimento. O IDCRAS é a média das notas alcançadas nas três dimensões.
 
-O @fig-ID-CRAS mostra a evolução das médias do IDCRAS ao longo dos anos no Município de `r nome_municipio`, `r uf_municipio`.
+O @fig-ID-CRAS mostra a evolução das médias do IDCRAS ao longo dos anos no município de `r nome_municipio`, `r uf_municipio`.
 
-```{r fig-ID-CRAS, fig.cap = sprintf("Evolução das médias do ID CRAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
+```{r fig-ID-CRAS, fig.cap = sprintf("Evolução das médias do IDCRAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
 #| fig-height: 10
 
   f_selecao_grupo_media(idcras_2014, IBGE, municipio, `IDCRAS 2014sintético`, "ID CRAS", "2014") %>%
@@ -103,7 +103,7 @@ O @fig-ID-CRAS mostra a evolução das médias do IDCRAS ao longo dos anos no Mu
   bind_rows(f_selecao_grupo_media(idcras_2016, IBGE, municipio, `Dimensão Recursos Humanos`, "Recursos Humanos", "2016")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2016, IBGE, municipio, `Dimensão Serviços & Benefícios`, "Serviços & Benefícios", "2016")) %>%
   
-  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `IDCRAS médio do município`, "ID CRAS", "2017")) %>%
+  bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `IDCRAS médio do Município`, "ID CRAS", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Estrutura Física`, "Estrutura Física", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", "2017")) %>%
   bind_rows(f_selecao_grupo_media(idcras_2017, `IBGE`, municipio, `Serviços `, "Serviços & Benefícios", "2017")) %>%
@@ -223,19 +223,19 @@ equipamento <- "CRAS"
 tabela <- unidades_municipio %>%
             tabyl(q1) %>%
             select(q1, n) %>%
-            kable(caption=sprintf("Quantidade de %s em 2024 no Município de %s por capacidade de referenciamento.", equipamento, nome_municipio),
+            kable(caption=sprintf("Quantidade de %s em 2024 no município de %s por capacidade de referenciamento.", equipamento, nome_municipio),
                   col.names=c("Capacidade de até:", "Quantidade"))
 tabela  
 ```
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do Município de", nome_municipio, "em cada uma das dimensões do ID CRAS, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do IDCRAS, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
+## [IDCRAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104)
 ```
 
 ```{r}
@@ -268,17 +268,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -417,17 +417,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -544,7 +544,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
+## [IDCRAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105)
 ```
 
 ```{r}
@@ -577,17 +577,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -675,7 +675,7 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3)}
 
-* Possuir no mínimo **5** (9, se EV) **profissionais** (sendo pelo menos **3** (5, se EV) com **nível superior**); e 
+* Possuir no mínimo **5** (9, se EV) **profissionais**, sendo pelo menos **3** (5, se EV) com **nível superior**; e 
 * Possuir no mínimo **1 Psicólogo**; e 
 * Possuir no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**.
 ```
@@ -718,17 +718,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -816,7 +816,7 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3)}
 
-* Possuir no mínimo **7** (11, se EV) **profissionais** (sendo pelo menos **4** (6, se EV) com **nível superior**); e
+* Possuir no mínimo **7** (11, se EV) **profissionais**, sendo pelo menos **4** (6, se EV) com **nível superior**; e
 * Possuir no mínimo **1 Psicólogo**; e 
 * Possuir no mínimo **1** profissional de nível superior com **vínculo estatutário ou empregado público celetista**.
 ```
@@ -859,17 +859,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -958,7 +958,7 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3)}
 
-* Possuir no mínimo **9** (13, se EV) **profissionais** (sendo pelo menos **5** (7, se EV) com **nível superior**); e
+* Possuir no mínimo **9** (13, se EV) **profissionais**, sendo pelo menos **5** (7, se EV) com **nível superior**; e
 * Possuir no mínimo **2** profissionais de nível superior com **vínculo estatutário ou empregado público celetista**.
 ```
 
@@ -977,7 +977,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
+## [IDCRAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106)
 ```
 
 ```{r}
@@ -994,17 +994,17 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1014,15 +1014,15 @@ cat("O ", equipamento, " de **nível 1** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==1 && factor_porte=="Pequeno I")}
 
-* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+* **Não realiza** alguma(s) das seguintes atividades essenciais do Serviço de Proteção e Atendimento Integral às Famílias (PAIF): **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
 * Possui **articulação frágil ou inexistente** com os Serviços de Educação e com os Serviços de Saúde; ou
 * Não possui profissionais de Serviço Social nem de Psicologia.
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==1 && factor_porte>"Pequeno I")}
 
-* **Não realiza** alguma(s) das seguintes atividades essenciais do PAIF: **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
-* Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com os CREAS; ou 
+* **Não realiza** alguma(s) das seguintes atividades essenciais do Serviço de Proteção e Atendimento Integral às Famílias (PAIF): **acompanhamento de famílias, e/ou grupo/oficina com famílias, e/ou visitas domiciliares, e/ou orientação**; ou
+* Possui **articulação frágil ou inexistente** com os Serviços de Educação, com os Serviços de Saúde e com o(s) CREAS; ou 
 * Não possui profissionais de Serviço Social nem de Psicologia.
 ```
 
@@ -1034,13 +1034,13 @@ cat("Para alcançar o **nível 2** na dimensão ", dimensao, ", o ", equipamento
 ```{asis, echo=(n_unidades>0 && menor_nivel==1 && factor_porte=="Pequeno I")}
 
 * **Executar o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possuir **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**. 
+* Possuir **forte articulação com pelo menos um dos seguintes serviços: Serviços de Educação e Serviços de Saúde**. 
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==1 && factor_porte>"Pequeno I")}
 
 * **Executar o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possuir **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
+* Possuir **forte articulação com pelo menos um dos seguintes serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==2), results='asis'}
@@ -1050,14 +1050,14 @@ cat("O ", equipamento, " de **nível 2** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==2 && factor_porte=="Pequeno I")}
 
-* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação e Serviços de Saúde**. 
+* **Executa o Serviço de Proteção e Atendimento Integral às Famílias (PAIF)**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
+* Possui **forte articulação com pelo menos um dos seguintes serviços: Serviços de Educação e Serviços de Saúde**. 
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==2 && factor_porte>"Pequeno I")}
 
-* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
-* Possui **forte articulação com pelo menos um dos seguintes Serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
+* **Executa o Serviço de Proteção e Atendimento Integral às Famílias (PAIF)**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias e visitas domiciliares**; e 
+* Possui **forte articulação com pelo menos um dos seguintes serviços: Serviços de Educação, Serviços de Saúde e CREAS**.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel<3 && maior_nivel>1), results='asis'}
@@ -1067,14 +1067,14 @@ cat("Para alcançar o **nível 3** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<3 && maior_nivel>1 && factor_porte=="Pequeno I")}
 
-* **Executar o PAIF** realizando **orientação/acompanhamento para inserção no BPC**, além das atividades exigidas para o nível 2; e
+* **Executar o PAIF**, realizando **orientação/acompanhamento para inserção no BPC**, além das atividades exigidas para o nível 2; e
 * Possuir oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possuir **forte articulação com os Serviços de Educação e Saúde** no território. 
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<3 && maior_nivel>1 && factor_porte>"Pequeno I")}
 
-* **Executar o PAIF** realizando **orientação/acompanhamento para inserção no BPC**, além das atividades exigidas para o nível 2; e
+* **Executar o PAIF**, realizando **orientação/acompanhamento para inserção no BPC**, além das atividades exigidas para o nível 2; e
 * Possuir oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possuir **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
 ```
@@ -1086,14 +1086,14 @@ cat("O ", equipamento, " de **nível 3** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==3 && factor_porte=="Pequeno I")}
 
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
 * Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possui **forte articulação com os Serviços de Educação e Saúde** no território. 
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==3 && factor_porte>"Pequeno I")}
 
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias, grupo/oficina com famílias, visitas domiciliares e orientação/acompanhamento para inserção no BPC**; e
 * Possui oferta de Serviço de Convivência **pelo menos para um ciclo de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território.
 ```
@@ -1106,7 +1106,7 @@ cat("Para alcançar o **nível 4** na dimensão ", dimensao, ", o ", equipamento
 ```{asis, echo=(n_unidades>0 && menor_nivel<4 && maior_nivel>2)}
 
 * Ter **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executar o PAIF** realizando **palestras, campanhas ou eventos comunitários e acompanhamento dos encaminhamentos realizados**, além das atividades exigidas para o nível 3; e
+* **Executar o PAIF**, realizando **palestras, campanhas ou eventos comunitários e acompanhamento dos encaminhamentos realizados**, além das atividades exigidas para o nível 3; e
 * Possuir oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * **Funcionar** no mínimo **5 dias** por semana e **40 horas** semanais.  
 ```
@@ -1119,7 +1119,7 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 ```{asis, echo=(n_unidades>0 && menor_nivel==4 && factor_porte=="Pequeno I")}
 
 * Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 * Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
@@ -1128,7 +1128,7 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 ```{asis, echo=(n_unidades>0 && menor_nivel==4 && factor_porte>"Pequeno I")}
 
 * Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 * Possui oferta de Serviço de Convivência **para no mínimo dois ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
 * Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
@@ -1143,14 +1143,14 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 * Possuir profissionais de Serviço Social e/ou de Psicologia; e 
 * Possuir oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realizar no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF.
+* **Realizar no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF.
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3 && factor_porte>"Pequeno I")}
 
 * Possuir profissionais de Serviço Social e de Psicologia; e
 * Possuir oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realizar no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF.
+* **Realizar no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==5), results='asis'}
@@ -1161,10 +1161,10 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 ```{asis, echo=(n_unidades>0 && menor_nivel==5 && factor_porte=="Pequeno I")}
 
 * Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 * Possui profissionais de Serviço Social e/ou de Psicologia; e 
 * Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+* **Realiza no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF; e
 * Possui **forte articulação com os Serviços de Educação e Saúde** no território; e
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 ```
@@ -1172,17 +1172,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 ```{asis, echo=(n_unidades>0 && menor_nivel==5 && factor_porte>"Pequeno I")}
 
 * Tem **quantidade média de famílias em acompanhamento no mês, dividida pela equipe técnica** (Assistentes Sociais e Psicólogos) não inferior a 20 nem superior a 100; e
-* **Executa o PAIF** realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
+* **Executa o PAIF**, realizando no mínimo as seguintes atividades: **acompanhamento de famílias; grupo/oficina com famílias; visitas domiciliares; palestras, campanhas ou eventos comunitários; orientação/acompanhamento para inserção no BPC e acompanhamento dos encaminhamentos realizados**; e
 * Possui profissionais de Serviço Social e de Psicologia; e
 * Possui oferta de Serviço de Convivência, **para no mínimo três ciclos de vida** (oferta direta do CRAS ou por meio de unidades a ele referenciadas); e
-* **Realiza no próprio CRAS o cadastramento/atualização cadastral do CadÚnico**, sem utilizar para isso os profissionais de nível superior do PAIF; e
+* **Realiza no próprio CRAS o cadastramento/atualização cadastral do Cadastro Único**, sem utilizar para isso os profissionais de nível superior do PAIF; e
 * Possui **forte articulação com o(s) CREAS e com os Serviços de Educação e Saúde** no território; e
 * **Funciona** no mínimo **5 dias** por semana e **40 horas** semanais.
 ```
 
-# [ID CREAS: Indicador de Desenvolvimento dos CREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111)
+# IDCREAS: Indicador de Desenvolvimento do CREAS
 
-O [IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do CREAS. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O ID CREAS é a média das notas alcançadas nas três dimensões.
+O [IDCREAS](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN111) é um indicador sintético que retrata o grau de desenvolvimento do Centro de Referência Especializado de Assistência Social (CREAS). Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do CREAS, sendo 5 o nível máximo de desenvolvimento. O IDCREAS é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-CREAS-tabela}
 
@@ -1260,10 +1260,10 @@ cat(nome_municipio, " não tem ", equipamento, ".", sep="")
 
 ```{r eval=(existe_equipamento>0), results='asis'}
 
-cat("O @fig-ID-CREAS mostra a evolução das médias do ID CREAS ao longo dos anos no Município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
+cat("O @fig-ID-CREAS mostra a evolução das médias do IDCREAS ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do ID CREAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do IDCREAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 #| fig-height: 10
 
 tabela %>% 
@@ -1295,12 +1295,12 @@ n_unidades <- n_unidades_municipio
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do Município de", nome_municipio, "em cada uma das dimensões do ID CREAS, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do IDCREAS, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
+## [IDCREAS: Dimensão Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN108)
 ```
 
 ```{r}
@@ -1316,17 +1316,17 @@ cat("As seções a seguir apresentam os resultados do Município de", nome_munic
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1395,15 +1395,15 @@ cat("Para alcançar o **nível 4** na dimensão ", dimensao, ", o ", equipamento
 ```{asis, echo=(n_unidades>0 && menor_nivel<4 && maior_nivel>2 && factor_porte<"Grande")}
 
 * Possuir no mínimo 2 banheiros; e
-* Possuir 1 ou mais computadores com Internet; e
+* Possuir 1 ou mais computadores com internet; e
 * Possuir veículo próprio ou compartilhado; e
-* Possuir 3 salas ou mais para atendimento (5 se CREAS Regional).
+* Possuir 3 salas ou mais para atendimento (5 se CREAS e sobre a Regional).
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<4 && maior_nivel>2 && factor_porte>"Médio")}
 
 * Possuir no mínimo 2 banheiros; e
-* Possuir 1 ou mais computadores com Internet; e
+* Possuir 1 ou mais computadores com internet; e
 * Possuir veículo próprio ou compartilhado; e
 * Possuir 5 salas ou mais para atendimento.
 ```
@@ -1417,7 +1417,7 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 
 * Possui recepção; e
 * Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais computadores com Internet; e
+* Possui 1 ou mais computadores com internet; e
 * Possui veículo próprio ou compartilhado; e
 * Possui acessibilidade, ao menos parcial; e
 * Possui 3 salas ou mais para atendimento (5 se CREAS Regional).
@@ -1427,7 +1427,7 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 
 * Possui recepção; e
 * Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais computadores com Internet; e
+* Possui 1 ou mais computadores com internet; e
 * Possui veículo próprio ou compartilhado; e
 * Possui acessibilidade, ao menos parcial; e
 * Possui 5 salas ou mais para atendimento.
@@ -1440,8 +1440,8 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3)}
 
-* Possuir 1 ou mais sala Administrativa; e
-* Possuir kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet, além de Veículo próprio ou compartilhado; e
+* Possuir 1 ou mais sala administrativa; e
+* Possuir kit equipamento: telefone, impressora, 2 ou mais computadores com internet, além de veículo próprio ou compartilhado; e
 * Possuir acessibilidade (com ou sem ABNT); e
 * Possuir pelo menos 1 das salas para atendimento com capacidade para 15 ou mais pessoas.
 ```
@@ -1455,8 +1455,8 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 * Possui recepção; e
 * Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais sala Administrativa; e
-* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+* Possui 1 ou mais sala administrativa; e
+* Possui kit equipamento: telefone, impressora, 2 ou mais computadores com internet e veículo próprio ou compartilhado; e
 * Possui acessibilidade (com ou sem ABNT); e
 * Possui 3 salas ou mais para atendimento (5 se CREAS Regional), sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 ```
@@ -1465,15 +1465,15 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 * Possui recepção; e
 * Possui no mínimo 2 banheiros; e
-* Possui 1 ou mais sala Administrativa; e
-* Possui kit equipamento: Telefone, Impressora, 2 ou mais computadores com Internet e Veículo próprio ou compartilhado; e
+* Possui 1 ou mais sala administrativa; e
+* Possui kit equipamento: telefone, impressora, 2 ou mais computadores com internet e veículo próprio ou compartilhado; e
 * Possui acessibilidade (com ou sem ABNT); e
 * Possui 5 salas ou mais para atendimento, sendo pelo menos 1 com capacidade para 15 ou mais pessoas.
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
+## [IDCREAS: Dimensão Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN109)
 ```
 
 ```{r}
@@ -1489,17 +1489,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1517,7 +1517,7 @@ cat("O", equipamento, "de **nível 1** na dimensão", dimensao, porte, "se carac
 
 * Inexistência de Assistente Social ou de Psicólogo; ou
 * Possuir menos de 6 trabalhadores; ou
-* Possuir menos de 4 profissionais das áreas de serviço social e psicologia.
+* Possuir menos de 4 profissionais das áreas de Serviço Social e Psicologia.
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1676,7 +1676,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID CREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
+## [IDCREAS: Dimensão Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN110)
 ```
 
 ```{r}
@@ -1692,17 +1692,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1712,7 +1712,7 @@ cat("O", equipamento, "de **nível 1** na dimensão", dimensao, porte, "se carac
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==1)}
 
-* Não realizar alguma(s) das seguintes atividades essenciais do PAEFI: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares, Elaboração de relatórios técnicos sobre casos em acompanhamento; ou
+* Não realizar alguma(s) das seguintes atividades essenciais do Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI): entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares, elaboração de relatórios técnicos sobre casos em acompanhamento; ou
 * Ter articulação frágil ou inexistente com o CRAS; ou
 * Não possuir Assistente Social nem Psicólogo. 
 ```
@@ -1724,7 +1724,7 @@ cat("Para alcançar o **nível 2** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==1)}
 
-* Ofertar o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Ofertar o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Possuir forte articulação com o CRAS.
 ```
 
@@ -1735,7 +1735,7 @@ cat("O ", equipamento, " de **nível 2** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==2)}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Possui forte articulação com o CRAS.
 ```
 
@@ -1746,7 +1746,7 @@ cat("Para alcançar o **nível 3** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<3 && maior_nivel>1 && factor_porte<"Grande")}
 
-* Ofertar o PAEFI assegurando a realização da Construção de Plano Individual e/ou Familiar de atendimento (além da realização das atividades exigidas no nível 2); e
+* Ofertar o PAEFI, assegurando a construção do Plano Individual e/ou Familiar de Atendimento (além da realização das atividades exigidas no nível 2); e
 * Possuir forte articulação com o Conselho Tutelar; e
 * Ofertar atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Ofertar o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
@@ -1754,7 +1754,7 @@ cat("Para alcançar o **nível 3** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<3 && maior_nivel>1 && factor_porte>"Médio")}
 
-* Ofertar o PAEFI assegurando a realização da Construção de Plano Individual e/ou Familiar de atendimento (além da realização das atividades exigidas no nível 2); e
+* Ofertar o PAEFI, assegurando a construção do Plano Individual e/ou Familiar de Atendimento (além da realização das atividades exigidas no nível 2); e
 * Possuir forte articulação com o Conselho Tutelar; e
 * Ofertar atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Ofertar o Serviço de MSE.
@@ -1767,7 +1767,7 @@ cat("O ", equipamento, " de **nível 3** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==3 && factor_porte<"Grande")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta o PAEFI, assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Oferta o Serviço de MSE (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
@@ -1775,7 +1775,7 @@ cat("O ", equipamento, " de **nível 3** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==3 && factor_porte>"Médio")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Oferta o Serviço de MSE.
@@ -1788,16 +1788,16 @@ cat("Para alcançar o **nível 4** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<4 && maior_nivel>2 && factor_porte<"Grande")}
 
-* Ofertar o PAEFI assegurando a realização da atividade de Atendimento psicossocial em grupo (além da realização das atividades exigidas no nível 3); e
-* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Ofertar o PAEFI, assegurando a realização da atividade de atendimento psicossocial em grupo (além da realização das atividades exigidas no nível 3); e
+* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 50 casos; e
 * Ofertar o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 * Ofertar o Serviço de Abordagem ou ter o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<4 && maior_nivel>2 && factor_porte>"Médio")}
 
-* Ofertar o PAEFI assegurando a realização da atividade de Atendimento psicossocial em grupo (além da realização das atividades exigidas no nível 3); e
-* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Ofertar o PAEFI, assegurando a realização da atividade de atendimento psicossocial em grupo (além da realização das atividades exigidas no nível 3); e
+* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 50 casos; e
 * Ofertar o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
 * Ofertar o Serviço de Abordagem ou ter o Serviço referenciado.
 ```
@@ -1809,8 +1809,8 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==4 && factor_porte<"Grande")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 50 casos; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 * Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
@@ -1819,8 +1819,8 @@ cat("O ", equipamento, " de **nível 4** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==4 && factor_porte>"Médio")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 50 casos; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares e elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 50 casos; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
 * Possui forte articulação com o CRAS e com o Conselho Tutelar; e
 * Oferta o Serviço de MSE assegurando a elaboração do Plano Individual de Atendimento (PIA) do adolescente; e
@@ -1834,20 +1834,20 @@ cat("Para alcançar o **nível 5** na dimensão ", dimensao, ", o ", equipamento
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3 && factor_porte<"Grande")}
 
-* Ofertar o PAEFI assegurando a realização de Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos (além da realização das atividades exigidas no nível 4); e
-* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Ofertar o PAEFI, assegurando a realização de ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos (além da realização das atividades exigidas no nível 4); e
+* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 30 casos; e
 * Possuir Assistente Social e Psicólogo; e
 * Funcionar no mínimo 5 dias por semana e 40 horas semanais; e
-* Ofertar o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades, além das atividades exigidas no nível 4: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
+* Ofertar o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades, além das atividades exigidas no nível 4: oferta das medidas de LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal e atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional).
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel<5 && maior_nivel>3 && factor_porte>"Médio")}
 
-* Ofertar o PAEFI assegurando a realização de Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos (além da realização das atividades exigidas no nível 4); e
-* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Ofertar o PAEFI, assegurando a realização de ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos (além da realização das atividades exigidas no nível 4); e
+* Ter quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 30 casos; e
 * Possuir Assistente Social e Psicólogo; e
 * Funcionar no mínimo 5 dias por semana e 40 horas semanais; e
-* Ofertar o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades, além das atividades exigidas no nível 4: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal e Atendimento do adolescente em grupos; e
+* Ofertar o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades, além das atividades exigidas no nível 4: oferta das medidas de LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal e atendimento do adolescente em grupos; e
 * Manter forte articulação com Serviços de Acolhimento.
 ```
 
@@ -1858,31 +1858,31 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==5 && factor_porte<"Grande")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares, ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 30 casos; e
 * Possui Assistente Social e Psicólogo; e
 * Funciona no mínimo 5 dias por semana e 40 horas semanais; e
-* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
+* Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta das medidas de LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do Plano Individual de Atendimento (PIA) do adolescente e atendimento do adolescente em grupos (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 * Oferta o Serviço de Abordagem ou tem o Serviço referenciado (APLICA-SE SOMENTE SE O MUNICÍPIO RECEBER COFINANCIAMENTO ou se for CREAS Regional); e
 * Mantém forte articulação com o CRAS e com o Conselho Tutelar.
 ```
 
 ```{asis, echo=(n_unidades>0 && menor_nivel==5 && factor_porte>"Médio")}
 
-* Oferta o PAEFI assegurando a realização, pelo menos, das seguintes atividades: Entrevistas de acolhida para avaliação inicial dos casos, Atendimento psicossocial em grupo, Atendimento psicossocial individual/familiar, Construção de Plano Individual e/ou Familiar de atendimento, Visitas domiciliares, Ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e Elaboração de relatórios técnicos sobre casos em acompanhamento; e
+* Oferta o Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos (PAEFI), assegurando a realização, pelo menos, das seguintes atividades: entrevistas de acolhida para avaliação inicial dos casos, atendimento psicossocial em grupo, atendimento psicossocial individual/familiar, construção de Plano Individual e/ou Familiar de Atendimento, visitas domiciliares, ações de mobilização e sensibilização para o enfrentamento das situações de violação de direitos e elaboração de relatórios técnicos sobre casos em acompanhamento; e
 * Oferta atendimento para variadas situações de violência ou violação de direitos e para os diferentes ciclos de vida; e
-* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (AS + PSI) menor ou igual a 30 casos; e
+* Tem quantidade média de casos em acompanhamento no mês, dividida pela equipe técnica (Assistente Social + Psicólogo) menor ou igual a 30 casos; e
 * Possui Assistente Social e Psicólogo; e
 * Funciona no mínimo 5 dias por semana e 40 horas semanais; e
-* Oferta o Serviço de MSE assegurando a realização, pelo menos, das seguintes atividades: Ofertar LA e PSC; Acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; Elaboração do Plano Individual de Atendimento (PIA) do adolescente e Atendimento do adolescente em grupos; e
+* Oferta o Serviço de MSE, assegurando a realização, pelo menos, das seguintes atividades: oferta das medidas de LA e PSC; acompanhamento de LA e PSC, com frequência de atendimento semanal ou quinzenal; elaboração do Plano Individual de Atendimento (PIA) do adolescente e atendimento do adolescente em grupos; e
 * Mantém forte articulação com o CRAS, com o Conselho Tutelar e com Serviços de Acolhimento; e
 * Oferta o Serviço de Abordagem ou tem o Serviço referenciado.
 ```
 
-# [ID Conselho: Indicador de Desenvolvimento dos Conselhos de Assistência Social](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103)
+# IDConselho: Indicador de Desenvolvimento do Conselho Municipal de Assistência Social
 
-O [ID Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético de desenvolvimento com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão é atribuída uma nota de 1 a 5 de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O ID Conselho é a média das notas alcançadas nas três dimensões.
+O [IDConselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN103) é um indicador sintético que retrata o grau de desenvolvimento do Conselho Municipal de Assistência Social, com o objetivo de avaliar o controle social no SUAS. Ele é composto por três dimensões: [Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100), [Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101) e [Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102). Em cada dimensão, é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do Conselho, sendo 5 o nível máximo de desenvolvimento. O IDConselho é a média das notas alcançadas nas três dimensões.
 
 ```{r ID-conselho-tabela}
 
@@ -1961,10 +1961,10 @@ cat(nome_municipio, " não tem ", equipamento, ".", sep="")
 
 ```{r eval=(existe_equipamento>0), results='asis'}
 
-cat("O @fig-ID-conselho mostra a evolução das médias do ID Conselho ao longo dos anos no Município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
+cat("O @fig-ID-conselho mostra a evolução das médias do IDConselho ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-conselho, fig.cap = sprintf("Evolução das médias do ID Conselho, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-conselho, fig.cap = sprintf("Evolução das médias do IDConselho, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 #| fig-height: 10
 
 tabela %>%
@@ -1998,12 +1998,12 @@ n_unidades <- n_unidades_municipio
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do Município de", nome_municipio, "em cada uma das dimensões do ID Conselho, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do IDConselho, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID Conselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
+## [IDConselho: Dimensão Estrutura Administrativa](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN100)
 ```
 
 ```{r}
@@ -2019,17 +2019,17 @@ cat("As seções a seguir apresentam os resultados do Município de", nome_munic
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -2164,7 +2164,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID Conselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
+## [IDConselho: Dimensão Dinâmica de Funcionamento](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN101)
 ```
 
 ```{r}
@@ -2180,17 +2180,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -2308,7 +2308,7 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{asis, echo=(n_unidades_municipio>0)}
 
-## [ID Conselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
+## [IDConselho: Dimensão Composição do Conselho](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN102)
 ```
 
 ```{r}
@@ -2324,17 +2324,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no Município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no Município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, ", o nível de ID dos ", equipamento, " no município de ", nome_municipio, " varia de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
