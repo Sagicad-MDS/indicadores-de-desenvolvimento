@@ -8,7 +8,8 @@ gera_qmd <- function(municipio) {
   nome_municipio <- dados_municipios$Nome_Município[dados_municipios$`Código Município`==municipio]
   relatorio_municipio_qmd = knitr::knit_expand(
     'Municipais/Relatório Municipal 2024.qmd',
-    municipio = municipio, nome_municipio = nome_municipio
+    municipio = municipio, nome_municipio = nome_municipio,
+    delim = c("[[", "]]")
   )
   nome_municipio <- gsub("'", "", gsub(" ", "_", nome_municipio))
   uf_municipio <- gsub(" ", "_", dados_municipios$Nome_UF[dados_municipios$`Código Município`==municipio])
