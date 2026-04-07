@@ -81,7 +81,7 @@ subtitle: "Relatório de Indicadores Censo SUAS 2024 do município de `r nome_mu
 
 # Introdução
 
-Este relatório apresenta os resultados dos indicadores de desenvolvimento do Censo SUAS para o ano de 2024, no município de `r nome_municipio`, `r uf_municipio`, bem como a evolução desses indicadores desde 2014. Apresenta ainda os requisitos necessário para estar nos níveis mais baixos encontrados no Município em cada uma das dimensões de cada indicador, e os requisitos para atingir os níveis mais altos.
+Este relatório apresenta os resultados dos indicadores de desenvolvimento do Censo SUAS para o ano de 2024, no município de `r nome_municipio`, `r uf_municipio`, bem como a evolução desses indicadores desde 2014. Apresenta ainda os requisitos necessários para estar nos níveis mais baixos encontrados no Município em cada uma das dimensões de cada indicador, e os requisitos para atingir os níveis mais altos.
 
 # IDCRAS: Indicador de Desenvolvimento do CRAS
 
