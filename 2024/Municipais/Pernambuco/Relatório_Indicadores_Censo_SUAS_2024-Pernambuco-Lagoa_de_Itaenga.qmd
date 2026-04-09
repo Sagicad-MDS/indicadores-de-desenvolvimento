@@ -47,11 +47,18 @@ source("../../_funcoes.R")
 ```{r setup-municipio}
 # Município
 municipio <- params$municipio
+
 dados_municipio <- read_excel("../../../RELATORIO_DTB_BRASIL_MUNICIPIO.xls", skip = 6) %>%
                     mutate(`Código Município` = substr(`Código Município Completo`,1,6)) %>%
                     filter(`Código Município` == municipio)
 
 nome_municipio <- dados_municipio %>% pull(Nome_Município)
+nome_municipio <- case_when(
+                    municipio == "330455" | # Rio de Janeiro e Crato tem artigo
+                    municipio == "230420" ~ sprintf("no %s", nome_municipio),
+                    .default = sprintf("em %s", nome_municipio) # Todos os outros não tem
+                  )
+
 uf_municipio <- dados_municipio %>% pull(Nome_UF)
 
 porte_cras <- idcras_2024  %>%
@@ -76,20 +83,20 @@ porte <- sprintf("em município de porte %s", as.character(factor_porte))
 ```
 
 ---
-subtitle: "Relatório de Indicadores Censo SUAS 2024 do município de `r nome_municipio`, `r uf_municipio`"
+subtitle: "Relatório de Indicadores Censo SUAS 2024 `r nome_municipio`, `r uf_municipio`"
 ---
 
 # Introdução
 
-Este relatório apresenta os resultados dos indicadores de desenvolvimento do Censo SUAS para o ano de 2024, no município de `r nome_municipio`, `r uf_municipio`, bem como a evolução desses indicadores desde 2014. Apresenta ainda os requisitos necessários para estar nos níveis mais baixos encontrados no Município em cada uma das dimensões de cada indicador, e os requisitos para atingir os níveis mais altos.
+Este relatório apresenta os resultados dos indicadores de desenvolvimento do Censo SUAS para o ano de 2024, `r nome_municipio`, `r uf_municipio`, bem como a evolução desses indicadores desde 2014. Apresenta ainda os requisitos necessários para estar nos níveis mais baixos encontrados `r nome_municipio` em cada uma das dimensões de cada indicador, e os requisitos para atingir os níveis mais altos.
 
 # IDCRAS: Indicador de Desenvolvimento do CRAS
 
 O [{{< acr IDCRAS >}}](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN107) é um indicador sintético que retrata o grau de desenvolvimento do {{< acr CRAS >}}. Ele é composto por três dimensões: [Estrutura Física](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN104), [Recursos Humanos](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN105) e [Serviços & Benefícios](https://wiki-sagi.mds.gov.br/en/home/DS/SUAS/I/IN106). Em cada dimensão é atribuída uma nota de 1 a 5, de acordo com critérios indicativos do nível de desenvolvimento do {{< acr CRAS >}}, sendo 5 o nível máximo de desenvolvimento. O {{< acr IDCRAS >}} é a média das notas alcançadas nas três dimensões.
 
-O @fig-ID-CRAS mostra a evolução das médias do {{< acr IDCRAS >}} ao longo dos anos no município de `r nome_municipio`, `r uf_municipio`.
+O @fig-ID-CRAS mostra a evolução das médias do {{< acr IDCRAS >}} ao longo dos anos `r nome_municipio`.
 
-```{r fig-ID-CRAS, fig.cap = sprintf("Evolução das médias do IDCRAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
+```{r fig-ID-CRAS, fig.cap = sprintf("Evolução das médias do IDCRAS de 2014 a 2024 %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS."}
 #| fig-height: 10
 
   f_selecao_grupo_media(idcras_2014, IBGE, municipio, `IDCRAS 2014sintético`, "IDCRAS", "2014") %>%
@@ -163,7 +170,7 @@ unidades_municipio <- idcras_2024 %>%
 n_unidades_municipio <- nrow(unidades_municipio)
 ```
 
-```{r fig-ID-CRAS-nivel, fig.cap = sprintf("Quantidade de CRAS em cada nível das dimensões do IDCRAS, 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
+```{r fig-ID-CRAS-nivel, fig.cap = sprintf("Quantidade de CRAS em cada nível das dimensões do IDCRAS em 2024, %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
 
   f_quantitativo_niveis_filtro(idcras_2024, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", niveis_ID) %>% 
   bind_rows(f_quantitativo_niveis_filtro(idcras_2024, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", niveis_ID)) %>%
@@ -197,14 +204,14 @@ equipamento <- "{{< acr CRAS >}}"
 tabela <- unidades_municipio %>%
             tabyl(q1) %>%
             select(q1, n) %>%
-            kable(caption=sprintf("Quantidade de CRAS em 2024 no município de %s por capacidade de referenciamento.", nome_municipio),
+            kable(caption=sprintf("Quantidade de CRAS em 2024 %s, por capacidade de referenciamento.", nome_municipio),
                   col.names=c("Capacidade de até:", "Quantidade"))
 tabela  
 ```
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do {{< acr IDCRAS >}}, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados", nome_municipio, "em cada uma das dimensões do {{< acr IDCRAS >}}, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
@@ -231,7 +238,7 @@ cat("As seções a seguir apresentam os resultados do município de", nome_munic
 
 ```{r eval=(n_unidades_municipio>0 && !n_unidades), results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
+cat("Não tem ", equipamento, " ", capacidade, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0)}
@@ -242,17 +249,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -380,7 +387,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades_municipio>0 && !n_unidades), results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
+cat("Não tem ", equipamento, " ", capacidade, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0)}
@@ -391,17 +398,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -540,7 +547,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades_municipio>0 && !n_unidades), results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
+cat("Não tem ", equipamento, " ", capacidade, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0)}
@@ -551,17 +558,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -681,7 +688,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades_municipio>0 && !n_unidades), results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
+cat("Não tem ", equipamento, " ", capacidade, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0)}
@@ -692,17 +699,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -822,7 +829,7 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades_municipio>0 && !n_unidades), results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
+cat("Não tem ", equipamento, " ", capacidade, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0)}
@@ -833,17 +840,17 @@ cat(nome_municipio, " não tem ", equipamento, " ", capacidade, ".", sep="")
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", capacidade, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", capacidade, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", capacidade, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -968,17 +975,17 @@ cat("O ", equipamento, " de **nível 5**, ", capacidade, ", na dimensão ", dime
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1229,15 +1236,15 @@ tabela <- f_selecao_grupo_media(idcreas_2014, `Código IBGE`, municipio, `IDCREA
 
 ```{r eval=!existe_equipamento, results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, ".", sep="")
+cat("Não tem ", equipamento, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(existe_equipamento>0), results='asis'}
 
-cat("O @fig-ID-CREAS mostra a evolução das médias do {{< acr IDCREAS >}} ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
+cat("O @fig-ID-CREAS mostra a evolução das médias do {{< acr IDCREAS >}} ao longo dos anos ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do IDCREAS, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-CREAS, fig.cap = sprintf("Evolução das médias do IDCREAS de 2014 a 2024 %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 #| fig-height: 10
 
 tabela %>% 
@@ -1253,7 +1260,7 @@ n_unidades_municipio <- nrow(unidades_municipio)
 n_unidades <- n_unidades_municipio
 ```
 
-```{r fig-ID-CREAS-nivel, fig.cap = sprintf("Quantidade de CREAS em cada nível das dimensões do IDCREAS, 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
+```{r fig-ID-CREAS-nivel, fig.cap = sprintf("Quantidade de CREAS em cada nível das dimensões do IDCREAS em 2024, %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=n_unidades_municipio>1}
 
   f_quantitativo_niveis_filtro(idcreas_2024, `Código IBGE`, municipio, `Estrutura Física`, "Estrutura Física", niveis_ID) %>% 
   bind_rows(f_quantitativo_niveis_filtro(idcreas_2024, `Código IBGE`, municipio, `Recursos Humanos`, "Recursos Humanos", niveis_ID)) %>%
@@ -1269,7 +1276,7 @@ n_unidades <- n_unidades_municipio
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do {{< acr IDCREAS >}}, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados", nome_municipio, "em cada uma das dimensões do {{< acr IDCREAS >}}, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
@@ -1290,17 +1297,17 @@ cat("As seções a seguir apresentam os resultados do município de", nome_munic
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1463,17 +1470,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1666,17 +1673,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -1930,15 +1937,15 @@ tabela <- f_selecao_grupo_media(idconselho_2014, IBGE, municipio, IDConselho, "I
 
 ```{r eval=!existe_equipamento, results='asis'}
 
-cat(nome_municipio, " não tem ", equipamento, ".", sep="")
+cat("Não tem ", equipamento, " ", nome_municipio, ".", sep="")
 ```
 
 ```{r eval=(existe_equipamento>0), results='asis'}
 
-cat("O @fig-ID-conselho mostra a evolução das médias do {{< acr IDConselho >}} ao longo dos anos no município de ", nome_municipio, ", ", uf_municipio, ".", sep="")
+cat("O @fig-ID-conselho mostra a evolução das médias do {{< acr IDConselho >}} ao longo dos anos ", nome_municipio, ", ", uf_municipio, ".", sep="")
 ```
 
-```{r fig-ID-conselho, fig.cap = sprintf("Evolução das médias do IDConselho, 2014 a 2024: %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
+```{r fig-ID-conselho, fig.cap = sprintf("Evolução das médias do IDConselho de 2014 a 2024 %s, %s", nome_municipio, uf_municipio), fig.footer = "Fonte: MDS, Censo SUAS.", eval=(existe_equipamento>0)}
 #| fig-height: 10
 
 tabela %>%
@@ -1972,7 +1979,7 @@ n_unidades <- n_unidades_municipio
 
 ```{r eval=(n_unidades_municipio>0), results='asis'}
 
-cat("As seções a seguir apresentam os resultados do município de", nome_municipio, "em cada uma das dimensões do {{< acr IDConselho >}}, bem como os requisitos para se alcançar os níveis superiores.")
+cat("As seções a seguir apresentam os resultados", nome_municipio, "em cada uma das dimensões do {{< acr IDConselho >}}, bem como os requisitos para se alcançar os níveis superiores.")
 ```
 
 ```{asis, echo=(n_unidades_municipio>0)}
@@ -1993,17 +2000,17 @@ cat("As seções a seguir apresentam os resultados do município de", nome_munic
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -2154,17 +2161,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
@@ -2298,17 +2305,17 @@ cat("O ", equipamento, " de **nível 5** na dimensão ", dimensao, " ", porte, "
 
 ```{r eval=(n_unidades==1), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível do ", equipamento, " no município de ", nome_municipio, " é ",  menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível do ", equipamento, " ", nome_municipio, " é ",  menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel==maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " no município de ", nome_municipio, " é ", menor_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " o nível dos ", equipamento, " ", nome_municipio, " é ", menor_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>1 && menor_nivel<maior_nivel), results='asis'}
 
-cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " no município de ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
+cat("Na dimensão ", dimensao, " os níveis dos ", equipamento, " ", nome_municipio, " variam de ", menor_nivel, " a ", maior_nivel, ".", sep="")
 ```
 
 ```{r eval=(n_unidades>0 && menor_nivel==1), results='asis'}
